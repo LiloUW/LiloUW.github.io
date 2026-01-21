@@ -4,33 +4,7 @@ title: Research Group
 permalink: /students/
 ---
 
-<div class="robot-banner">
-    ██████╗ ███████╗███████╗███████╗ █████╗ ██████╗  ██████╗██╗  ██╗
-    ██╔══██╗██╔════╝██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝██║  ██║
-    ██████╔╝█████╗  ███████╗█████╗  ███████║██████╔╝██║     ███████║
-    ██╔══██╗██╔══╝  ╚════██║██╔══╝  ██╔══██║██╔══██╗██║     ██╔══██║
-    ██║  ██║███████╗███████║███████╗██║  ██║██║  ██║╚██████╗██║  ██║
-    ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
-
-      ██████╗ ██████╗  ██████╗ ██╗   ██╗██████╗
-     ██╔════╝ ██╔══██╗██╔═══██╗██║   ██║██╔══██╗
-     ██║  ███╗██████╔╝██║   ██║██║   ██║██████╔╝
-     ██║   ██║██╔══██╗██║   ██║██║   ██║██╔═══╝
-     ╚██████╔╝██║  ██║╚██████╔╝╚██████╔╝██║
-      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝
-
-            🤖  AUTONOMOUS MATERIALS LABORATORY  🤖
-         ═══════════════════════════════════════════
-</div>
-
-<div class="terminal-text">
-SYSTEM: RESEARCH_GROUP.EXE
-STATUS: ACTIVE COLLABORATION IN PROGRESS
-MEMBERS: 40+ CURRENT & ALUMNI RESEARCHERS
-MISSION: AI-DRIVEN MATERIALS DISCOVERY & AUTONOMOUS EXPERIMENTATION
-</div>
-
-# RESEARCH GROUP ROSTER <span class="blinking-cursor"></span>
+# Research Group Members
 
 ## Current Postdoctoral Researchers
 

@@ -4,154 +4,19 @@ title: Publications
 permalink: /publications/
 ---
 
-<style>
-.pixel-box {
-  border: 4px solid #00ff00;
-  background: #000;
-  color: #00ff00;
-  font-family: 'Courier New', monospace;
-  padding: 20px;
-  box-shadow: 0 0 10px #00ff00;
-  margin-bottom: 30px;
-}
-.pub-container {
-  margin-bottom: 25px;
-  padding: 15px;
-  border: 3px solid #00ff00;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  display: flex;
-  gap: 20px;
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
-  transition: all 0.3s ease;
-}
-.pub-container:hover {
-  transform: translateX(5px);
-  box-shadow: 0 0 25px rgba(0, 255, 0, 0.5);
-}
-.pub-placeholder {
-  flex-shrink: 0;
-  width: 150px;
-  height: 150px;
-  background: #0f3460;
-  border: 2px solid #00ff00;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #00ff00;
-  font-size: 12px;
-  text-align: center;
-  padding: 10px;
-  font-family: 'Courier New', monospace;
-}
-.pub-content {
-  flex-grow: 1;
-}
-.pub-title {
-  font-weight: bold;
-  color: #00ff00;
-  margin-bottom: 8px;
-  line-height: 1.4;
-  font-size: 1.05em;
-  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
-}
-.pub-authors {
-  color: #b8b8b8;
-  font-size: 0.9em;
-  margin-bottom: 5px;
-  font-family: 'Courier New', monospace;
-}
-.pub-journal {
-  font-style: italic;
-  color: #888;
-  margin-bottom: 10px;
-  font-size: 0.95em;
-}
-.pub-links {
-  margin-top: 10px;
-}
-.pub-link {
-  display: inline-block;
-  margin-right: 12px;
-  padding: 6px 14px;
-  background: linear-gradient(135deg, #00ff00 0%, #00cc00 100%);
-  color: #000;
-  text-decoration: none;
-  border: 2px solid #00ff00;
-  font-size: 0.85em;
-  font-weight: bold;
-  font-family: 'Courier New', monospace;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
-}
-.pub-link:hover {
-  background: #000;
-  color: #00ff00;
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
-  transform: scale(1.05);
-}
-.oa-badge {
-  display: inline-block;
-  padding: 5px 12px;
-  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-  color: white;
-  border: 2px solid #28a745;
-  font-size: 0.85em;
-  font-weight: bold;
-  margin-right: 10px;
-  font-family: 'Courier New', monospace;
-  box-shadow: 0 0 10px rgba(40, 167, 69, 0.4);
-}
-.year-header {
-  background: linear-gradient(135deg, #00ff00 0%, #00cc00 100%);
-  color: #000;
-  padding: 12px 20px;
-  margin: 40px 0 25px 0;
-  font-size: 1.4em;
-  font-weight: bold;
-  font-family: 'Courier New', monospace;
-  border: 3px solid #00ff00;
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
-  text-align: center;
-  letter-spacing: 3px;
-}
-.robot-banner {
-  font-family: 'Courier New', monospace;
-  color: #00ff00;
-  background: #000;
-  padding: 20px;
-  border: 4px solid #00ff00;
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
-  margin-bottom: 30px;
-  white-space: pre;
-  overflow-x: auto;
-  font-size: 10px;
-  line-height: 1.2;
-}
-</style>
+# Publications
 
-<div class="robot-banner">
-    ____  _    _______  __    _________ ___  __________  _   _______
-   / __ \/ |  / / __ )/ /   /  _/ ___//   |/_  __/  _/ | / / ___/ /
-  / /_/ /  | / / __  / /    / / \__ \/ /| | / /  / //  |/ /\__ \/ /
- / ____/   |/ / /_/ / /____/ / ___/ / ___ |/ / _/ // /|  /___/ /_/
-/_/    |___/_/_____/_____/___//____/_/  |_/_/ /___/_/ |_//____(_)
+**Note:** Legal name-change occurred in 2013 from Pozzo DC to Pozzo LD
 
-                   POZZO RESEARCH LAB
-            [ 114 PEER-REVIEWED PUBLICATIONS ]
-       ==========================================
-</div>
+**Total Publications:** 114 peer-reviewed journal articles
 
-<div class="pixel-box">
-<h1 style="text-align: center; color: #00ff00; text-shadow: 0 0 10px #00ff00;">PUBLICATIONS DATABASE</h1>
-<p style="text-align: center; margin-top: 15px;"><strong>Note:</strong> Legal name-change occurred in 2013 from Pozzo DC to Pozzo LD</p>
-<p style="text-align: center;"><strong>Total Publications:</strong> 114 peer-reviewed journal articles</p>
-<p style="text-align: center; margin-top: 10px;">For a complete and up-to-date list with citations, visit my <a href="https://scholar.google.com/citations?user=XiHAbCsAAAAJ&hl=en" style="color: #00ff00; text-decoration: underline;">Google Scholar Profile</a></p>
-<p style="text-align: center; margin-top: 15px;"><span class="oa-badge">🔓 Open Access</span> = Article is freely available to all researchers</p>
-</div>
+For a complete and up-to-date list with citations, visit my [Google Scholar Profile](https://scholar.google.com/citations?user=XiHAbCsAAAAJ&hl=en).
+
+<span class="oa-badge">🔓 Open Access</span> = Article is freely available to all researchers
 
 ---
 
-<div class="year-header">▼▼▼ 2025 ▼▼▼</div>
+<div class="year-header">2025</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -299,7 +164,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2024 ▼▼▼</div>
+<div class="year-header">2024</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -375,7 +240,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2023 ▼▼▼</div>
+<div class="year-header">2023</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -560,7 +425,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2022 ▼▼▼</div>
+<div class="year-header">2022</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -649,7 +514,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2021 ▼▼▼</div>
+<div class="year-header">2021</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -713,7 +578,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2020 ▼▼▼</div>
+<div class="year-header">2020</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -739,7 +604,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2019 ▼▼▼</div>
+<div class="year-header">2019</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -837,7 +702,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2018 ▼▼▼</div>
+<div class="year-header">2018</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -887,7 +752,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2017 ▼▼▼</div>
+<div class="year-header">2017</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -985,7 +850,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2016 ▼▼▼</div>
+<div class="year-header">2016</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -1011,7 +876,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2015 ▼▼▼</div>
+<div class="year-header">2015</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -1133,7 +998,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2014 ▼▼▼</div>
+<div class="year-header">2014</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -1207,7 +1072,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2013 ▼▼▼</div>
+<div class="year-header">2013</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -1257,7 +1122,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2012 ▼▼▼</div>
+<div class="year-header">2012</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -1367,7 +1232,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2011 ▼▼▼</div>
+<div class="year-header">2011</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -1453,7 +1318,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2010 ▼▼▼</div>
+<div class="year-header">2010</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -1467,7 +1332,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2009 ▼▼▼</div>
+<div class="year-header">2009</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -1493,7 +1358,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2008 ▼▼▼</div>
+<div class="year-header">2008</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -1507,7 +1372,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2007 ▼▼▼</div>
+<div class="year-header">2007</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -1533,7 +1398,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2005 ▼▼▼</div>
+<div class="year-header">2005</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
@@ -1559,7 +1424,7 @@ permalink: /publications/
 </div>
 </div>
 
-<div class="year-header">▼▼▼ 2004 ▼▼▼</div>
+<div class="year-header">2004</div>
 
 <div class="pub-container">
 <div class="pub-placeholder">[ TOC GRAPHIC ]</div>
