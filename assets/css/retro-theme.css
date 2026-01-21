@@ -1,0 +1,612 @@
+/*
+ * RETRO 80's VIDEO GAME THEME
+ * Pixelated Robotics Laboratory
+ */
+
+/* Import pixel font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+/* ============================================
+   COLOR PALETTE - 80's Retro
+   ============================================ */
+:root {
+  --neon-cyan: #00FFFF;
+  --neon-magenta: #FF00FF;
+  --neon-green: #00FF00;
+  --neon-orange: #FF9500;
+  --neon-pink: #FF1493;
+  --dark-bg: #0a0a0a;
+  --terminal-green: #33ff33;
+  --grid-blue: #0066cc;
+  --robot-silver: #C0C0C0;
+  --warning-red: #FF0000;
+}
+
+/* ============================================
+   BASE STYLING
+   ============================================ */
+body {
+  background-color: var(--dark-bg);
+  background-image:
+    linear-gradient(0deg, transparent 24%, rgba(0, 255, 255, .05) 25%, rgba(0, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, .05) 75%, rgba(0, 255, 255, .05) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, .05) 25%, rgba(0, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, .05) 75%, rgba(0, 255, 255, .05) 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+  font-family: 'VT323', monospace;
+  font-size: 20px;
+  color: var(--neon-cyan);
+  line-height: 1.6;
+  position: relative;
+}
+
+/* Scanline effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Screen flicker animation */
+@keyframes flicker {
+  0% { opacity: 0.97; }
+  5% { opacity: 0.98; }
+  10% { opacity: 0.96; }
+  15% { opacity: 0.99; }
+  20% { opacity: 0.97; }
+  100% { opacity: 0.97; }
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 9998;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--neon-magenta);
+  text-shadow:
+    0 0 10px var(--neon-magenta),
+    0 0 20px var(--neon-magenta),
+    0 0 30px var(--neon-magenta);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+h1 {
+  font-size: 2rem;
+  border-bottom: 4px solid var(--neon-cyan);
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: var(--neon-cyan);
+  text-shadow:
+    0 0 10px var(--neon-cyan),
+    0 0 20px var(--neon-cyan);
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: var(--neon-green);
+  text-shadow:
+    0 0 10px var(--neon-green);
+}
+
+p {
+  margin-bottom: 1rem;
+  font-size: 18px;
+}
+
+a {
+  color: var(--neon-orange);
+  text-decoration: none;
+  border-bottom: 2px dotted var(--neon-orange);
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--neon-pink);
+  border-bottom: 2px solid var(--neon-pink);
+  text-shadow: 0 0 10px var(--neon-pink);
+}
+
+/* ============================================
+   HEADER / NAVIGATION
+   ============================================ */
+.site-header {
+  background-color: #000;
+  border-bottom: 4px solid var(--neon-cyan);
+  box-shadow:
+    0 0 20px var(--neon-cyan),
+    inset 0 0 20px rgba(0, 255, 255, 0.2);
+  padding: 20px 0;
+  position: relative;
+}
+
+.site-title {
+  font-family: 'Press Start 2P', cursive !important;
+  font-size: 1.8rem !important;
+  color: var(--neon-magenta) !important;
+  text-shadow:
+    0 0 10px var(--neon-magenta),
+    0 0 20px var(--neon-magenta),
+    0 0 30px var(--neon-magenta),
+    0 0 40px var(--neon-magenta) !important;
+  letter-spacing: 3px;
+}
+
+.site-title::before {
+  content: "🤖 ";
+  font-size: 1.5rem;
+}
+
+.site-nav {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.site-nav .page-link {
+  color: var(--neon-cyan) !important;
+  font-size: 0.8rem;
+  padding: 8px 15px;
+  border: 2px solid var(--neon-cyan);
+  margin-left: 10px;
+  background-color: rgba(0, 255, 255, 0.1);
+  text-shadow: 0 0 5px var(--neon-cyan);
+  border-bottom: 2px solid var(--neon-cyan) !important;
+}
+
+.site-nav .page-link:hover {
+  background-color: var(--neon-cyan);
+  color: #000 !important;
+  text-shadow: none;
+  box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+/* ============================================
+   ROBOT ASCII ART BANNER
+   ============================================ */
+.robot-banner {
+  font-family: 'Courier New', monospace;
+  color: var(--robot-silver);
+  font-size: 12px;
+  line-height: 1;
+  text-align: center;
+  padding: 20px;
+  background-color: #000;
+  border: 3px solid var(--neon-cyan);
+  margin: 30px 0;
+  box-shadow:
+    0 0 20px var(--neon-cyan),
+    inset 0 0 20px rgba(0, 255, 255, 0.1);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* ============================================
+   CONTENT CONTAINERS
+   ============================================ */
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-left: 4px solid var(--neon-magenta);
+  border-right: 4px solid var(--neon-cyan);
+  box-shadow:
+    0 0 50px rgba(0, 255, 255, 0.3),
+    0 0 50px rgba(255, 0, 255, 0.3);
+}
+
+/* ============================================
+   PIXELATED BOXES
+   ============================================ */
+.pixel-box {
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 4px solid var(--neon-cyan);
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow:
+    0 0 20px var(--neon-cyan),
+    inset 0 0 20px rgba(0, 255, 255, 0.1);
+  position: relative;
+}
+
+.pixel-box::before {
+  content: "▓▓▓";
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  background-color: var(--dark-bg);
+  padding: 0 10px;
+  color: var(--neon-cyan);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+}
+
+/* ============================================
+   PUBLICATIONS STYLING
+   ============================================ */
+.pub-container {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 100, 200, 0.1) 100%);
+  border: 3px solid var(--neon-green);
+  padding: 20px;
+  margin: 25px 0;
+  display: flex;
+  gap: 20px;
+  box-shadow:
+    0 0 15px var(--neon-green),
+    inset 0 0 15px rgba(0, 255, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.pub-container::before {
+  content: "◆";
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green);
+}
+
+.pub-container:hover {
+  transform: translateX(10px);
+  box-shadow:
+    0 0 30px var(--neon-green),
+    0 0 30px var(--neon-cyan),
+    inset 0 0 20px rgba(0, 255, 0, 0.2);
+  border-color: var(--neon-cyan);
+}
+
+.pub-placeholder {
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
+  background:
+    linear-gradient(45deg, #0a0a0a 25%, transparent 25%),
+    linear-gradient(-45deg, #0a0a0a 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #0a0a0a 75%),
+    linear-gradient(-45deg, transparent 75%, #0a0a0a 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  border: 2px solid var(--neon-magenta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neon-magenta);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  text-align: center;
+  padding: 10px;
+  box-shadow:
+    0 0 10px var(--neon-magenta),
+    inset 0 0 10px rgba(255, 0, 255, 0.2);
+}
+
+.pub-image {
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 3px solid var(--neon-cyan);
+  box-shadow: 0 0 20px var(--neon-cyan);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.pub-title {
+  font-weight: bold;
+  color: var(--neon-cyan);
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  text-shadow: 0 0 5px var(--neon-cyan);
+}
+
+.pub-authors {
+  color: var(--robot-silver);
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.pub-journal {
+  color: var(--neon-green);
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.pub-link {
+  display: inline-block;
+  margin-right: 15px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, var(--grid-blue), #003399);
+  color: white;
+  text-decoration: none;
+  border: 2px solid var(--neon-cyan);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  box-shadow: 0 0 10px var(--neon-cyan);
+  transition: all 0.3s ease;
+  border-bottom: 2px solid var(--neon-cyan) !important;
+}
+
+.pub-link:hover {
+  background: var(--neon-cyan);
+  color: #000;
+  box-shadow: 0 0 20px var(--neon-cyan);
+  transform: scale(1.05);
+}
+
+.oa-badge {
+  display: inline-block;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #00aa00, #00ff00);
+  color: #000;
+  font-weight: bold;
+  border: 2px solid var(--neon-green);
+  font-size: 0.75rem;
+  font-family: 'Press Start 2P', cursive;
+  margin-right: 10px;
+  box-shadow: 0 0 15px var(--neon-green);
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 10px var(--neon-green); }
+  50% { box-shadow: 0 0 25px var(--neon-green); }
+}
+
+.year-header {
+  background: linear-gradient(90deg, var(--neon-magenta), var(--neon-cyan));
+  color: #000;
+  padding: 15px 25px;
+  margin: 40px 0 30px 0;
+  font-size: 1.5rem;
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  box-shadow:
+    0 0 30px var(--neon-magenta),
+    0 0 30px var(--neon-cyan);
+  text-shadow: none;
+  border: 3px solid #000;
+  position: relative;
+}
+
+.year-header::before,
+.year-header::after {
+  content: "◆◆◆";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #000;
+}
+
+.year-header::before {
+  left: 20px;
+}
+
+.year-header::after {
+  right: 20px;
+}
+
+/* ============================================
+   STUDENT CARDS
+   ============================================ */
+.student-card {
+  background: rgba(0, 0, 0, 0.95);
+  border: 3px solid var(--neon-orange);
+  padding: 20px;
+  margin: 25px 0;
+  box-shadow:
+    0 0 20px var(--neon-orange),
+    inset 0 0 20px rgba(255, 149, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.student-card:hover {
+  transform: scale(1.02);
+  box-shadow:
+    0 0 30px var(--neon-orange),
+    0 0 30px var(--neon-pink);
+}
+
+.student-image,
+.student-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 0 !important; /* Square for pixel art style */
+  border: 3px solid var(--neon-cyan);
+  box-shadow: 0 0 15px var(--neon-cyan);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.student-placeholder {
+  background:
+    linear-gradient(45deg, #1a1a1a 25%, transparent 25%),
+    linear-gradient(-45deg, #1a1a1a 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #1a1a1a 75%),
+    linear-gradient(-45deg, transparent 75%, #1a1a1a 75%);
+  background-size: 15px 15px;
+  background-position: 0 0, 0 7.5px, 7.5px -7.5px, -7.5px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.6rem;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.student-name {
+  color: var(--neon-magenta) !important;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.1rem;
+  text-shadow: 0 0 10px var(--neon-magenta);
+}
+
+.linkedin-link {
+  display: inline-block;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #0066cc, #0099ff);
+  color: white !important;
+  border: 2px solid var(--neon-cyan);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.65rem;
+  margin-top: 10px;
+  box-shadow: 0 0 10px var(--neon-cyan);
+  transition: all 0.3s ease;
+  border-bottom: 2px solid var(--neon-cyan) !important;
+}
+
+.linkedin-link:hover {
+  background: var(--neon-cyan);
+  color: #000 !important;
+  box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+/* ============================================
+   BUTTONS & BADGES
+   ============================================ */
+.retro-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--neon-magenta), var(--neon-cyan));
+  color: #000;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  border: 3px solid var(--neon-cyan);
+  cursor: pointer;
+  box-shadow: 0 0 20px var(--neon-cyan);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.retro-button:hover {
+  box-shadow: 0 0 30px var(--neon-cyan), 0 0 30px var(--neon-magenta);
+  transform: scale(1.1);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+  background-color: #000;
+  border-top: 4px solid var(--neon-magenta);
+  box-shadow:
+    0 0 20px var(--neon-magenta),
+    inset 0 0 20px rgba(255, 0, 255, 0.2);
+  color: var(--neon-cyan);
+  padding: 30px 0;
+  margin-top: 60px;
+  font-family: 'VT323', monospace;
+}
+
+.footer-heading {
+  font-family: 'Press Start 2P', cursive;
+  color: var(--neon-magenta);
+  font-size: 1rem;
+  text-shadow: 0 0 10px var(--neon-magenta);
+}
+
+/* ============================================
+   RETRO TERMINAL EFFECT
+   ============================================ */
+.terminal-text {
+  font-family: 'Courier New', monospace;
+  color: var(--terminal-green);
+  background-color: #000;
+  padding: 20px;
+  border: 2px solid var(--terminal-green);
+  box-shadow:
+    0 0 20px rgba(51, 255, 51, 0.5),
+    inset 0 0 20px rgba(51, 255, 51, 0.1);
+  margin: 20px 0;
+}
+
+.terminal-text::before {
+  content: "> ";
+  color: var(--neon-cyan);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .pub-container {
+    flex-direction: column;
+  }
+
+  .site-title {
+    font-size: 1.2rem !important;
+  }
+
+  .robot-banner {
+    font-size: 8px;
+  }
+}
+
+/* ============================================
+   LOADING ANIMATION
+   ============================================ */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.blinking-cursor::after {
+  content: "█";
+  animation: blink 1s infinite;
+  color: var(--neon-cyan);
+}
+
+/* ============================================
+   GRID LINES (TRON-style)
+   ============================================ */
+.grid-lines {
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  position: relative;
+}

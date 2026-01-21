@@ -4,57 +4,33 @@ title: Research Group
 permalink: /students/
 ---
 
-<style>
-.student-card {
-  margin-bottom: 30px;
-  padding: 15px;
-  border-left: 3px solid #4b2e83;
-}
-.student-profile {
-  display: flex;
-  align-items: start;
-  gap: 20px;
-  margin-bottom: 15px;
-}
-.student-image {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-.student-placeholder {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: #e0e0e0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-  font-size: 14px;
-  text-align: center;
-  flex-shrink: 0;
-}
-.student-info {
-  flex-grow: 1;
-}
-.student-name {
-  margin: 0 0 5px 0;
-  color: #4b2e83;
-}
-.linkedin-link {
-  display: inline-block;
-  margin-top: 5px;
-  color: #0077b5;
-  text-decoration: none;
-}
-.linkedin-link:hover {
-  text-decoration: underline;
-}
-</style>
+<div class="robot-banner">
+    ██████╗ ███████╗███████╗███████╗ █████╗ ██████╗  ██████╗██╗  ██╗
+    ██╔══██╗██╔════╝██╔════╝██╔════╝██╔══██╗██╔══██╗██╔════╝██║  ██║
+    ██████╔╝█████╗  ███████╗█████╗  ███████║██████╔╝██║     ███████║
+    ██╔══██╗██╔══╝  ╚════██║██╔══╝  ██╔══██║██╔══██╗██║     ██╔══██║
+    ██║  ██║███████╗███████║███████╗██║  ██║██║  ██║╚██████╗██║  ██║
+    ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
 
-# Research Group Members
+      ██████╗ ██████╗  ██████╗ ██╗   ██╗██████╗
+     ██╔════╝ ██╔══██╗██╔═══██╗██║   ██║██╔══██╗
+     ██║  ███╗██████╔╝██║   ██║██║   ██║██████╔╝
+     ██║   ██║██╔══██╗██║   ██║██║   ██║██╔═══╝
+     ╚██████╔╝██║  ██║╚██████╔╝╚██████╔╝██║
+      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝
+
+            🤖  AUTONOMOUS MATERIALS LABORATORY  🤖
+         ═══════════════════════════════════════════
+</div>
+
+<div class="terminal-text">
+SYSTEM: RESEARCH_GROUP.EXE
+STATUS: ACTIVE COLLABORATION IN PROGRESS
+MEMBERS: 40+ CURRENT & ALUMNI RESEARCHERS
+MISSION: AI-DRIVEN MATERIALS DISCOVERY & AUTONOMOUS EXPERIMENTATION
+</div>
+
+# RESEARCH GROUP ROSTER <span class="blinking-cursor"></span>
 
 ## Current Postdoctoral Researchers
 
