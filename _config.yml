@@ -1,9 +1,9 @@
 # Site settings
 title: Lilo D. Pozzo
 email: dpozzo@uw.edu
-description: >
-  Vice Chair of Operations and Boeing-Roundhill Professor,
-  Department of Chemical Engineering, University of Washington
+description: >-
+  Vice Chair of Operations and Boeing-Roundhill Professor in Chemical Engineering at the University of Washington.
+  Research in AI-driven materials discovery, self-assembly of soft materials, neutron scattering, and autonomous laboratories.
 baseurl: ""
 url: "https://LiloUW.github.io"
 
@@ -43,3 +43,8 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - DEPLOYMENT_INSTRUCTIONS.md
+  - PROFILE_PICTURES_GUIDE.md
+  - TOC_GRAPHICS_GUIDE.md
+  - Pozzo_long_CV2025.pdf
+  - "*.pdf"

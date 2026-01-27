@@ -4,9 +4,15 @@ title: Research Group
 permalink: /students/
 ---
 
-# Research Group Members
+# Research Group
+
+Our interdisciplinary team combines expertise in chemical engineering, materials science, polymer chemistry, data science, and laboratory automation to advance the frontiers of soft matter research.
+
+---
 
 ## Current Postdoctoral Researchers
+
+<div class="students-grid">
 
 <div class="student-card">
 <div class="student-profile">
@@ -20,9 +26,13 @@ permalink: /students/
 </div>
 </div>
 
+</div>
+
 ---
 
 ## Current Ph.D./M.S. Students
+
+<div class="students-grid">
 
 <div class="student-card">
 <div class="student-profile">
@@ -106,11 +116,15 @@ permalink: /students/
 </div>
 </div>
 
+</div>
+
 ---
 
 ## Alumni
 
 ### Postdoctoral Researchers
+
+<div class="students-grid">
 
 <div class="student-card">
 <div class="student-profile">
@@ -179,9 +193,13 @@ permalink: /students/
 </div>
 </div>
 
+</div>
+
 ---
 
 ### Ph.D. Graduates
+
+<div class="students-grid">
 
 <div class="student-card">
 <div class="student-profile">
@@ -391,9 +409,13 @@ permalink: /students/
 </div>
 </div>
 
+</div>
+
 ---
 
 ### M.S. Graduates
+
+<div class="students-grid">
 
 <div class="student-card">
 <div class="student-profile">
@@ -475,24 +497,51 @@ permalink: /students/
 </div>
 </div>
 
+</div>
+
 ---
 
 ## Undergraduate Researchers
 
-Over 120 undergraduate students have conducted research in the Pozzo laboratory since 2007, working on a variety of projects in nanomaterials synthesis, soft matter characterization, laboratory automation, and data science. Many have been co-authors on peer-reviewed publications and have continued to graduate school or careers in science and engineering.
+<div class="impact-highlight">
+<h3>120+ Undergraduates Trained</h3>
+<p>
+Over 120 undergraduate students have conducted research in the Pozzo laboratory since 2007, working on projects spanning nanomaterials synthesis, soft matter characterization, laboratory automation, and data science. Many have been co-authors on peer-reviewed publications and have continued to graduate school or careers in science and engineering.
+</p>
+</div>
 
 ---
 
 ## How to Add Your Photo
 
-**For current and former group members:** If you would like to add your profile picture to this page, please:
+**For current and former group members:** If you would like to add your profile picture to this page:
 
-1. Send a professional headshot (square format, at least 300x300 pixels) to Prof. Pozzo at dpozzo@uw.edu
+1. Send a professional headshot (square format, at least 300x300 pixels) to Prof. Pozzo at [dpozzo@uw.edu](mailto:dpozzo@uw.edu)
 2. Or submit a pull request on GitHub with your photo added to `assets/images/students/` folder
 3. Preferred format: JPG or PNG, named as `firstname-lastname.jpg`
 
 ---
 
-**Interested in joining the group?**
+## Join Our Team
 
-Prospective graduate students should apply through the [UW Chemical Engineering](https://www.cheme.washington.edu/) or [Molecular Engineering & Sciences](https://www.moles.washington.edu/) graduate programs. Undergraduate students interested in research opportunities should contact Prof. Pozzo directly at dpozzo@uw.edu.
+<div class="research-grid">
+
+<div class="research-card">
+<div class="research-card-icon">🎓</div>
+<h3>Graduate Students</h3>
+<p>Apply through <a href="https://www.cheme.washington.edu/">UW Chemical Engineering</a> or <a href="https://www.moles.washington.edu/">Molecular Engineering & Sciences</a> programs. Mention your interest in our group in your application.</p>
+</div>
+
+<div class="research-card">
+<div class="research-card-icon">🔬</div>
+<h3>Undergraduate Researchers</h3>
+<p>UW undergraduates interested in research should contact Prof. Pozzo at <a href="mailto:dpozzo@uw.edu">dpozzo@uw.edu</a> with your CV, transcript, and research interests.</p>
+</div>
+
+<div class="research-card">
+<div class="research-card-icon">📚</div>
+<h3>Postdoctoral Researchers</h3>
+<p>Positions occasionally available. Send CV, research statement, and three references to <a href="mailto:dpozzo@uw.edu">dpozzo@uw.edu</a>.</p>
+</div>
+
+</div>
