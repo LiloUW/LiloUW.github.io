@@ -41,7 +41,7 @@ To show a table-of-contents graphic beside a publication, add the image to `asse
 ```yaml
 - number: 114
   year: 2025
-  title: "Programmable Conformational Switching in Peptoid Nanosheets via pH and Light"
+  title: "Assembly of small silica nanoparticles using lipid-tethered DNA ‘bonds’"
   ...
   image: "assets/img/toc/114.jpg"
 ```

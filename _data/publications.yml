@@ -2,13 +2,58 @@
 # Optional field `image:` (e.g. assets/img/toc/114.jpg) shows a TOC graphic next to the entry.
 # Legal name change in 2013 from Pozzo DC to Pozzo LD.
 
+- number: 120
+  year: 2026
+  title: "Synthesis and Magnetism of Silver Chromium Selenide Spinels"
+  authors: "E.K. Bacon-Gershman, S.M. Harvey, C. Agag, A. Moeez, G. Ren, S. Wilson, Y. Xu, D.R. Gamelin, L.D. Pozzo, J.C. Idrobo, B.M. Cossairt"
+  journal: "Journal of the American Chemical Society, 148(33), 35898-35907 (2026)"
+  url: "https://doi.org/10.1021/jacs.6c09346"
+  featured: true
+
+- number: 119
+  year: 2026
+  title: "Bioproduction, bioprotection, and biocontainment in multi-kingdom microbial systems with 3D spatial control"
+  authors: "L. Le, G. Altin-Yavuzarslan, E.C. Klatt, N. Sadaba, A.C. Berg, A.V. Karanjia, S.M. Brooks, J.G. Zalatan, L.D. Pozzo, J.M. Carothers, H.S. Alper, A. Nelson"
+  journal: "Biofabrication, 18(2), 025028 (2026)"
+  url: "https://doi.org/10.1088/1758-5090/ae55cd"
+  featured: true
+
+- number: 118
+  year: 2026
+  title: "An automated sampling workflow for parallel long-term membrane diffusion cell testing"
+  authors: "C. Benstead, M. Politi, D.S. Bergsman, L.D. Pozzo"
+  journal: "Digital Discovery, 5(3), 1312-1324 (2026)"
+  url: "https://doi.org/10.1039/d5dd00523j"
+  featured: true
+
+- number: 117
+  year: 2026
+  title: "Pushing the limits of mechanoredox RAFT polymerization methods"
+  authors: "J.D. Kaff, M.N. Hodges, A. Moeez, S.M. Zeitler, L.D. Pozzo, M.R. Golder"
+  journal: "Polymer Chemistry, 17(11), 1092-1099 (2026)"
+  url: "https://doi.org/10.1039/d5py01061f"
+  featured: true
+
+- number: 116
+  year: 2026
+  title: "An automated system for electrodeposition of polymer thin films and their wetting analysis"
+  authors: "H. Quinn, G.A. Robben, Z. Zheng, J. Yan, Y. Li, Z. Yang, M. Politi, N. Peek, L.D. Pozzo, J.G. Werner, K.A. Brown"
+  journal: "Review of Scientific Instruments, 97(2), 023907 (2026)"
+  url: "https://doi.org/10.1063/5.0309809"
+
+- number: 115
+  year: 2026
+  title: "Solvent-Tuned Aggregation and Its Limited Functional Impact in a Rigid-Rod Indacenodithiophene-Benzothiadiazole Copolymer"
+  authors: "L. Guio, P. Sommerville, L.D. Pozzo, C.K. Luscombe"
+  journal: "ACS Polymers Au, 6(1), 388-398 (2026)"
+  url: "https://doi.org/10.1021/acspolymersau.5c00155"
+
 - number: 114
   year: 2025
-  title: "Programmable Conformational Switching in Peptoid Nanosheets via pH and Light"
+  title: "Assembly of small silica nanoparticles using lipid-tethered DNA ‘bonds’"
   authors: "H.T. Chiang, N. Kern, Z.R. Wylie, A. Moeez, H. Zhang, D. McKeen, N. SM Herringer, O. Gang, A.L. Ferguson, Z. Sherman, L.D. Pozzo"
-  journal: "Soft Matter, 21, 9398-9411 (2025)"
+  journal: "Soft Matter, 21(48), 9398-9411 (2025)"
   url: "https://doi.org/10.1039/D5SM00924C"
-  featured: true
 
 - number: 113
   year: 2025
@@ -16,7 +61,6 @@
   authors: "S. Wang, A. Favor, R.D. Kibler, J.M. Lubner, A.J. Borst, N. Coudray, R.L. Redler, H.T. Chiang, W. Sheffler, Y. Hsia, N.P. Bethel, Z. Li, D.C. Ekiert, G. Bhabha, L.D. Pozzo, D. Baker"
   journal: "Nature Materials, 24(10), 1644-1652 (2025)"
   url: "https://doi.org/10.1038/s41563-025-02089-4"
-  featured: true
 
 - number: 112
   year: 2025
@@ -25,7 +69,6 @@
   journal: "npj Computational Materials, 11(1), 335 (2025)"
   url: "https://doi.org/10.1038/s41524-025-01822-z"
   open_access: true
-  featured: true
 
 - number: 111
   year: 2025
@@ -34,7 +77,6 @@
   journal: "Digital Discovery, 4, 3018-3030 (2025)"
   url: "https://doi.org/10.1039/D5DD00274E"
   open_access: true
-  featured: true
 
 - number: 110
   year: 2025
@@ -47,7 +89,7 @@
   year: 2025
   title: "Hydrogel-Immobilized Multienzyme Systems for Cell-Free Chemical Bioproduction"
   authors: "W. Sugianto, R.A.L. Cardiff, C. Benstead, G. Altin-Yavuzarslan, L.D. Pozzo, A. Nelson, J.M. Carothers"
-  journal: "ACS Synthetic Biology (2025) in-press"
+  journal: "ACS Synthetic Biology, 14(8), 3091-3104 (2025)"
   url: "https://doi.org/10.1021/acssynbio.5c00234"
 
 - number: 108
@@ -61,21 +103,21 @@
   year: 2025
   title: "Design of light-and chemically responsive protein assemblies through host-guest interactions"
   authors: "Z. Zhang, H.T. Chiang, Y. Xia, N. Avakyan, R.R. Sonani, F. Wang, E.H. Egelman, J.J. De Yoreo, L.D. Pozzo, F.A. Tezcan"
-  journal: "Chem (2025)"
+  journal: "Chem, 11(6) (2025)"
   url: "https://doi.org/10.1016/j.chempr.2024.102407"
 
 - number: 106
   year: 2025
   title: "Surfactant-assisted phase selective sonochemical synthesis of sodium yttrium fluoride nanoparticles"
   authors: "F. Baum, L. Forberger, A.B. Bard, R. Gariepy, P.J. Pauzauskie, L.D. Pozzo"
-  journal: "Ultrasonics Sonochemistry (2025)"
+  journal: "Ultrasonics Sonochemistry, 114, 107275 (2025)"
   url: "https://doi.org/10.1016/j.ultsonch.2025.107275"
 
 - number: 105
   year: 2025
   title: "3D-Printed Protein-Based Bioplastics with Tunable Mechanical Properties Using Glycerol or Hyperbranched Poly(glycerol)s as Plasticizers"
   authors: "S.C. Millik, N. Sadaba, S.L. Hilburg, E. Sanchez-Rexach, M. Zhang, S. Yu, A.F. Vass, L.D. Pozzo, A. Nelson"
-  journal: "Biomacromolecules (2025)"
+  journal: "Biomacromolecules, 26(3), 1725-1736 (2025)"
   url: "https://doi.org/10.1021/acs.biomac.4c01497"
 
 - number: 104
@@ -133,7 +175,7 @@
   year: 2024
   title: "Engineering Low Volume Resuscitants for the Prehospital Care of Severe Hemorrhagic Shock"
   authors: "T.J. Pichon, X. Wang, E.E. Mickelson, W.C. Huang, S.L. Hilburg, S. Stucky, M. Ling, A.E.S. John, K.M. Ringgold, J.M. Snyder, L.D. Pozzo, M. Lu, N.J. White, S.H. Pun"
-  journal: "Angewandte Chemie International Edition, e202402078 (2024)"
+  journal: "Angewandte Chemie International Edition, 63(31), e202402078 (2024)"
   url: "https://doi.org/10.1002/anie.202402078"
 
 - number: 96
@@ -147,7 +189,7 @@
   year: 2023
   title: "Morphology of poly-3-hexyl-thiophene blends with styrene–isoprene–styrene block-copolymer elastomers from X-ray and neutron scattering"
   authors: "S.C. Scheiwiller, J.P. Mata, L.D. Pozzo"
-  journal: "Soft Matter, 20, 6247–6265 (2024)"
+  journal: "Soft Matter, 20(31), 6247-6265 (2024)"
   url: "https://doi.org/10.1039/D4SM00652F"
 
 - number: 94
@@ -168,7 +210,7 @@
   year: 2023
   title: "4D Printed Protein-AuNR Nanocomposites with Photothermal Shape Recovery"
   authors: "S. Yu, N. Sadaba, E. Sanchez-Rexach, S.L. Hilburg, L.D. Pozzo, G. Altin-Yavuzarslan, L.M. Liz-Marzán, D. Jimenez de Aberasturi, H. Sardon, A. Nelson"
-  journal: "Advanced Functional Materials, 2311209 (2023)"
+  journal: "Advanced Functional Materials, 34(14), 2311209 (2023)"
   url: "https://doi.org/10.1002/adfm.202311209"
 
 - number: 91
@@ -190,14 +232,14 @@
   year: 2023
   title: "Combating energy poverty via small-scale solar for initial electrification and post-disaster recovery in Guatemala and Puerto Rico communities"
   authors: "B.M. Sperry, F.Y. Dou, T. Dillon, W.K. Tatum, M.K. Chapko, L.D. Pozzo"
-  journal: "Energy for Sustainable Development (2023)"
+  journal: "Energy for Sustainable Development, 76, 101291 (2023)"
   url: "https://doi.org/10.1016/j.esd.2023.101291"
 
 - number: 88
   year: 2023
   title: "Mechanisms of Biomolecular Self‐Assembly Investigated Through In Situ Observations of Structures and Dynamics"
   authors: "S.Y. Schmid, K. Lachowski, H.T. Chiang, L.D. Pozzo, J. De Yoreo, S. Zhang"
-  journal: "Angewandte Chemie International Edition (2023)"
+  journal: "Angewandte Chemie International Edition, 62(48), e202309725 (2023)"
   url: "https://doi.org/10.1002/anie.202309725"
 
 - number: 87
@@ -218,7 +260,7 @@
   year: 2023
   title: "A high-throughput workflow for the synthesis of CdSe nanocrystals using a sonochemical materials acceleration platform"
   authors: "M. Politi, F. Baum, K. Vaddi, E. Antonio, J. Vasquez, B.P. Bishop, N. Peek, V.C. Holmberg, L.D. Pozzo"
-  journal: "Digital Discovery, 2, 1042-1057 (2023)"
+  journal: "Digital Discovery, 2(4), 1042-1057 (2023)"
   url: "https://doi.org/10.1039/D3DD00082F"
   open_access: true
 
@@ -234,7 +276,7 @@
   year: 2023
   title: "Triplet Fusion Upconversion for Photocuring 3D Printed Particle‐Reinforced Composite Networks"
   authors: "J. Wong, S. Wei, R. Meir, N. Sadaba, N.A. Ballinger, E.K. Harmon, X. Gao, G. Altin‐Yavuzarslan, L.D. Pozzo, L.M. Campos, A. Nelson"
-  journal: "Advanced Materials (2023)"
+  journal: "Advanced Materials, 35(11), 2207673 (2023)"
   url: "https://doi.org/10.1002/adma.202207673"
 
 - number: 82
@@ -316,7 +358,7 @@
   year: 2021
   title: "Evaluation of Solar-Powered Battery Systems for Individuals Using Electricity-Dependent Medical Devices in Puerto Rico Following Hurricane Maria"
   authors: "G.A. Tosado, M.A. Matos, M. Ahumada-Paras, M.K. Chapko, L.D. Pozzo, Puerto Rico Solar Health Study Group"
-  journal: "Disaster Medicine and Public Health Preparedness, 1-4 (2021)"
+  journal: "Disaster Medicine and Public Health Preparedness, 17, e15 (2021)"
   url: "https://doi.org/10.1017/dmp.2021.252"
 
 - number: 71
@@ -407,7 +449,7 @@
   year: 2018
   title: "Spontaneous Nucleation of Stable Perfluorocarbon Emulsions for Ultrasound Contrast Agents"
   authors: "D.S. Li, S. Schneewind, M. Bruce, Z. Khaing, M. O'Donnell, L.D. Pozzo"
-  journal: "Nano Letters (2018)"
+  journal: "Nano Letters, 19(1), 173-181 (2018)"
   url: "https://doi.org/10.1021/acs.nanolett.8b03585"
 
 - number: 58
@@ -484,7 +526,7 @@
   year: 2017
   title: "Effect of block composition on the morphology and transport properties of sulfonated fluoroblock copolymer blend membranes"
   authors: "E.G. Gutiérrez, M. Pérez‐Pérez, G.M. Newbloom, L.D. Pozzo, D. Suleiman"
-  journal: "Polymer Engineering and Science (2017)"
+  journal: "Polymer Engineering and Science, 57(11), 1262-1272 (2017)"
   url: "https://doi.org/10.1002/pen.24570"
 
 - number: 47
@@ -783,10 +825,10 @@
 
 - number: 5
   year: 2007
-  title: "Shear orientation of nanoparticle arrays templated in PEO-PPO-PEO soft crystals"
+  title: "Shear orientation of nanoparticle arrays templated in a thermoreversible block copolymer micellar crystal"
   authors: "D.C. Pozzo, L.M. Walker"
   journal: "Macromolecules, 40(16), 5801-5811 (2007)"
-  url: "https://doi.org/10.1021/ma062680j"
+  url: "https://doi.org/10.1021/ma0700173"
 
 - number: 4
   year: 2007
