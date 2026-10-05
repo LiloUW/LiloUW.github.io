@@ -1,0 +1,33 @@
+menu:
+- {name: 'research', url: '/research/'}
+- {name: 'people', url: '/people/'}
+- {name: 'publications', url: '/publications/'}
+- {name: 'courses', url: '/courses/'}
+- {name: 'cv', url: '/cv/'}
+- {name: 'contact', url: '/contact/'}
+
+# Image shown beside the introduction on the home page.
+home_image: {image: 'assets/img/home.jpg', alt: 'Pozzo Research Group laboratory'}
+
+# Laboratory photo strip on the home page. Replace the files in assets/img/lab/ with real photos.
+gallery:
+- {image: 'assets/img/lab/lab-1.jpg', caption: 'Laboratory automation platform'}
+- {image: 'assets/img/lab/lab-2.jpg', caption: 'High-throughput SAXS instrument'}
+- {image: 'assets/img/lab/lab-3.jpg', caption: 'Nanomaterials synthesis'}
+
+courses:
+- {name: 'Heat Transfer', description: 'Core chemical engineering transport phenomena.'}
+- {name: 'Surface & Colloid Science', description: 'Advanced interfacial phenomena and applications.'}
+- {name: 'Kitchen Engineering', description: 'Award-winning course introducing engineering through culinary science.'}
+- {name: 'Intermolecular & Surface Forces', description: 'Graduate-level course on colloidal systems.'}
+- {name: 'Entrepreneurial Capstone Design', description: 'Guiding students through product development and technology translation.'}
+
+social:
+- {icon: 'fas fa-graduation-cap', title: 'Google Scholar', link: 'https://scholar.google.com/citations?user=XiHAbCsAAAAJ&hl=en'}
+- {icon: 'fab fa-orcid', title: 'ORCID', link: 'https://orcid.org/0000-0001-7104-9061'}
+- {icon: 'fab fa-linkedin', title: 'LinkedIn', link: 'https://www.linkedin.com/in/lilo-d-pozzo-90ba5454/'}
+- {icon: 'fab fa-twitter', title: 'Twitter/X', link: 'https://twitter.com/lilopozzo'}
+- {icon: 'fab fa-github', title: 'GitHub', link: 'https://github.com/LiloUW'}
+
+contacts:
+- {name: 'Prof. Lilo D. Pozzo', title: 'Vice Chair of Operations and Boeing-Roundhill Professor', department: 'Department of Chemical Engineering', institution: 'University of Washington', institution_address: 'Box 351750, Seattle, WA 98195', phone: '(206) 685-8536', email: 'dpozzo@uw.edu', office: 'Benson Hall 259', image: 'assets/img/contact.jpg'}

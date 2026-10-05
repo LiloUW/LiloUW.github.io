@@ -1,0 +1,40 @@
+$backgroundColor: #ffffff;
+$bodyColor: #000000;
+$bodyFont: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+$linkColor: #212529 !important;
+$accentColor: #4b2e83; // UW purple
+
+body {
+  background: $backgroundColor;
+  color: $bodyColor;
+  font-family: $bodyFont;
+}
+
+body a {
+  color: $linkColor
+}
+
+body a:hover {
+  color: $accentColor !important;
+}
+
+.border-bottom {
+  border-bottom-color: $accentColor !important;
+}
+
+.person-photo {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  width: 100%;
+}
+
+.publication-image {
+  width: 120px;
+  max-width: 30%;
+  height: auto;
+  align-self: flex-start;
+}
+
+.open-access-badge {
+  background-color: $accentColor;
+}

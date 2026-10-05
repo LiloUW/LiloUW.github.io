@@ -1,0 +1,10 @@
+{% assign p = include.person %}
+{% if p.url or p.linkedin or p.scholar or p.orcid or p.website %}
+<p class="person-links mb-0">
+  {% if p.url %}<a href="{{ '/people/' | append: p.url | append: '/' | relative_url }}" class="me-3">More info</a>{% endif %}
+  {% if p.linkedin %}<a href="{{ p.linkedin }}" class="me-3" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>{% endif %}
+  {% if p.scholar %}<a href="{{ p.scholar }}" class="me-3" title="Google Scholar" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>{% endif %}
+  {% if p.orcid %}<a href="{{ p.orcid }}" class="me-3" title="ORCID" aria-label="ORCID"><i class="fab fa-orcid"></i></a>{% endif %}
+  {% if p.website %}<a href="{{ p.website }}" class="me-3" title="Website" aria-label="Website"><i class="fas fa-globe"></i></a>{% endif %}
+</p>
+{% endif %}

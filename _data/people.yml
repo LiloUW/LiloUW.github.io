@@ -1,0 +1,66 @@
+# Research group members.
+# Current members are shown as cards with a photo. To add a real photo, replace the placeholder
+# at the `image` path (square, at least 600x600 px). Optional keys: linkedin, scholar, website, url
+# (url = slug of a profile page in the people/ folder).
+
+current:
+- title: 'Principal Investigator'
+  members:
+  - {name: 'Lilo D. Pozzo', role: 'Vice Chair of Operations and Boeing-Roundhill Professor', research: 'AI-driven materials discovery, self-assembly of soft materials, neutron and X-ray scattering, and autonomous laboratories', image: 'assets/img/people/lilo-pozzo.jpg', linkedin: 'https://www.linkedin.com/in/lilo-d-pozzo-90ba5454/', scholar: 'https://scholar.google.com/citations?user=XiHAbCsAAAAJ&hl=en', url: 'lilo-pozzo'}
+
+- title: 'Postdoctoral Researchers'
+  members:
+  - {name: 'Kevin Lee', role: 'Postdoctoral Researcher', research: 'Ultra-small nanoparticles for interface control in high-power Li-ion batteries', image: 'assets/img/people/kevin-lee.jpg', linkedin: 'https://www.linkedin.com/in/kevin-lee-312317b4/'}
+
+- title: 'Graduate Students'
+  members:
+  - {name: 'Claire Benstead', role: 'Chemical Engineering Ph.D. (expected 2026)', research: 'Membranes from living hydrogel materials for distributed biomanufacturing', note: 'Co-advised with Prof. Bergsman', image: 'assets/img/people/claire-benstead.jpg', linkedin: 'https://www.linkedin.com/in/claire-benstead-464b70178/'}
+  - {name: 'Abdul Moeez', role: 'MolES Ph.D. (expected 2027)', research: 'Autonomous small angle scattering analysis of nanomaterials', note: 'Clean Energy Institute Fellow; Fulbright and Global UGRAD alumnus', image: 'assets/img/people/abdul-moeez.jpg', linkedin: 'https://www.linkedin.com/in/abdul-moeez-90b960b6'}
+  - {name: 'Zachery Wylie', role: 'Chemical Engineering Ph.D. (expected 2027)', research: 'Self-driving laboratory workflow for nanomaterials synthesis, purification, and isolation', image: 'assets/img/people/zachery-wylie.jpg', linkedin: 'https://www.linkedin.com/in/zach-wylie-09299116b/'}
+  - {name: 'Hanson Chen', role: 'Chemical Engineering Ph.D. (expected 2028)', research: 'Hierarchical assembly of soft matter using laboratory automation', image: 'assets/img/people/hanson-chen.jpg'}
+  - {name: 'Yu-Fang Hsieh', role: 'Chemical Engineering Ph.D. (expected 2029)', research: 'Transport in nanoemulsion systems from simulations and neutron scattering experiments', image: 'assets/img/people/yu-fang-hsieh.jpg'}
+  - {name: 'Elena Toups', role: 'MolES Ph.D. (expected 2030)', research: 'Nanoscale structuring of suspended aerosols via acoustic levitation and controlled evaporation', image: 'assets/img/people/elena-toups.jpg'}
+  - {name: 'Tobias Rangel', role: 'MolES Ph.D. (expected 2030)', research: 'Self-driving laboratories for 0D, 2D and 3D materials synthesis', image: 'assets/img/people/tobias-rangel.jpg'}
+
+# Alumni are shown as a compact list (no photos).
+alumni:
+- title: 'Postdoctoral Researchers'
+  members:
+  - {name: 'Shayna Hilburg, Ph.D.', now: 'NRC Postdoctoral Fellow, National Institute of Standards and Technology (NIST)', research: 'Autonomous retrosynthesis of non-viral DNA delivery vectors', linkedin: 'https://www.linkedin.com/in/shaynahilburg/', scholar: 'https://scholar.google.com/citations?user=_N2HOCIAAAAJ&hl=en'}
+  - {name: 'Greg Newbloom, Ph.D.', now: 'CEO & Founder, Membrion Inc.', research: 'Nanostructured ceramic membranes for redox flow batteries', linkedin: 'https://www.linkedin.com/in/greg-newbloom-ab125458/'}
+  - {name: 'Fabio Baum, Ph.D.', now: 'Professor Visitante, Universidade Federal da Integração Latino-Americana (UNILA)', research: 'AI-driven sonochemical synthesis of nanomaterials', linkedin: 'https://linkedin.com/in/fábio-baum'}
+  - {name: 'Kiran Vaddi, Ph.D.', research: 'Data representation for AI-driven materials acceleration'}
+  - {name: 'Rebecca Vincent, Ph.D.', research: 'Non-invasive analysis of battery health using non-linear EIS'}
+  - {name: 'David Li, Ph.D.', research: 'Photoacoustic clot breakup using functional nanoemulsions'}
+
+- title: 'Ph.D. Graduates'
+  members:
+  - {name: 'Huat Thart-Chiang (Ph.D. 2025)', research: 'Data-driven analysis of experimental design spaces for colloidal synthesis and assembly', orcid: 'https://orcid.org/0000-0002-0042-7958'}
+  - {name: 'Brenden Pelkie (Ph.D. 2025)', now: 'Chemical Engineer, Interlune', research: 'Development of synthesis pipelines for autonomous laboratories', scholar: 'https://scholar.google.com/citations?user=1qUO6mgAAAAJ&hl=en'}
+  - {name: 'Karen Li (Ph.D. 2025)', research: 'Structure and property control in organic mixed ionic and electronic conducting polymers (OMIEC)'}
+  - {name: 'Sage Scheiwiller (Ph.D. 2024)', research: 'Structural analysis of conjugated polymer-polymer composites and blends', linkedin: 'https://www.linkedin.com/in/sage-scheiwiller-8b9160105'}
+  - {name: 'Maria Politi (Ph.D. 2024)', now: 'Postdoctoral Research Fellow, Acceleration Consortium, University of Toronto', research: 'AI-driven optimization of soft-matter and nanomaterials with open-source laboratory automation', note: 'Co-advised with Prof. Adler and Prof. Beck', linkedin: 'https://www.linkedin.com/in/maria-politi-97a631170/'}
+  - {name: 'Lorenzo Guio (Ph.D. 2024)', now: 'CoMotion at University of Washington', research: 'Synthesis and assembly of donor-acceptor conjugated polymers', note: 'Co-advised with Prof. Christine Luscombe', linkedin: 'https://www.linkedin.com/in/lorenzoguio/'}
+  - {name: 'Kacper Lachowski (Ph.D. 2023)', now: 'Scientist, Arzeda', research: 'Self-assembly in sequence defined polymers and their use in controlled synthesis of nanomaterials', linkedin: 'https://www.linkedin.com/in/klachowski/', website: 'https://www.moles.washington.edu/student/kacper-lachowski/'}
+  - {name: 'Jaime Rodriguez (Ph.D. 2021)', now: 'Data Scientist, Pacific Northwest National Laboratory', research: 'Advanced materials for flow batteries', linkedin: 'https://www.linkedin.com/in/jaimerodriguez26/'}
+  - {name: 'Caitlyn Wolf (Ph.D. 2021)', now: 'NRC Postdoctoral Fellow, NIST Center for Neutron Research', research: 'Polymer simulation and neutron scattering', scholar: 'https://scholar.google.com/citations?user=RZdroV4AAAAJ&hl=en'}
+  - {name: 'Yi-Ting Lee (Ph.D. 2019)', research: 'Ultrasound manipulation of emulsion systems', linkedin: 'https://www.linkedin.com/in/yi-ting-lee-2267135b/'}
+  - {name: 'Ryan Kastilani (Ph.D. 2019)', now: 'Software Engineer, The Trade Desk, Inc.', research: 'Nanomaterial synthesis via interfacial structuring'}
+  - {name: 'Yuyin Xi (Ph.D. 2018)', now: 'Postdoctoral Researcher, National Institute of Standards and Technology', research: 'Field-directed and self-assembly of conjugated polymers', linkedin: 'https://www.linkedin.com/in/yuyin-xi-03339b3b/'}
+  - {name: 'Pablo de la Iglesia (Ph.D. 2015)', research: 'Structure of conductive organogels'}
+  - {name: 'Jeff Richards (Ph.D. 2014)', now: 'Associate Professor, Northwestern University', research: 'Structure control in polymer solar-cells', linkedin: 'https://www.linkedin.com/in/jeffrey-richards-90617512/', scholar: 'https://scholar.google.com/citations?user=pfAdrBcAAAAJ&hl=en'}
+  - {name: 'Greg Newbloom (Ph.D. 2014)', research: 'Percolation in conjugated polymer networks', note: 'See also: Postdoctoral Researchers'}
+  - {name: 'Monica Ospinal (Ph.D. 2013)', research: 'Advanced nanostructures for protein separations'}
+  - {name: 'Kjersta Larson-Smith (Ph.D. 2012)', now: 'Technical Lead Engineer, Boeing Research & Technology', research: 'Nanoparticle self-assembly in dispersion', linkedin: 'https://www.linkedin.com/in/kjersta-larson-smith-54a85640'}
+  - {name: 'Kathleen Weigandt (Ph.D. 2012)', now: 'Staff Scientist, NIST Center for Neutron Research', research: 'Structure and rheology of fiber networks'}
+
+- title: 'M.S. Graduates'
+  members:
+  - {name: 'Christopher Gould (M.S. 2025)', research: 'Automation workflow for high-throughput mechanochemical synthesis of polymer libraries'}
+  - {name: 'Faiza Abdillahi (M.S. 2024)', research: 'Meta-model analysis for ML prediction of solubility'}
+  - {name: 'Elizabeth Harmon (M.S. 2022)', research: 'Structured hydrogels for biomanufacturing'}
+  - {name: 'Cameron Tavacoli (M.S. 2022)', research: 'Sonochemical exfoliation of borides'}
+  - {name: 'Shrilakshmi Bonageri (M.S. 2020)', research: 'Data sorting for high-throughput experiments'}
+  - {name: 'Canfeng Wei (M.S. 2018)', research: 'Ceramic membranes for flow-battery applications'}
+  - {name: 'Kiran Kanekal (M.S. 2016)', research: 'Structure and dynamics of conjugated polymers'}
+  - {name: 'Michael Lombardo (M.S. 2014)', research: 'Self-assembly of nanoparticle clusters'}

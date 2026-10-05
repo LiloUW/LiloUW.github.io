@@ -1,0 +1,817 @@
+# Publications list. Newest first; the home page shows the entries marked `featured: true`.
+# Optional field `image:` (e.g. assets/img/toc/114.jpg) shows a TOC graphic next to the entry.
+# Legal name change in 2013 from Pozzo DC to Pozzo LD.
+
+- number: 114
+  year: 2025
+  title: "Programmable Conformational Switching in Peptoid Nanosheets via pH and Light"
+  authors: "H.T. Chiang, N. Kern, Z.R. Wylie, A. Moeez, H. Zhang, D. McKeen, N. SM Herringer, O. Gang, A.L. Ferguson, Z. Sherman, L.D. Pozzo"
+  journal: "Soft Matter, 21, 9398-9411 (2025)"
+  url: "https://doi.org/10.1039/D5SM00924C"
+  featured: true
+
+- number: 113
+  year: 2025
+  title: "Bond-centric modular design of protein assemblies"
+  authors: "S. Wang, A. Favor, R.D. Kibler, J.M. Lubner, A.J. Borst, N. Coudray, R.L. Redler, H.T. Chiang, W. Sheffler, Y. Hsia, N.P. Bethel, Z. Li, D.C. Ekiert, G. Bhabha, L.D. Pozzo, D. Baker"
+  journal: "Nature Materials, 24(10), 1644-1652 (2025)"
+  url: "https://doi.org/10.1038/s41563-025-02089-4"
+  featured: true
+
+- number: 112
+  year: 2025
+  title: "Autonomous Phase Mapping of Gold Nanoparticles Synthesis with Differentiable Models of Spectral Shape"
+  authors: "K. Vaddi, H.T. Chiang, A. Grey, Z.R. Wylie, L.D. Pozzo"
+  journal: "npj Computational Materials, 11(1), 335 (2025)"
+  url: "https://doi.org/10.1038/s41524-025-01822-z"
+  open_access: true
+  featured: true
+
+- number: 111
+  year: 2025
+  title: "Accelerated sol-gel synthesis of nanoporous silica via integrated small angle x-ray scattering with an open-source automation platform"
+  authors: "B.G. Pelkie, C.Y. Yung, Z.R. Wylie, L.D. Pozzo"
+  journal: "Digital Discovery, 4, 3018-3030 (2025)"
+  url: "https://doi.org/10.1039/D5DD00274E"
+  open_access: true
+  featured: true
+
+- number: 110
+  year: 2025
+  title: "Synthesis, assembly, and electrochemical performance of ultrasmall Sb₂S₃ nanoparticles"
+  authors: "Z.R. Wylie, G.K. Lee, S. Lee, A. Moeez, G. Ren, J.C. Idrobo, P. Pauzauskie, L.D. Pozzo, V. Holmberg"
+  journal: "J. Mater. Chem. A, 13, 31292 (2025)"
+  url: "https://doi.org/10.1039/D5TA04184H"
+
+- number: 109
+  year: 2025
+  title: "Hydrogel-Immobilized Multienzyme Systems for Cell-Free Chemical Bioproduction"
+  authors: "W. Sugianto, R.A.L. Cardiff, C. Benstead, G. Altin-Yavuzarslan, L.D. Pozzo, A. Nelson, J.M. Carothers"
+  journal: "ACS Synthetic Biology (2025) in-press"
+  url: "https://doi.org/10.1021/acssynbio.5c00234"
+
+- number: 108
+  year: 2025
+  title: "Efficient analysis of small-angle scattering curves for large biomolecular assemblies using Monte Carlo methods"
+  authors: "H.T. Chiang, Z. Zhang, K. Vaddi, F.A. Tezcan, L.D. Pozzo"
+  journal: "Applied Crystallography, 58(3) (2025)"
+  url: "https://doi.org/10.1107/S1600576724011609"
+
+- number: 107
+  year: 2025
+  title: "Design of light-and chemically responsive protein assemblies through host-guest interactions"
+  authors: "Z. Zhang, H.T. Chiang, Y. Xia, N. Avakyan, R.R. Sonani, F. Wang, E.H. Egelman, J.J. De Yoreo, L.D. Pozzo, F.A. Tezcan"
+  journal: "Chem (2025)"
+  url: "https://doi.org/10.1016/j.chempr.2024.102407"
+
+- number: 106
+  year: 2025
+  title: "Surfactant-assisted phase selective sonochemical synthesis of sodium yttrium fluoride nanoparticles"
+  authors: "F. Baum, L. Forberger, A.B. Bard, R. Gariepy, P.J. Pauzauskie, L.D. Pozzo"
+  journal: "Ultrasonics Sonochemistry (2025)"
+  url: "https://doi.org/10.1016/j.ultsonch.2025.107275"
+
+- number: 105
+  year: 2025
+  title: "3D-Printed Protein-Based Bioplastics with Tunable Mechanical Properties Using Glycerol or Hyperbranched Poly(glycerol)s as Plasticizers"
+  authors: "S.C. Millik, N. Sadaba, S.L. Hilburg, E. Sanchez-Rexach, M. Zhang, S. Yu, A.F. Vass, L.D. Pozzo, A. Nelson"
+  journal: "Biomacromolecules (2025)"
+  url: "https://doi.org/10.1021/acs.biomac.4c01497"
+
+- number: 104
+  year: 2025
+  title: "Biomimetic mineralization of positively charged silica nanoparticles templated by thermoresponsive protein micelles"
+  authors: "N.Y. Naser, W.C. Wixson, H. Larson, B.M. Cossairt, L.D. Pozzo, F. Baneyx"
+  journal: "Soft Matter, 21(2), 166-178 (2025)"
+  url: "https://doi.org/10.1039/D4SM01221F"
+
+- number: 103
+  year: 2025
+  title: "Time-resolved small-angle neutron scattering for characterization of molecular exchange in lipid nanoparticle therapeutics"
+  authors: "S.L. Hilburg, A. Sokolova, M. Cagnes, L.D. Pozzo"
+  journal: "Journal of Colloid and Interface Science, 677, 387-395 (2025)"
+  url: "https://doi.org/10.1016/j.jcis.2024.07.216"
+
+- number: 102
+  year: 2024
+  title: "Strain learning in protein-based mechanical metamaterials"
+  authors: "N. Sadaba, E. Sanchez-Rexach, C. Waltmann, S.L. Hilburg, L.D. Pozzo, M. Olvera de la Cruz, H. Sardon, L.R. Meza, A. Nelson"
+  journal: "PNAS, 121(45), e2407929121 (2024)"
+  url: "https://doi.org/10.1073/pnas.2407929121"
+
+- number: 101
+  year: 2024
+  title: "Induced Chirality in QDs Using Thermoresponsive Elastin-like Polypeptides"
+  authors: "C.D. Lowe, H.C. Larson, Y. Cai, H.T. Chiang, L.D. Pozzo, F. Baneyx, B.M. Cossairt"
+  journal: "Langmuir, 41(1), 1047-1056 (2024)"
+  url: "https://doi.org/10.1021/acs.langmuir.4c04339"
+
+- number: 100
+  year: 2024
+  title: "Self-assembly of a Triblock Copolymer in the Presence of a Rigid Conjugated Polyelectrolyte"
+  authors: "K. Li, K. Vaddi, S. Seifert, J. Mata, L.D. Pozzo"
+  journal: "Soft Matter, 57(24), 11717 (2024)"
+  url: "https://doi.org/10.1039/D4SM00991F"
+
+- number: 99
+  year: 2024
+  title: "Data-driven exploration of silver nanoplate formation in multidimensional chemical design spaces"
+  authors: "H.T. Chiang, K. Vaddi, L. Pozzo"
+  journal: "Digital Discovery, 3(11), 2252 (2024)"
+  url: "https://doi.org/10.1039/D4DD00211C"
+  open_access: true
+
+- number: 98
+  year: 2024
+  title: "Interfacial dynamics mediate surface binding events on supramolecular nanostructures"
+  authors: "T. Christoff-Tempesta, Y. Cho, S.J. Kaser, L.D. Uliassi, X. Zuo, S.L. Hilburg, L.D. Pozzo, J.H. Ortony"
+  journal: "Nature Communications, 15, 7749 (2024)"
+  url: "https://doi.org/10.1038/s41467-024-52136-6"
+  open_access: true
+
+- number: 97
+  year: 2024
+  title: "Engineering Low Volume Resuscitants for the Prehospital Care of Severe Hemorrhagic Shock"
+  authors: "T.J. Pichon, X. Wang, E.E. Mickelson, W.C. Huang, S.L. Hilburg, S. Stucky, M. Ling, A.E.S. John, K.M. Ringgold, J.M. Snyder, L.D. Pozzo, M. Lu, N.J. White, S.H. Pun"
+  journal: "Angewandte Chemie International Edition, e202402078 (2024)"
+  url: "https://doi.org/10.1002/anie.202402078"
+
+- number: 96
+  year: 2023
+  title: "Synthesis and laser cooling of porous cubic α-NaYF nanocrystals"
+  authors: "L. Forberger, M.A. Hilyard, R. Gariepy, F. Baum, L.D. Pozzo, P.J. Pauzauskie"
+  journal: "Photonic Heat Engines: Science and Applications VI, PC129020I, SPIE (2024)"
+  url: "https://doi.org/10.1117/12.3008988"
+
+- number: 95
+  year: 2023
+  title: "Morphology of poly-3-hexyl-thiophene blends with styrene–isoprene–styrene block-copolymer elastomers from X-ray and neutron scattering"
+  authors: "S.C. Scheiwiller, J.P. Mata, L.D. Pozzo"
+  journal: "Soft Matter, 20, 6247–6265 (2024)"
+  url: "https://doi.org/10.1039/D4SM00652F"
+
+- number: 94
+  year: 2023
+  title: "Multi‐Step Nucleation of a Crystalline Silicate Framework via a Structurally Precise Prenucleation Cluster"
+  authors: "B. Jin, Y. Chen, J. Tao, K.J. Lachowski, M.E. Bowden, Z. Zhang, L.D. Pozzo, N.M. Washton, K.T. Mueller, J. De Yoreo"
+  journal: "Angewandte Chemie, 135(28), e202303770 (2023)"
+  url: "https://doi.org/10.1002/ange.202303770"
+
+- number: 93
+  year: 2023
+  title: "Anisotropic Gold Nanomaterial Synthesis Using Peptide Facet Specificity and Timed Intervention"
+  authors: "K.J. Lachowski, H.T. Chiang, K. Torkelson, W. Zhou, S. Zhang, J. Pfaendtner, L.D. Pozzo"
+  journal: "Langmuir, 39(45), 15878-15888 (2023)"
+  url: "https://doi.org/10.1021/acs.langmuir.3c02181"
+
+- number: 92
+  year: 2023
+  title: "4D Printed Protein-AuNR Nanocomposites with Photothermal Shape Recovery"
+  authors: "S. Yu, N. Sadaba, E. Sanchez-Rexach, S.L. Hilburg, L.D. Pozzo, G. Altin-Yavuzarslan, L.M. Liz-Marzán, D. Jimenez de Aberasturi, H. Sardon, A. Nelson"
+  journal: "Advanced Functional Materials, 2311209 (2023)"
+  url: "https://doi.org/10.1002/adfm.202311209"
+
+- number: 91
+  year: 2023
+  title: "Metric geometry tools for automatic structure phase map generation"
+  authors: "K. Vaddi, K. Li, L. Pozzo"
+  journal: "Digital Discovery, 2, 1471-1483 (2023)"
+  url: "https://doi.org/10.1039/D3DD00117B"
+  open_access: true
+
+- number: 90
+  year: 2023
+  title: "Insights into the Biomimetic Synthesis of 2D ZnO Nanomaterials through Peptoid Engineering"
+  authors: "W. Yang, B. Cai, K.J. Lachowski, Q. Yin, J. De Yoreo, L.D. Pozzo, C-L. Chen"
+  journal: "The Journal of Physical Chemistry Letters, 14, 9732 (2023)"
+  url: "https://doi.org/10.1021/acs.jpclett.3c02551"
+
+- number: 89
+  year: 2023
+  title: "Combating energy poverty via small-scale solar for initial electrification and post-disaster recovery in Guatemala and Puerto Rico communities"
+  authors: "B.M. Sperry, F.Y. Dou, T. Dillon, W.K. Tatum, M.K. Chapko, L.D. Pozzo"
+  journal: "Energy for Sustainable Development (2023)"
+  url: "https://doi.org/10.1016/j.esd.2023.101291"
+
+- number: 88
+  year: 2023
+  title: "Mechanisms of Biomolecular Self‐Assembly Investigated Through In Situ Observations of Structures and Dynamics"
+  authors: "S.Y. Schmid, K. Lachowski, H.T. Chiang, L.D. Pozzo, J. De Yoreo, S. Zhang"
+  journal: "Angewandte Chemie International Edition (2023)"
+  url: "https://doi.org/10.1002/anie.202309725"
+
+- number: 87
+  year: 2023
+  title: "Computational and Experimental Determination of the Properties, Structure, and Stability of Peptoid Nanosheets and Nanotubes"
+  authors: "M. Zhao, S. Zhang, R. Zheng, S. Alamdari, C.J. Mundy, J. Pfaendtner, L.D. Pozzo, C-L. Chen, J. De Yoreo, A.L. Ferguson"
+  journal: "Biomacromolecules, 5(4), 2618 (2023)"
+  url: "https://doi.org/10.1021/acs.biomac.3c00232"
+
+- number: 86
+  year: 2023
+  title: "The human factor: results of a small-angle scattering data analysis round robin"
+  authors: "B.R. Pauw, G.J. Smales, A.S. Anker, V. Annadurai, D.M. Balazs, R. Bienert, W.G. Bouwman, I. Breßler, J. Breternitz, E.S. Brok, G. Bryant, A.J. Clulow, E.R. Crater, F. De Geuser, A. Del Giudice, J. Deumer, S. Disch, S. Dutt, K. Frank, E. Fratini, P.R.A.F. Garcia, E.P. Gilbert, M.B. Hahn, J. Hallett, M. Hohenschutz, M. Hollamby, S. Huband, J. Ilavsky, J.K. Jochum, M. Juelsholt, B.W. Mansel, P. Penttilä, R.K. Pittkowski, G. Portale, L.D. Pozzo, L. Rochels, J.M. Rosalie, P.E.J. Saloga, S. Seibt, A.J. Smith, G.N. Smith, G.A. Spiering, T.M. Stawski, O. Taché, A.F. Thünemann, K. Toth, A.E. Whitten, J. Wuttke"
+  journal: "J. Appl. Cryst., 56 (2023)"
+  url: "https://doi.org/10.1107/S1600576723008324"
+
+- number: 85
+  year: 2023
+  title: "A high-throughput workflow for the synthesis of CdSe nanocrystals using a sonochemical materials acceleration platform"
+  authors: "M. Politi, F. Baum, K. Vaddi, E. Antonio, J. Vasquez, B.P. Bishop, N. Peek, V.C. Holmberg, L.D. Pozzo"
+  journal: "Digital Discovery, 2, 1042-1057 (2023)"
+  url: "https://doi.org/10.1039/D3DD00082F"
+  open_access: true
+
+- number: 84
+  year: 2023
+  title: "The laboratory of Babel: highlighting community needs for integrated materials data management"
+  authors: "B. Pelkie, L.D. Pozzo"
+  journal: "Digital Discovery, 2, 544-556 (2023)"
+  url: "https://doi.org/10.1039/D2DD00139J"
+  open_access: true
+
+- number: 83
+  year: 2023
+  title: "Triplet Fusion Upconversion for Photocuring 3D Printed Particle‐Reinforced Composite Networks"
+  authors: "J. Wong, S. Wei, R. Meir, N. Sadaba, N.A. Ballinger, E.K. Harmon, X. Gao, G. Altin‐Yavuzarslan, L.D. Pozzo, L.M. Campos, A. Nelson"
+  journal: "Advanced Materials (2023)"
+  url: "https://doi.org/10.1002/adma.202207673"
+
+- number: 82
+  year: 2023
+  title: "Mechanoredox Catalysis Enables a Sustainable and Versatile Reversible Addition-Fragmentation Chain Transfer Polymerization Process"
+  authors: "P. Chakma, S.M. Zeitler, F. Baum, J. Yu, W. Shindy, L.D. Pozzo, M.R. Golder"
+  journal: "Angewandte Chemie International Edition, 62(2), e202215733 (2023)"
+  url: "https://doi.org/10.1002/anie.202215733"
+
+- number: 81
+  year: 2022
+  title: "Perfluorocarbon nanodroplet size, acoustic vaporization, and inertial cavitation affected by lipid shell composition in vitro"
+  authors: "P.J. Welch, D.S. Li, C.R. Forest, L.D. Pozzo, C. Shi"
+  journal: "The Journal of the Acoustical Society of America, 152(4), 2493-2504 (2022)"
+  url: "https://doi.org/10.1121/10.0014934"
+
+- number: 80
+  year: 2022
+  title: "High-throughput and data driven strategies for the design of deep-eutectic solvent electrolytes"
+  authors: "J. Rodriguez, M. Politi, S. Adler, D. Beck, L. Pozzo"
+  journal: "Molecular Systems Design & Engineering, 7, 933-949 (2022)"
+  url: "https://doi.org/10.1039/D2ME00041E"
+
+- number: 79
+  year: 2022
+  title: "Autonomous retrosynthesis of gold nanoparticles via spectral shape matching"
+  authors: "K. Vaddi, H. Thart Chiang, L. Pozzo"
+  journal: "RSC Digital Discovery, 1, 502-510 (2022)"
+  url: "https://doi.org/10.1039/D2DD00018K"
+  open_access: true
+
+- number: 78
+  year: 2022
+  title: "HARDy: Handling Arbitrary Recognition of Data in Python"
+  authors: "M. Politi, A. Moeez, D. Beck, S. Adler, L. Pozzo"
+  journal: "Journal of Open Source Software, 7(71), 3829 (2022)"
+  url: "https://doi.org/10.21105/joss.03829"
+  open_access: true
+
+- number: 77
+  year: 2022
+  title: "Multivariate Analysis of Peptide-Driven Nucleation and Growth of Au Nanoparticles"
+  authors: "K.J. Lachowski, K. Vaddi, N.Y. Naser, F. Baneyx, L.D. Pozzo"
+  journal: "RSC Digital Discovery, 1, 427-439 (2022)"
+  url: "https://doi.org/10.1039/D2DD00004K"
+  open_access: true
+
+- number: 76
+  year: 2022
+  title: "Predictive Theoretical Framework for Dynamic Control of Bioinspired Hybrid Nanoparticle Self-Assembly"
+  authors: "X. Qi, Y. Zhao, K. Lachowski, J. Boese, Y. Cai, O. Dollar, B. Hellner, L.D. Pozzo, J. Pfaendtner, J. Chun, F. Baneyx, C.J. Mundy"
+  journal: "ACS Nano, 16(2), 1919 (2022)"
+  url: "https://doi.org/10.1021/acsnano.1c06984"
+
+- number: 75
+  year: 2022
+  title: "Hierarchical Self-Assembly Pathways of Peptoid Helices and Sheets"
+  authors: "M. Zhao, K.J. Lachowski, S. Zhang, S. Alamdari, J. Sampath, P. Mu, C.J. Mundy, J. Pfaendtner, J.J. De Yoreo, C.L. Chen, L.D. Pozzo, A.L. Ferguson"
+  journal: "Biomacromolecules, 23(3), 992-1008 (2022)"
+  url: "https://doi.org/10.1021/acs.biomac.1c01385"
+
+- number: 74
+  year: 2021
+  title: "PhasIR: An Instrumentation and Analysis Software for High-throughput Phase Transition Temperature Measurements"
+  authors: "J. Rodriguez, M. Politi, S. Scheiwiller, S. Bonageri, S. Adler, D. Beck, L.D. Pozzo"
+  journal: "Journal of Open Hardware, 5(1) (2021)"
+  url: "https://doi.org/10.5334/joh.30"
+  open_access: true
+
+- number: 73
+  year: 2021
+  title: "Strategies for the development of conjugated polymer molecular dynamics force fields validated with neutron and X-ray scattering"
+  authors: "C. Wolf, L. Guio, S. Scheiwiller, V. Pakhnyuk, C. Luscombe, L.D. Pozzo"
+  journal: "ACS Polymers Au, 1(3), 134-152 (2021)"
+  url: "https://doi.org/10.1021/acspolymersau.1c00027"
+  open_access: true
+
+- number: 72
+  year: 2021
+  title: "Evaluation of Solar-Powered Battery Systems for Individuals Using Electricity-Dependent Medical Devices in Puerto Rico Following Hurricane Maria"
+  authors: "G.A. Tosado, M.A. Matos, M. Ahumada-Paras, M.K. Chapko, L.D. Pozzo, Puerto Rico Solar Health Study Group"
+  journal: "Disaster Medicine and Public Health Preparedness, 1-4 (2021)"
+  url: "https://doi.org/10.1017/dmp.2021.252"
+
+- number: 71
+  year: 2021
+  title: "Dual-Stimuli Responsive Single-Chain Polymer Folding via Intrachain Complexation of Tetramethoxyazobenzene and β-Cyclodextrin"
+  authors: "D.C. Lee, K.N. Guye, R.K. Paranji, K. Lachowski, L.D. Pozzo, D.S. Ginger, S.H. Pun"
+  journal: "Langmuir, 37(33), 10126-10134 (2021)"
+  url: "https://doi.org/10.1021/acs.langmuir.1c01654"
+
+- number: 70
+  year: 2021
+  title: "Blend Morphology in Polythiophene–Polystyrene Composites from Neutron and X-ray Scattering"
+  authors: "C.M. Wolf, L. Guio, S.C. Scheiwiller, R.P. O'Hara, C.K. Luscombe, L.D. Pozzo"
+  journal: "Macromolecules, 54(6), 2960-2978 (2021)"
+  url: "https://doi.org/10.1021/acs.macromol.0c02725"
+
+- number: 69
+  year: 2020
+  title: "Spatially localized sono-photoacoutic activation of phase-change contrast agents"
+  authors: "D.S. Li, G.S. Jeng, J.J. Pitre Jr, M.W. Kim, L.D. Pozzo, M. O'Donnell"
+  journal: "Photoacoustics, 20, 100202 (2020)"
+  url: "https://doi.org/10.1016/j.pacs.2020.100202"
+
+- number: 68
+  year: 2020
+  title: "Formulation of thrombin-inhibiting hydrogels via self-assembly of ionic peptides with peptide-modified polymers"
+  authors: "J. Lee, T. Zhao, D.J. Peeler, D.C. Lee, T.J. Pichon, D. Li, K.M. Weigandt, P.J. Horner, L.D. Pozzo, D.L. Sellers, S.H. Pun"
+  journal: "Soft Matter, 16, 3762-3768 (2020)"
+  url: "https://doi.org/10.1039/C9SM02401J"
+
+- number: 67
+  year: 2019
+  title: "Fluorenone Based Anolyte for an Aqueous Organic Redox-Flow Battery"
+  authors: "J. Rodriguez, C. Niemet, L.D. Pozzo"
+  journal: "ECS Transactions, 89(1), 49 (2019)"
+  url: "https://doi.org/10.1149/08901.0049ecst"
+
+- number: 66
+  year: 2019
+  title: "On-Demand Sonochemical Synthesis of Ultrasmall and Magic-Size CdSe Quantum Dots in Single-Phase and Emulsion Systems"
+  authors: "R. Kastilani, B. Bishop, V. Holmberg, L.D. Pozzo"
+  journal: "Langmuir, 35(50), 16583 (2019)"
+  url: "https://doi.org/10.1021/acs.langmuir.9b02989"
+
+- number: 65
+  year: 2019
+  title: "Contrast-variation Time-resolved SANS Analysis of Oil Exchange Kinetics Between Oil-in-water Emulsions Stabilized by Anionic Surfactants"
+  authors: "Y.T. Lee, L.D. Pozzo"
+  journal: "Langmuir, 35(47), 15192 (2019)"
+  url: "https://doi.org/10.1021/acs.langmuir.9b02246"
+
+- number: 64
+  year: 2019
+  title: "Kinetic Analysis of Ultrasound Induced Oil Exchange in Oil-in-water Emulsions through Contrast Variation Time-resolved SANS"
+  authors: "Y.T. Lee, D.S. Li, L.D. Pozzo"
+  journal: "Langmuir, 35(47), 15204 (2019)"
+  url: "https://doi.org/10.1021/acs.langmuir.9b02247"
+
+- number: 63
+  year: 2019
+  title: "Assessment of molecular dynamics simulations for amorphous poly(3-hexylthiophene) using neutron and X-ray scattering experiments"
+  authors: "C.M. Wolf, K.H. Kanekal, Y.Y. Yimer, M. Tyagi, S. Omar-Diallo, V. Pakhnyuk, C.K. Luscombe, J. Pfaendtner, L.D. Pozzo"
+  journal: "Soft Matter, 15, 5067-5083 (2019)"
+  url: "https://doi.org/10.1039/C9SM00807A"
+
+- number: 62
+  year: 2019
+  title: "Self-assembly of Donor-acceptor Conjugated Polymers Induced by Miscible 'Poor' Solvents"
+  authors: "Y. Xi, C. Wolf, L.D. Pozzo"
+  journal: "Soft Matter, 15(8), 1799-1812 (2019)"
+  url: "https://doi.org/10.1039/C8SM02473A"
+
+- number: 61
+  year: 2019
+  title: "PV Battery Systems for Critical Loads During Emergencies: Case Study from Puerto Rico After Hurricane Maria"
+  authors: "C. Keerthisinghe, M. Ahumada-Paras, L.D. Pozzo, D.S. Kirschen, H. Pontes, W.K. Tatum, M.A. Matos"
+  journal: "IEEE Power and Energy Magazine, 17(1), 82 (2019)"
+  url: "https://doi.org/10.1109/MPE.2018.2873952"
+
+- number: 60
+  year: 2019
+  title: "Ultrasound-based formation of nano-Pickering emulsions investigated via in-situ SAXS"
+  authors: "Y.T. Lee, D.S. Li, J. Ilavsky, I. Kuzmenko, G.S. Jeng, M. O'Donnell, L.D. Pozzo"
+  journal: "Journal of Colloid and Interface Science, 15, 281 (2019)"
+  url: "https://doi.org/10.1016/j.jcis.2018.09.039"
+
+- number: 59
+  year: 2018
+  title: "Spontaneous Nucleation of Stable Perfluorocarbon Emulsions for Ultrasound Contrast Agents"
+  authors: "D.S. Li, S. Schneewind, M. Bruce, Z. Khaing, M. O'Donnell, L.D. Pozzo"
+  journal: "Nano Letters (2018)"
+  url: "https://doi.org/10.1021/acs.nanolett.8b03585"
+
+- number: 58
+  year: 2018
+  title: "A Small-Angle Scattering Environment for In Situ Ultrasound Studies"
+  authors: "D.S. Li, Y.T. Lee, Y. Xi, I. Pelivanov, M. O'Donnell, L.D. Pozzo"
+  journal: "Soft Matter, 14, 5283-5293 (2018)"
+  url: "https://doi.org/10.1039/C8SM00495A"
+
+- number: 57
+  year: 2018
+  title: "Sonocrystallization of Conjugated Polymers with Ultrasound Fields"
+  authors: "Y. Xi, D.S. Li, G.M. Newbloom, W.K. Tatum, M. O'Donnell, C.K. Luscombe, L.D. Pozzo"
+  journal: "Soft Matter, 14, 4963-4976 (2018)"
+  url: "https://doi.org/10.1039/C8SM00905H"
+
+- number: 56
+  year: 2018
+  title: "A Highly Sensitive UV–vis–NIR All-Inorganic Perovskite Quantum Dot Phototransistor Based on a Layered Heterojunction"
+  authors: "C. Zou, Y. Xi, C.Y. Huang, E.G. Keeler, T. Feng, S. Zhu, L.D. Pozzo, L.Y. Lin"
+  journal: "Advanced Optical Materials, 6(14), 1800324 (2018)"
+  url: "https://doi.org/10.1002/adom.201800324"
+
+- number: 55
+  year: 2017
+  title: "Macroscopically aligned nanowire arrays of π-conjugated polymers via shear-enhanced crystallization"
+  authors: "J.H. Li, Y. Xi, L.D. Pozzo, J.T. Xu, C.K. Luscombe"
+  journal: "Journal of Materials Chemistry C, 5(21), 5128 (2017)"
+  url: "https://doi.org/10.1039/C7TC01140G"
+
+- number: 54
+  year: 2017
+  title: "Polypyrrole Coated Perfluorocarbon Nanoemulsions as a Sono-Photoacoustic Contrast Agent"
+  authors: "D.S. Li, S.J. Yoon, I. Pelivanov, M. Frenz, M. O'Donnell, L.D. Pozzo"
+  journal: "Nanoletters, 17(10), 6184 (2017)"
+  url: "https://doi.org/10.1021/acs.nanolett.7b02845"
+
+- number: 53
+  year: 2017
+  title: "Efficient Electrosteric Assembly of Nanoparticle Heterodimers and Linear Heteroassemblies"
+  authors: "R. Kastilani, R. Wong, L.D. Pozzo"
+  journal: "Langmuir, 34(3), 826-836 (2017)"
+  url: "https://doi.org/10.1021/acs.langmuir.7b03100"
+
+- number: 52
+  year: 2017
+  title: "Boosting performance of inverted organic solar cells by using a planar coronene based electron-transporting layer"
+  authors: "J. Yu, Y. Xi, C.C. Chueh, J.Q. Xu, H. Zhong, F. Lin, S.B. Jo, L.D. Pozzo, W. Tang, A.K-Y. Jen"
+  journal: "Nano Energy, 39, 454 (2017)"
+  url: "https://doi.org/10.1016/j.nanoen.2017.07.027"
+
+- number: 51
+  year: 2017
+  title: "Understanding Interfacial Alignment in Solution Coated Conjugated Polymer Thin Films"
+  authors: "G. Qu, X. Zhao, G.M. Newbloom, F. Zhang, E. Mohammadi, J.W. Strzalka, L.D. Pozzo, J. Mei, Y. Diao"
+  journal: "ACS Applied Materials & Interfaces, 9(33), 27863 (2017)"
+  url: "https://doi.org/10.1021/acsami.7bsilon8019"
+
+- number: 50
+  year: 2017
+  title: "Peptide valency plays an important role in the activity of a synthetic fibrin-crosslinking polymer"
+  authors: "R.J. Lamm, E.B. Lim, K.M. Weigandt, L.D. Pozzo, N.J. White, S.H. Pun"
+  journal: "Biomaterials, 132, 96 (2017)"
+  url: "https://doi.org/10.1016/j.biomaterials.2017.04.003"
+
+- number: 49
+  year: 2017
+  title: "Electric field directed formation of aligned conjugated polymer fibers"
+  authors: "Y. Xi, L.D. Pozzo"
+  journal: "Soft Matter, 13(21), 3894 (2017)"
+  url: "https://doi.org/10.1039/C7SM00485K"
+
+- number: 48
+  year: 2017
+  title: "Effect of block composition on the morphology and transport properties of sulfonated fluoroblock copolymer blend membranes"
+  authors: "E.G. Gutiérrez, M. Pérez‐Pérez, G.M. Newbloom, L.D. Pozzo, D. Suleiman"
+  journal: "Polymer Engineering and Science (2017)"
+  url: "https://doi.org/10.1002/pen.24570"
+
+- number: 47
+  year: 2016
+  title: "A Room‐Temperature Processable PDI‐Based Electron‐Transporting Layer for Enhanced Performance in PDI‐Based Non‐Fullerene Solar Cells"
+  authors: "J. Yu, Y. Xi, C.C. Chueh, D. Zhao, F. Lin, L.D. Pozzo, W. Tang, A.K. Jen"
+  journal: "Advanced Materials Interfaces, 3(18), 1600476 (2016)"
+  url: "https://doi.org/10.1002/admi.201600476"
+
+- number: 46
+  year: 2016
+  title: "A Structuring Repeat for Peptide Design: Long Beta Ribbons"
+  authors: "B.L. Kier, G.M. Newbloom, L.D. Pozzo, N.H. Andersen"
+  journal: "ChemBioChem, 17(3), 224 (2016)"
+  url: "https://doi.org/10.1002/cbic.201500507"
+
+- number: 45
+  year: 2015
+  title: "Open-Circuit Voltage Losses in Selenium-Substituted Organic Photovoltaic Devices from Increased Density of Charge-Transfer States"
+  authors: "D.B. Sulas, K. Yao, J.J. Intemann, S.T. Williams, C.Z. Li, C.C. Chueh, J.J. Richards, Y. Xi, L.D. Pozzo, C.W. Schlenker, A.K-Y. Jen, D.S. Ginger"
+  journal: "Chemistry of Materials, 27(19), 6583 (2015)"
+  url: "https://doi.org/10.1021/acs.chemmater.5b02272"
+
+- number: 44
+  year: 2015
+  title: "Influence of Molecular Geometry of Perylene Diimide Dimers and Polymers on Bulk Heterojunction Morphology Toward High‐Performance Nonfullerene Polymer Solar Cells"
+  authors: "Chen, Hao Wu, Chu Chen Chueh, Y. Xi, H.L. Zhong, G.P. Gao, Z.H. Wang, L.D. Pozzo, T.C. Wen, A.K.Y. Jen"
+  journal: "Advanced Functional Materials, 25(33), 5326 (2015)"
+  url: "https://doi.org/10.1002/adfm.201501511"
+
+- number: 43
+  year: 2015
+  title: "Structure Characterization and Properties of Metal Surfactant Complexes Dispersed in Organic Solvents"
+  authors: "P. de la Iglesia, V. Jaeger, Y. Xi, J. Pfaendtner, L.D. Pozzo"
+  journal: "Langmuir, 31(33) (2015)"
+  url: "https://doi.org/10.1021/acs.langmuir.5b02173"
+
+- number: 42
+  year: 2015
+  title: "Designing two-dimensional protein arrays through fusion of multimers and computational interface redesign"
+  authors: "J.F. Matthaei, F. DiMaio, J.J. Richards, L.D. Pozzo, D. Baker, F. Baneyx"
+  journal: "Nano letters, 15(8), 5235 (2015)"
+  url: "https://doi.org/10.1021/acs.nanolett.5b01499"
+
+- number: 41
+  year: 2015
+  title: "A synthetic fibrin cross-linking polymer for modulating clot properties and inducing hemostasis"
+  authors: "L.W. Chan, X. Wang, H. Wei, L.D. Pozzo, N.J. White, S.H. Pun"
+  journal: "Science Translational Medicine, 7(277), 277ra29-277ra29 (2015)"
+  url: "https://doi.org/10.1126/scitranslmed.3010383"
+
+- number: 40
+  year: 2015
+  title: "Sono-photoacoustic imaging of gold nanoemulsions: Part II. Real time imaging"
+  authors: "B. Arnal, C.W. Wei, C. Perez, T.M. Nguyen, M. Lombardo, I. Pelivanov, T.J. Matula, L.D. Pozzo, M. O'Donnell"
+  journal: "Photoacoustics, 3(1), 11-19 (2015)"
+  url: "https://doi.org/10.1016/j.pacs.2014.12.002"
+
+- number: 39
+  year: 2015
+  title: "Sono-photoacoustic imaging of gold nanoemulsions: Part I. Exposure thresholds"
+  authors: "B. Arnal, C. Perez, C.W. Wei, J. Xia, M. Lombardo, I. Pelivanov, T.J. Matula, L.D. Pozzo, M. O'Donnell"
+  journal: "Photoacoustics, 3(1), 3-10 (2015)"
+  url: "https://doi.org/10.1016/j.pacs.2014.12.001"
+
+- number: 38
+  year: 2015
+  title: "Clusters and Inverse Emulsions from Nanoparticle Surfactants in Organic Solvents"
+  authors: "M.T. Lombardo, L.D. Pozzo"
+  journal: "Langmuir, 31(4), 1344 (2015)"
+  url: "https://doi.org/10.1021/la503956s"
+
+- number: 37
+  year: 2015
+  title: "A conductive liquid crystal via facile doping of an n-type benzodifurandione derivative"
+  authors: "B. Zhao, C.Z. Li, S.Q. Liu, J.J. Richards, C.C. Chueh, F. Ding, L.D. Pozzo, X. Li, A.K.Y. Jen"
+  journal: "Journal of Materials Chemistry A, 3(13), 6929-6934 (2015)"
+  url: "https://doi.org/10.1039/C5TA00784D"
+
+- number: 36
+  year: 2015
+  title: "Solvatochromism and Conformational Changes in Fully Dissolved Poly(3-alkylthiophene)s"
+  authors: "G.M. Newbloom, S.M. Hoffmann, A.F. West, M.C. Gile, P. Sista, H.K.C. Cheung, J. Pfaendtner, L.D. Pozzo"
+  journal: "Langmuir, 31(1), 458 (2015)"
+  url: "https://doi.org/10.1021/la503666x"
+
+- number: 35
+  year: 2014
+  title: "Laser-induced cavitation in nanoemulsion with gold nanospheres for blood clot disruption: in vitro results"
+  authors: "C. Wei, J. Xia, M. Lombardo, C. Perez, B. Arnal, K. Larson-Smith, I. Pelivanov, T.J. Matula, L.D. Pozzo, M. O'Donnell"
+  journal: "Optics Letters, 39(9), 2599-2602 (2014)"
+  url: "https://doi.org/10.1364/OL.39.002599"
+
+- number: 34
+  year: 2014
+  title: "Correlating structure and photocurrent for composite semiconducting nanoparticles with contrast variation small-angle neutron scattering and photoconductive atomic force microscopy"
+  authors: "J.J. Richards, C.L. Whittle, G. Shao, L.D. Pozzo"
+  journal: "ACS Nano, 8(5), 4313 (2014)"
+  url: "https://doi.org/10.1021/nn4063853"
+
+- number: 33
+  year: 2014
+  title: "Nonlinear Contrast Enhancement in Photoacoustic Molecular Imaging with Gold Nanosphere Encapsulated Nanoemulsions"
+  authors: "C-W. Wei, M. Lombardo, K. Larson-Smith, I.M. Pelivanov, C. Perez, J. Xia, T.J. Matula, D.C. Pozzo, M. O'Donnell"
+  journal: "Applied Physics Letters, 104, 033701 (2014)"
+  url: "https://doi.org/10.1063/1.4862461"
+
+- number: 32
+  year: 2014
+  title: "Controlled gelation of poly(3-alkylthiophene)s in bulk and in thin-films using low volatility solvent/poor-solvent mixtures"
+  authors: "G.M. Newbloom, P. de la Iglesia, D.C. Pozzo"
+  journal: "Soft Matter, 10(44), 8945 (2014)"
+  url: "https://doi.org/10.1039/C4SM01222D"
+
+- number: 31
+  year: 2014
+  title: "Anionic Branched Surfactants as Alternative Denaturing Agents for Protein Separations"
+  authors: "M. Ospinal-Jiménez, D.C. Pozzo"
+  journal: "Langmuir, 30(5), 1351 (2014)"
+  url: "https://doi.org/10.1021/la404606u"
+
+- number: 30
+  year: 2014
+  title: "Turning up the heat on wormlike micelles with a hydrotopic salt in microfluidics"
+  authors: "J.J. Cardiel, Y. Zhao, P. De La Iglesia, L.D. Pozzo, A.Q. Shen"
+  journal: "Soft Matter, 10(46), 9300 (2014)"
+  url: "https://doi.org/10.1039/C4SM01920B"
+
+- number: 29
+  year: 2013
+  title: "Flow-induced structured phase in nonionic micellar solutions"
+  authors: "J.J. Cardiel, L. Tonggu, P. De La Iglesia, Y. Zhao, D.C. Pozzo, L. Wang, A.Q. Shen"
+  journal: "Langmuir, 29(50), 15485 (2013)"
+  url: "https://doi.org/10.1021/la404021w"
+
+- number: 28
+  year: 2013
+  title: "Worming Their Way into Shape: Toroidal Formations in Micellar Solutions"
+  authors: "J.J. Cardiel, L. Tonggu, A.C. Dohnalkova, P. De La Iglesia, D.C. Pozzo, L. Wang, A.Q. Shen"
+  journal: "ACS Nano, 7(11), 9704 (2013)"
+  url: "https://doi.org/10.1021/nn404191s"
+
+- number: 27
+  year: 2013
+  title: "Effects of supersaturation on the structure and properties of poly(9,9-dioctyl fluorene) organogels"
+  authors: "P. de la Iglesia, D.C. Pozzo"
+  journal: "Soft Matter, 9(47), 11214-11224 (2013)"
+  url: "https://doi.org/10.1039/C3SM51573B"
+
+- number: 26
+  year: 2013
+  title: "Modification of PCBM crystallization via incorporation of C60 in polymer/fullerene solar cells"
+  authors: "J. Richards, A. Rice, R. Nelson, F. Kim, S.A. Jenekhe, C.K. Luscombe, D.C. Pozzo"
+  journal: "Advanced Functional Materials, 23(4), 514 (2013)"
+  url: "https://doi.org/10.1002/adfm.201201100"
+
+- number: 25
+  year: 2012
+  title: "Fibrin clot structure and mechanics associated with specific oxidation of methionine residues in fibrinogen"
+  authors: "K. Weigandt, N. White, D. Chung, E. Ellingson, Y. Wang, X. Fu, D.C. Pozzo"
+  journal: "Biophysical Journal, 103(11), 2399 (2012)"
+  url: "https://doi.org/10.1016/j.bpj.2012.10.036"
+
+- number: 24
+  year: 2012
+  title: "Structural Analysis of Protein Denaturation with Alkyl Perfluorinated Sulfonates"
+  authors: "M. Ospinal, D.C. Pozzo"
+  journal: "Langmuir, 28(51), 17749 (2012)"
+  url: "https://doi.org/10.1021/la303896h"
+
+- number: 23
+  year: 2012
+  title: "Competitive Adsorption of Thiolated Polyethylene Glycol and Alkane-thiols on Gold Nanoparticles"
+  authors: "K. Larson-Smith, D.C. Pozzo"
+  journal: "Langmuir, 28(37), 13157 (2012)"
+  url: "https://doi.org/10.1021/la302247y"
+
+- number: 22
+  year: 2012
+  title: "Numerical validation of IFT in the analysis of protein-surfactant complexes with SAXS and SANS"
+  authors: "J.M. Franklin, L.N. Surampudi, H.S. Ashbaugh, D.C. Pozzo"
+  journal: "Langmuir, 28(34), 12593 (2012)"
+  url: "https://doi.org/10.1021/la2048042"
+
+- number: 21
+  year: 2012
+  title: "Pickering Emulsions Stabilized by Nanoparticle Surfactants"
+  authors: "K. Larson-Smith, D.C. Pozzo"
+  journal: "Langmuir, 28(32), 11725 (2012)"
+  url: "https://doi.org/10.1021/la301896c"
+
+- number: 20
+  year: 2012
+  title: "Structure and Property Development of Poly(3-hexyl-thiophene) Organogels Probed with Combined Rheology, Conductivity and Small Angle Neutron Scattering"
+  authors: "G. Newbloom, K. Weigandt, D.C. Pozzo"
+  journal: "Soft Matter, 8, 8854 (2012)"
+  url: "https://doi.org/10.1039/C2SM25480D"
+
+- number: 19
+  year: 2012
+  title: "Bioinspired templates for the synthesis of silica nanostructures"
+  authors: "N. Hassan, A. Soltero, D.C. Pozzo, P.V. Messina, J.M. Ruso"
+  journal: "Soft Matter, 8, 9553 (2012)"
+  url: "https://doi.org/10.1039/C2SM26107B"
+
+- number: 18
+  year: 2012
+  title: "Electrical, Mechanical and Structural Characterization of Self-Assembly in Poly(3-hexylthiophene) Organogel Networks"
+  authors: "G. Newbloom, K. Weigandt, D.C. Pozzo"
+  journal: "Macromolecules, 45(8), 3452 (2012)"
+  url: "https://doi.org/10.1021/ma202564k"
+
+- number: 17
+  year: 2012
+  title: "SANS and SAXS Analysis of Charged Nanoparticle Adsorption at Oil-Water Interfaces"
+  authors: "K. Larson-Smith, A. Jackson, D.C. Pozzo"
+  journal: "Langmuir, 28, 2493 (2012)"
+  url: "https://doi.org/10.1021/la204513n"
+
+- number: 16
+  year: 2011
+  title: "The Conformation of Poly(ethylene glycol) Chains in Mono-PEGylated Lysozyme and Mono-PEGylated Human Growth Hormone"
+  authors: "S.S. Pai, B. Hammouda, K. Hong, D.C. Pozzo, T.M. Przybycien, R.D. Tilton"
+  journal: "Bioconjugate Chemistry, 22, 2317 (2011)"
+  url: "https://doi.org/10.1021/bc200262v"
+
+- number: 15
+  year: 2011
+  title: "Aqueous Dispersions of Colloidal Poly(3-hexylthiophene) Gel Particles with High Internal Porosity"
+  authors: "J. Richards, K. Weigandt, D.C. Pozzo"
+  journal: "J. Colloid and Interface Science, 364, 341 (2011)"
+  url: "https://doi.org/10.1016/j.jcis.2011.08.038"
+
+- number: 14
+  year: 2011
+  title: "In situ neutron scattering study of structural transitions in fibrin networks under shear deformation"
+  authors: "K. Weigandt, L. Porcar, D.C. Pozzo"
+  journal: "Soft Matter, 7, 9992 (2011)"
+  url: "https://doi.org/10.1039/C1SM06176C"
+
+- number: 13
+  year: 2011
+  title: "Rheo–small-angle neutron scattering at the National Institute of Standards and Technology Center for Neutron Research"
+  authors: "L. Porcar, D.C. Pozzo, G. Langenbucher, J. Moyer, P. Butler"
+  journal: "Review of Scientific Instruments, 82, 083902 (2011)"
+  url: "https://doi.org/10.1063/1.3609863"
+
+- number: 12
+  year: 2011
+  title: "Mesoscale Morphology and Charge Transport in Colloidal Networks of Poly(3-hexylthiophene)"
+  authors: "G.M. Newbloom, F.S. Kim, S.A. Jenekhe, D.C. Pozzo"
+  journal: "Macromolecules, 44, 3801 (2011)"
+  url: "https://doi.org/10.1021/ma2000515"
+
+- number: 11
+  year: 2011
+  title: "Scalable Synthesis of Self-Assembling Nanoparticle Clusters Based on Controlled Steric Interactions"
+  authors: "K. Larson-Smith, D.C. Pozzo"
+  journal: "Soft Matter, 7, 5339 (2011)"
+  url: "https://doi.org/10.1039/C1SM05174B"
+
+- number: 10
+  year: 2011
+  title: "Structural Analysis of Protein Complexes with Sodium Alkyl Sulfates by Small-Angle Scattering and Polyacrylamide Gel Electrophoresis"
+  authors: "M. Ospinal, D.C. Pozzo"
+  journal: "Langmuir, 27(3), 928 (2011)"
+  url: "https://doi.org/10.1021/la103495k"
+
+- number: 9
+  year: 2010
+  title: "Small Angle Scattering Model for Pickering Emulsions and Raspberry Particles"
+  authors: "K. Larson-Smith, A.J. Jackson, D.C. Pozzo"
+  journal: "J. Colloid and Interface Science, 343, 36 (2010)"
+  url: "https://doi.org/10.1016/j.jcis.2009.11.033"
+
+- number: 8
+  year: 2009
+  title: "Structure of high density fibrin networks probed with neutron scattering and rheology"
+  authors: "K. Weigandt, L. Porcar, D.C. Pozzo"
+  journal: "Soft Matter, 5(21), 4321 (2009)"
+  url: "https://doi.org/10.1039/B906256D"
+
+- number: 7
+  year: 2009
+  title: "Neutron-Scattering Probe of Complexes of Sodium Dodecyl Sulfate and Serum Albumin during Polyacrylamide Gel Electrophoresis"
+  authors: "D.C. Pozzo"
+  journal: "Langmuir, 25(3), 1558-1565 (2009)"
+  url: "https://doi.org/10.1021/la803061p"
+
+- number: 6
+  year: 2008
+  title: "Macroscopic alignment of nanoparticle arrays in soft crystals of cubic and cylindrical polymer micelles"
+  authors: "D.C. Pozzo, L.M. Walker"
+  journal: "European Physical Journal E, 26(1-2), 183 (2008)"
+  url: "https://doi.org/10.1140/epje/i2007-10250-0"
+
+- number: 5
+  year: 2007
+  title: "Shear orientation of nanoparticle arrays templated in PEO-PPO-PEO soft crystals"
+  authors: "D.C. Pozzo, L.M. Walker"
+  journal: "Macromolecules, 40(16), 5801-5811 (2007)"
+  url: "https://doi.org/10.1021/ma062680j"
+
+- number: 4
+  year: 2007
+  title: "Small angle neutron scattering of silica nanoparticles templated in PEO-PPO-PEO cubic crystals"
+  authors: "D.C. Pozzo, L.M. Walker"
+  journal: "Colloids & Surfaces A, 294, 117 (2007)"
+  url: "https://doi.org/10.1016/j.colsurfa.2006.07.049"
+
+- number: 3
+  year: 2005
+  title: "Rheology and Phase Behavior of Copolymer Templated Nanocomposite Materials"
+  authors: "D.C. Pozzo, K.R. Hollabaugh, L.M. Walker"
+  journal: "Journal of Rheology, 49-3, 759-782 (2005)"
+  url: "https://doi.org/10.1122/1.1888665"
+
+- number: 2
+  year: 2005
+  title: "Three-dimensional nanoparticle arrays templated by self-assembled block-copolymer gels"
+  authors: "D.C. Pozzo, L.M. Walker"
+  journal: "Macromolecular Symposia, 227-1, 203-210 (2005)"
+  url: "https://doi.org/10.1002/masy.200550920"
+
+- number: 1
+  year: 2004
+  title: "Reversible Shear Gelation of Clay-Polymer Dispersions"
+  authors: "D.C. Pozzo, L.M. Walker"
+  journal: "Colloids & Surfaces A, 240, 187-198 (2004)"
+  url: "https://doi.org/10.1016/j.colsurfa.2004.04.040"

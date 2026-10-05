@@ -1,0 +1,26 @@
+# Research areas shown on the Research page. Replace each placeholder image with a lab photo,
+# figure, or TOC graphic (landscape, about 1200x800 px).
+
+- title: 'AI-Driven Materials Discovery'
+  image: 'assets/img/research/ai-discovery.jpg'
+  description: 'Using machine learning, laboratory automation, and high-throughput experimentation to accelerate the pace of materials research. We develop open-source tools for autonomous experimentation and self-driving laboratories.'
+
+- title: 'Energy Storage Materials'
+  image: 'assets/img/research/energy-storage.jpg'
+  description: 'Creating next-generation electrolytes, conjugated polymer blends, and nanostructured additives for advanced lithium and sodium-ion batteries with improved performance.'
+
+- title: 'Functional Emulsions'
+  image: 'assets/img/research/emulsions.jpg'
+  description: 'Developing emulsion contrast agents for ultrasound imaging and medical applications, including photoacoustic imaging and targeted drug delivery systems.'
+
+- title: 'Neutron & X-ray Scattering'
+  image: 'assets/img/research/scattering.jpg'
+  description: 'Advanced characterization using small-angle X-ray and neutron scattering (SAXS/SANS) to understand structure-property relationships in soft materials.'
+
+- title: 'Self-Assembly & Nanostructures'
+  image: 'assets/img/research/self-assembly.jpg'
+  description: 'Controlling the assembly of polymers, proteins, and nanoparticles to create materials with novel properties optimized for engineering applications.'
+
+- title: 'Ultrasound & Sonochemistry'
+  image: 'assets/img/research/ultrasound.jpg'
+  description: 'Leveraging ultrasound for materials synthesis, manipulation of emulsion systems, and development of sono-photoacoustic imaging technologies.'

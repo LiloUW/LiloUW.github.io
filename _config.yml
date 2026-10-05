@@ -1,11 +1,15 @@
 # Site settings
-title: Lilo D. Pozzo
+# Built with the "academic" Jekyll theme by Paul Le (https://github.com/LeNPaul/academic, MIT License).
+# Menu, contact info, social links, and images are configured in _data/settings.yml.
+title: Pozzo Research Group
+tagline: Chemical Engineering | University of Washington
 email: dpozzo@uw.edu
 description: >-
-  Vice Chair of Operations and Boeing-Roundhill Professor in Chemical Engineering at the University of Washington.
-  Research in AI-driven materials discovery, self-assembly of soft materials, neutron scattering, and autonomous laboratories.
-baseurl: ""
+  The Pozzo Research Group at the University of Washington studies AI-driven materials discovery,
+  self-assembly of soft materials, neutron scattering, and autonomous laboratories.
 url: "https://LiloUW.github.io"
+baseurl: ""
+lang: en-US
 
 # Author information
 author:
@@ -15,28 +19,18 @@ author:
   institution: University of Washington
   email: dpozzo@uw.edu
   phone: (206) 685-8536
-  office: BNS 259
+  office: Benson Hall 259
 
-# Social links
-twitter_username: lilopozzo
-github_username: LiloUW
-linkedin_username: lilo-d-pozzo-90ba5454
-scholar_url: https://scholar.google.com/citations?user=XiHAbCsAAAAJ&hl=en
-orcid: 0000-0001-7104-9061
+twitter:
+  username: lilopozzo
 
 # Build settings
 markdown: kramdown
-theme: minima
+theme: null # layouts live in this repo; stops GitHub Pages from adding its default theme
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-
-# Navigation
-header_pages:
-  - index.md
-  - publications.md
-  - students.md
-  - about.md
+  - jekyll-redirect-from
 
 # Exclude from processing
 exclude:
@@ -44,7 +38,7 @@ exclude:
   - Gemfile.lock
   - README.md
   - DEPLOYMENT_INSTRUCTIONS.md
-  - PROFILE_PICTURES_GUIDE.md
-  - TOC_GRAPHICS_GUIDE.md
-  - Pozzo_long_CV2025.pdf
+  - IMAGES_GUIDE.md
+  - THEME_LICENSE.txt
   - "*.pdf"
+  - vendor

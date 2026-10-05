@@ -1,0 +1,12 @@
+<footer class="pt-5 my-5 text-muted border-top">
+  <div class="row">
+    <div class="col-md-6">
+      {{ site.author.department }} | {{ site.author.institution }}
+    </div>
+    <div class="col-md-6 text-md-end social-media-icons">
+      {% for item in site.data.settings.social %}
+        <a href="{{ item.link }}" class="ms-3 fs-5" title="{{ item.title }}" aria-label="{{ item.title }}"><i class="{{ item.icon }}"></i></a>
+      {% endfor %}
+    </div>
+  </div>
+</footer>

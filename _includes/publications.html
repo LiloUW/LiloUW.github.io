@@ -1,0 +1,16 @@
+<div class="row g-5 mb-5">
+  <div>
+    <h3 class="fw-bold border-bottom pb-3 mb-5">{% if include.featured %}Featured Publications{% else %}Publications{% endif %}</h3>
+    {% if include.featured %}
+      {% assign pubs = site.data.publications | where: "featured", true %}
+      {% for item in pubs %}{% include publication.html item=item %}{% endfor %}
+      <p><a href="{{ '/publications/' | relative_url }}">All {{ site.data.publications.size }} publications &rarr;</a></p>
+    {% else %}
+      {% assign years = site.data.publications | group_by: "year" %}
+      {% for year in years %}
+        <h4 class="fw-bold mt-5 mb-4">{{ year.name }}</h4>
+        {% for item in year.items %}{% include publication.html item=item %}{% endfor %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>

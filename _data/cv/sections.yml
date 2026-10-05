@@ -1,0 +1,6 @@
+# Order and headings of the CV page. Each `data` key matches a file in this folder.
+- {title: 'Education', data: 'education'}
+- {title: 'Academic Experience', data: 'academic-experience'}
+- {title: 'Awards & Honors', data: 'awards'}
+- {title: 'Entrepreneurship', data: 'entrepreneurship'}
+- {title: 'Professional Service', data: 'service'}

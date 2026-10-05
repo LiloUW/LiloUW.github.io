@@ -1,0 +1,49 @@
+---
+layout: default
+---
+
+{{ content }}
+
+{% for group in site.data.people.current %}
+<h3 class="fw-bold border-bottom pb-3 mb-5">{{ group.title }}</h3>
+<div class="row g-5 mb-5">
+  {% for person in group.members %}
+  <div class="col-sm-6 col-lg-4">
+    <img src="{{ person.image | relative_url }}" alt="{{ person.name }}" class="img-fluid rounded mb-3 person-photo">
+    <h5 class="fw-bold">{{ person.name }}</h5>
+    <p class="mb-1">{{ person.role }}</p>
+    <p class="mb-1 text-muted">{{ person.research }}</p>
+    {% if person.note %}<p class="mb-1 small">{{ person.note }}</p>{% endif %}
+    {% include person-links.html person=person %}
+  </div>
+  {% endfor %}
+</div>
+{% endfor %}
+
+<h3 class="fw-bold border-bottom pb-3 mb-5">Alumni</h3>
+{% for group in site.data.people.alumni %}
+<div class="row g-5 mb-5">
+  <div class="col-md-3">
+    <h4>{{ group.title }}</h4>
+  </div>
+  <div class="col-md-9">
+    {% for person in group.members %}
+    <div class="mb-4">
+      <p class="fw-bold mb-1">{{ person.name }}</p>
+      {% if person.now %}<p class="mb-1">Currently: {{ person.now }}</p>{% endif %}
+      <p class="mb-1 text-muted">{{ person.research }}</p>
+      {% if person.note %}<p class="mb-1 small">{{ person.note }}</p>{% endif %}
+      {% include person-links.html person=person %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endfor %}
+
+{% if page.footer %}
+<div class="row g-5 mb-5">
+  <div class="col-md-12">
+    {{ page.footer | markdownify }}
+  </div>
+</div>
+{% endif %}

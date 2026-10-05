@@ -15,7 +15,7 @@ After creating the repository on GitHub, run these commands in your terminal:
 
 ```bash
 # Navigate to your project directory (if not already there)
-cd "/Users/dpozzo/Claude Code /Pozzo Website"
+cd ~/Documents/GitHub/LiloUW.github.io
 
 # Set your default branch to main (recommended)
 git branch -M main
@@ -50,10 +50,7 @@ GitHub Pages will automatically build and deploy your site. This may take a few 
 
 1. Visit https://LiloUW.github.io in your browser
 2. Check that all pages are working:
-   - Home page with your bio
-   - Publications page
-   - Students/Research Group page
-   - About page
+   - Home, Research, People, Publications, Courses, CV, and Contact pages
 
 ## Updating Your Website
 
@@ -73,29 +70,17 @@ To make changes to your website in the future:
 
 ## Customization Tips
 
-### Adding Profile Pictures for Students
+### Replacing Placeholder Images
 
-1. Create an `assets/images/students/` directory in your repository
-2. Add student profile photos (preferably square, 300x300px or larger)
-3. Update `students.md` to include image references:
-   ```markdown
-   ![Student Name](/assets/images/students/student-name.jpg)
-   ```
+Save real photos over the placeholder files using the same names. See `IMAGES_GUIDE.md` for the full list.
 
-### Updating Your Bio or Contact Information
+### Updating Content
 
-Edit `index.md` or `about.md` and push the changes to GitHub.
+Most content is stored in data files under `_data/` (people, publications, research areas, CV, contact info). See the "Editing Content" table in `README.md`.
 
-### Adding New Publications
+### Changing the Appearance
 
-Edit `publications.md` following the existing format, then commit and push.
-
-### Changing the Theme
-
-To customize the appearance:
-1. Edit `_config.yml` to change theme settings
-2. Create custom CSS in `assets/css/style.scss`
-3. Refer to the [Minima theme documentation](https://github.com/jekyll/minima)
+Colors and fonts are set in `_sass/main.scss`. Page layouts are in `_layouts/` and `_includes/` (from the [academic](https://github.com/LeNPaul/academic) theme).
 
 ## Troubleshooting
 
@@ -129,7 +114,7 @@ bundle exec jekyll serve
 
 - [GitHub Pages Documentation](https://docs.github.com/en/pages)
 - [Jekyll Documentation](https://jekyllrb.com/docs/)
-- [Minima Theme](https://github.com/jekyll/minima)
+- [academic Jekyll theme](https://github.com/LeNPaul/academic)
 
 ---
 

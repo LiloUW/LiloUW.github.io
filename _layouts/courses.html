@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<div class="row g-5 mb-5">
+  <div>
+    <h3 class="fw-bold border-bottom pb-3 mb-5">Courses</h3>
+    {{ content }}
+    {% for course in site.data.settings.courses %}
+      <p class="mb-1 fw-bold">{% if course.url %}<a href="{{ '/courses/' | append: course.url | relative_url }}">{{ course.name }}</a>{% else %}{{ course.name }}{% endif %}</p>
+      <p>{{ course.description }}</p>
+    {% endfor %}
+  </div>
+</div>

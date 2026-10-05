@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+<div class="row g-5 mb-5">
+  <div class="col-md-12">
+    <h3 class="fw-bold border-bottom pb-3 mb-5">Research Areas</h3>
+    {% for area in site.data.research %}
+    <div class="row g-5 mb-5 align-items-center">
+      <div class="col-md-6{% cycle '', ' order-md-2' %}">
+        <h4 class="fw-bold">{{ area.title }}</h4>
+        <p>{{ area.description }}</p>
+      </div>
+      <div class="col-md-6">
+        <img src="{{ area.image | relative_url }}" alt="{{ area.title }}" class="img-fluid rounded">
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="row g-5 mb-5">
+  <div class="col-md-12">
+    {{ content }}
+  </div>
+</div>

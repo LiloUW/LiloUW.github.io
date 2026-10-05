@@ -1,0 +1,11 @@
+{% assign item = include.item %}
+<div class="publication d-flex mb-4">
+  {% if item.image %}
+  <img src="{{ item.image | relative_url }}" alt="TOC graphic" class="publication-image me-3">
+  {% endif %}
+  <div>
+    <p class="mb-1"><span class="text-muted">{{ item.number }}.</span> <a href="{{ item.url }}" class="fw-bold">{{ item.title }}</a></p>
+    <p class="mb-1">{{ item.authors | replace: "L.D. Pozzo", "<strong>L.D. Pozzo</strong>" | replace: "D.C. Pozzo", "<strong>D.C. Pozzo</strong>" | replace: "L. Pozzo", "<strong>L. Pozzo</strong>" }}</p>
+    <p class="mb-0 fst-italic">{{ item.journal }}{% if item.open_access %} <span class="badge open-access-badge fst-normal">Open Access</span>{% endif %}</p>
+  </div>
+</div>
