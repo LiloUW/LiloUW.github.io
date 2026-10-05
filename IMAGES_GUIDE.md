@@ -24,7 +24,7 @@ Landscape photos, about **1200–1600 px** wide. Keep files under ~1 MB.
 | `assets/img/research/hurricane-maria-solar.png`, `pozzo-solar-installation.jpg` | Research: Hurricane Maria project | `research.md` |
 | `assets/img/courses/kitchen-engineering.png` | Courses: Kitchen Engineering | `_data/settings.yml` (`courses`) |
 
-The "In the Lab" strip crops photos to 3:2. To add more, add another `- {image: ..., caption: ...}` line under `gallery` in `_data/settings.yml`.
+Research and lab images are always shown whole (scaled, never cropped), so photos of similar shape look tidiest side by side. To add more, add another `- {image: ..., caption: ...}` line under `gallery` in `_data/settings.yml`.
 
 ## News images
 
