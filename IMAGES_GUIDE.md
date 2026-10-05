@@ -30,7 +30,7 @@ Square headshots, at least **600 × 600 px**. Non-square photos are center-cropp
 
 Files are in `assets/img/people/`, named `firstname-lastname.jpg`:
 
-`lilo-pozzo.jpg`, `kevin-lee.jpg`, `claire-benstead.jpg`, `abdul-moeez.jpg`, `zachery-wylie.jpg`, `hanson-chen.jpg`, `yu-fang-hsieh.jpg`, `elena-toups.jpg`, `tobias-rangel.jpg`
+`lilo-pozzo.jpg`, `kevin-lee.jpg`, `abdul-moeez.jpg`, `hanson-chen.jpg`, `yu-fang-hsieh.jpg`, `elena-toups.jpg`
 
 When someone joins the group, add their photo to this folder and an entry in `_data/people.yml`. Alumni are listed without photos.
 
