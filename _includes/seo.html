@@ -1,0 +1,13 @@
+{% if page.url == "/" %}{% assign seo_title = site.title %}{% else %}{% assign seo_title = page.title | append: " | " | append: site.title %}{% endif %}
+{% assign seo_description = page.description | default: page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 200 %}
+{% assign seo_image = page.image | default: site.data.settings.home_image.image %}
+<title>{{ seo_title }}</title>
+<meta name="description" content="{{ seo_description | escape }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<meta property="og:site_name" content="{{ site.title | escape }}">
+<meta property="og:title" content="{{ page.title | default: site.title | escape }}">
+<meta property="og:description" content="{{ seo_description | escape }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:image" content="{{ seo_image | absolute_url }}">
+<meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
+<meta property="og:locale" content="en_US">

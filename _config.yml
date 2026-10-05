@@ -21,16 +21,12 @@ author:
   phone: (206) 685-8536
   office: Benson Hall 259
 
-twitter:
-  username: lilopozzo
-
 # Build settings
 markdown: kramdown
 permalink: /news/:year/:title/
 theme: null # layouts live in this repo; stops GitHub Pages from adding its default theme
 plugins:
   - jekyll-feed
-  - jekyll-seo-tag
   - jekyll-redirect-from
 
 # Exclude from processing

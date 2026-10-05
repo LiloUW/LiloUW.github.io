@@ -10,4 +10,4 @@ Kacper Lachowski successfully defended his dissertation, titled "Bottom-Up Synth
 
 Congrats, Dr. Lachowski!
 
-Connect with Kacper: [LinkedIn](https://www.linkedin.com/in/klachowski/) | [Twitter](https://twitter.com/KJLachowski)
+Connect with Kacper: [LinkedIn](https://www.linkedin.com/in/klachowski/)

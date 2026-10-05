@@ -27,7 +27,6 @@ social:
 - {icon: 'fas fa-graduation-cap', title: 'Google Scholar', link: 'https://scholar.google.com/citations?user=XiHAbCsAAAAJ&hl=en'}
 - {icon: 'fab fa-orcid', title: 'ORCID', link: 'https://orcid.org/0000-0001-7104-9061'}
 - {icon: 'fab fa-linkedin', title: 'LinkedIn', link: 'https://www.linkedin.com/in/lilo-d-pozzo-90ba5454/'}
-- {icon: 'fab fa-twitter', title: 'Twitter/X', link: 'https://twitter.com/lilopozzo'}
 - {icon: 'fab fa-github', title: 'GitHub', link: 'https://github.com/LiloUW'}
 
 contacts:
