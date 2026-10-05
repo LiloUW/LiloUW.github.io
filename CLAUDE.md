@@ -45,6 +45,8 @@ Writing style used in existing posts: third person ("Brenden Pelkie successfully
 - GitHub rejects files over 100 MB, and the site should stay light. Keep images under ~1 MB and compress videos (macOS: `avconvert -p PresetAppleM4V480pSD`) or embed them from YouTube.
 - `Images/` holds the original uploads. It is git-ignored and excluded from the build; never reference it from pages.
 - Use `relative_url` for internal links in layouts and includes.
+- File names must be lowercase with hyphens and match references exactly. macOS ignores case but GitHub Pages does not, so a case mismatch passes local checks and breaks online. Rename uploads (e.g. `Kevin-lee.jpg` → `kevin-lee.jpg`) via a temporary name or `git mv`, and check links case-sensitively.
+- A failed GitHub Pages run with "job was not acquired by Runner" in the deploy step is a GitHub outage, not a site error: check with `gh run view <id>`, then `gh run rerun <id>` or push again.
 
 ## Building locally
 

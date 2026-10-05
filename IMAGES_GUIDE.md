@@ -1,6 +1,6 @@
 # Site Images
 
-Most images now come from the old pozzorg.com website. **Four slots still show labeled placeholders** (marked ⚠ below). To replace any image, save the new photo over that file using the same name, or change the matching `image:` path in the data file listed.
+Most images now come from the old pozzorg.com website. **Two slots still show labeled placeholders** (marked ⚠ below). To replace any image, save the new photo over that file using the same name, or change the matching `image:` path in the data file listed.
 
 ## Page images
 
@@ -34,8 +34,9 @@ Each story's images are in `assets/img/news/<story>/`. Shared thumbnails: `asset
 
 Square headshots, at least **600 × 600 px**. Non-square photos are center-cropped automatically. Files are in `assets/img/people/`, named `firstname-lastname.jpg`:
 
-- Real photos: `lilo-pozzo.jpg`, `abdul-moeez.jpg`, `hanson-chen.jpg`, `yu-fang-hsieh.jpg`. The last three came from the old site at only 168 × 206 px and look soft when enlarged; higher-resolution versions would help.
-- ⚠ Placeholders: `kevin-lee.jpg`, `elena-toups.jpg`
+All current members have real photos: `lilo-pozzo.jpg`, `kevin-lee.jpg`, `abdul-moeez.jpg`, `hanson-chen.jpg`, `yu-fang-hsieh.jpg`, `elena-toups.jpg`.
+
+**Use exactly these lowercase names.** Macs ignore capitalization in file names but the live site does not, so `Kevin-lee.jpg` works on your computer and is a broken image online.
 
 When someone joins the group, add their photo to this folder and an entry in `_data/people.yml`. Alumni are listed without photos.
 
