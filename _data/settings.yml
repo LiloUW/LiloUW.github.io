@@ -1,4 +1,5 @@
 menu:
+- {name: 'news', url: '/news/'}
 - {name: 'research', url: '/research/'}
 - {name: 'people', url: '/people/'}
 - {name: 'publications', url: '/publications/'}
@@ -7,18 +8,18 @@ menu:
 - {name: 'contact', url: '/contact/'}
 
 # Image shown beside the introduction on the home page.
-home_image: {image: 'assets/img/home.jpg', alt: 'Pozzo Research Group laboratory'}
+home_image: {image: 'assets/img/home.jpg', alt: 'The Pozzo Research Group on the UW campus'}
 
-# Laboratory photo strip on the home page. Replace the files in assets/img/lab/ with real photos.
+# Laboratory photo strip on the home page (images in assets/img/lab/).
 gallery:
-- {image: 'assets/img/lab/lab-1.jpg', caption: 'Laboratory automation platform'}
-- {image: 'assets/img/lab/lab-2.jpg', caption: 'High-throughput SAXS instrument'}
-- {image: 'assets/img/lab/lab-3.jpg', caption: 'Nanomaterials synthesis'}
+- {image: 'assets/img/lab/well-plate-synthesis.jpg', caption: 'High-throughput nanomaterials synthesis in well plates'}
+- {image: 'assets/img/lab/vials-and-plate.jpg', caption: 'Automated sample preparation'}
+- {image: 'assets/img/lab/hydrogel-membranes.jpg', caption: 'Hydrogel materials for biomanufacturing'}
 
 courses:
 - {name: 'Heat Transfer', description: 'Core chemical engineering transport phenomena.'}
 - {name: 'Surface & Colloid Science', description: 'Advanced interfacial phenomena and applications.'}
-- {name: 'Kitchen Engineering', description: 'Award-winning course introducing engineering through culinary science.'}
+- {name: 'Kitchen Engineering', description: 'Award-winning course introducing engineering through culinary science.', image: 'assets/img/courses/kitchen-engineering.png'}
 - {name: 'Intermolecular & Surface Forces', description: 'Graduate-level course on colloidal systems.'}
 - {name: 'Entrepreneurial Capstone Design', description: 'Guiding students through product development and technology translation.'}
 

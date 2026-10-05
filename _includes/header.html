@@ -7,9 +7,9 @@
       <span>{{ site.tagline }}</span>
     </a>
   </div>
-  <nav class="d-inline-flex flex-wrap justify-content-center mt-2 mt-md-0 ms-md-auto">
+  <nav class="d-inline-flex flex-wrap flex-lg-nowrap justify-content-center mt-2 mt-md-0 ms-md-auto">
     {% for item in site.data.settings.menu %}
-      <a class="me-3 py-2 text-decoration-none{% if page.url == item.url %} fw-bold{% endif %}" href="{{ item.url | relative_url }}">{{ item.name }}</a>
+      <a class="mx-2 py-2 text-decoration-none{% if page.url == item.url %} fw-bold{% endif %}" href="{{ item.url | relative_url }}">{{ item.name }}</a>
     {% endfor %}
   </nav>
 </header>

@@ -26,6 +26,7 @@ twitter:
 
 # Build settings
 markdown: kramdown
+permalink: /news/:year/:title/
 theme: null # layouts live in this repo; stops GitHub Pages from adding its default theme
 plugins:
   - jekyll-feed
@@ -39,6 +40,8 @@ exclude:
   - README.md
   - DEPLOYMENT_INSTRUCTIONS.md
   - IMAGES_GUIDE.md
+  - CLAUDE.md
+  - Images
   - THEME_LICENSE.txt
   - "*.pdf"
   - vendor

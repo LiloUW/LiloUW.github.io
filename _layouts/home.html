@@ -18,19 +18,20 @@ layout: default
   </div>
   {% for photo in site.data.settings.gallery %}
   <figure class="col-md-4 mb-0">
-    <img src="{{ photo.image | relative_url }}" alt="{{ photo.caption }}" class="img-fluid rounded">
+    <img src="{{ photo.image | relative_url }}" alt="{{ photo.caption }}" class="img-fluid rounded gallery-photo">
     <figcaption class="text-muted small mt-2">{{ photo.caption }}</figcaption>
   </figure>
   {% endfor %}
 </div>
 
-{% include publications.html featured=true %}
-
 <div class="row g-5 mb-5">
   <div class="col-md-12">
-    <h3 class="fw-bold border-bottom pb-3 mb-5">Updates</h3>
-    {% for post in site.posts %}
-      <p><a href="{{ post.url | relative_url }}">{{ post.title }}</a> - {{ post.date | date: "%B %-d, %Y" }}</p>
+    <h3 class="fw-bold border-bottom pb-3 mb-5">Latest News</h3>
+    {% for post in site.posts limit: 3 %}
+      {% include news-item.html post=post %}
     {% endfor %}
+    <p><a href="{{ '/news/' | relative_url }}">All news &rarr;</a></p>
   </div>
 </div>
+
+{% include publications.html featured=true %}

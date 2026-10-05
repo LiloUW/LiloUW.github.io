@@ -2,9 +2,27 @@
 layout: default
 ---
 
-<div class="row g-5 mb-5">
+<article class="row g-5 mb-5">
   <div class="col-md-12">
-    <h3 class="fw-bold border-bottom pb-3 mb-5">{{ page.title }}</h3>
+    <h3 class="fw-bold border-bottom pb-3 mb-2">{{ page.title }}</h3>
+    <p class="text-muted mb-5">{{ page.date | date: "%B %-d, %Y" }}</p>
+    {% if page.image %}
+    <figure class="mb-4">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" class="img-fluid rounded news-hero">
+      {% if page.image_caption %}<figcaption class="text-muted small mt-2">{{ page.image_caption }}</figcaption>{% endif %}
+    </figure>
+    {% endif %}
     {{ content }}
+    {% if page.gallery %}
+    <div class="row g-3 mt-2 align-items-start">
+      {% for photo in page.gallery %}
+      <figure class="col-sm-6 col-lg-4 mb-0">
+        <a href="{{ photo.image | relative_url }}"><img src="{{ photo.image | relative_url }}" alt="{{ photo.caption | default: page.title }}" class="img-fluid rounded"></a>
+        {% if photo.caption %}<figcaption class="text-muted small mt-1">{{ photo.caption }}</figcaption>{% endif %}
+      </figure>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <p class="mt-5"><a href="{{ '/news/' | relative_url }}">&larr; All news</a></p>
   </div>
-</div>
+</article>

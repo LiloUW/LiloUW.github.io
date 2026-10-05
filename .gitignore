@@ -19,3 +19,6 @@ Gemfile.lock
 *.swp
 *.swo
 *~
+
+# Original image uploads (converted copies live in assets/; the raw video exceeds GitHub's 100 MB limit)
+Images/
