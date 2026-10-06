@@ -41,7 +41,7 @@ except ImportError:
     Image = None
     print("(Pillow not installed: skipping image checks)")
 if Image:
-    rules = {"/assets/img/research/": 2.2, "/assets/img/lab/": 2.2, "/assets/img/people/": 1.0}
+    rules = {"/assets/img/research/": 2.2, "/assets/img/lab/": 2.2, "/assets/img/people/": 1.0, "/assets/img/courses/": 0.75}
     exempt = {"/assets/img/research/science-jubilee.jpg": 1.0}  # video poster matches the square video
     for path in sorted(files):
         if not path.startswith("/assets/img/") or path.endswith(".ico"):

@@ -45,4 +45,11 @@ Technologies developed in our laboratory have led to multiple startup companies:
 
 In 2017, following Hurricane Maria's devastation of Puerto Rico, our team launched a research and humanitarian initiative in Jayuya, studying health impacts of extended power outages on rural patients dependent on electricity for medical treatments. We deployed 21 solar nanogrid installations and published peer-reviewed research on small-scale clean energy systems for emergency applications. This work was featured in *The New York Times* and other major publications.
 
-<img src="{{ '/assets/img/research/hurricane-maria.jpg' | relative_url }}" alt="Installing solar nanogrids in Jayuya, Puerto Rico, including Prof. Pozzo assembling a panel" class="research-image rounded mt-2">
+<div class="row g-3 mt-1">
+  <div class="col-md-6">
+    <img src="{{ '/assets/img/research/hurricane-maria.jpg' | relative_url }}" alt="Installing a solar panel in Jayuya, Puerto Rico" class="research-image rounded">
+  </div>
+  <div class="col-md-6">
+    <img src="{{ '/assets/img/research/hurricane-maria-team.jpg' | relative_url }}" alt="Prof. Pozzo assembling a solar nanogrid on a roof, and the team on a rooftop in Jayuya" class="research-image rounded">
+  </div>
+</div>

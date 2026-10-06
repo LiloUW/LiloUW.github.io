@@ -1,6 +1,6 @@
 # Site Images
 
-Most images now come from the old pozzorg.com website. **Two slots still show labeled placeholders** (marked ⚠ below). To replace any image, save the new photo over that file using the same name, or change the matching `image:` path in the data file listed.
+Every slot now has a real image; no placeholders remain. To replace any image, save the new photo over that file using the same name, or change the matching `image:` path in the data file listed.
 
 ## Page images
 
@@ -15,14 +15,14 @@ Research-area and lab images are **2.2 : 1 banners** (e.g. 1320 × 600 px); all 
 | `assets/img/contact.jpg` | Contact page (portrait of Prof. Pozzo) | `_data/settings.yml` (`contacts`) |
 | `assets/img/research/ai-discovery.jpg` | Research: AI-Driven Materials Discovery | `_data/research.yml` |
 | `assets/img/research/energy-storage.jpg` | Research: Energy Storage Materials | `_data/research.yml` |
-| `assets/img/research/emulsions.jpg` | ⚠ Research: Functional Emulsions (placeholder) | `_data/research.yml` |
+| `assets/img/research/emulsions.jpg` | Research: Functional Emulsions | `_data/research.yml` |
 | `assets/img/research/scattering.jpg` | Research: Neutron & X-ray Scattering | `_data/research.yml` |
 | `assets/img/research/self-assembly.jpg` | Research: Self-Assembly & Nanostructures | `_data/research.yml` |
-| `assets/img/research/ultrasound.jpg` | ⚠ Research: Ultrasound & Sonochemistry (placeholder) | `_data/research.yml` |
+| `assets/img/research/ultrasound.jpg` | Research: Ultrasound & Sonochemistry (photoacoustic imaging figure) | `_data/research.yml` |
 | `assets/img/research/science-jubilee.jpg` | Research: Science Jubilee spotlight (square video poster) | `research.md` |
 | `assets/video/jubilee-color-match-demo.mp4` | Research: Science Jubilee demo video (480p) | `research.md` |
-| `assets/img/research/hurricane-maria.jpg` | Research: Hurricane Maria project (two photos combined into one 2.2:1 banner) | `research.md` |
-| `assets/img/courses/kitchen-engineering.png` | Courses: Kitchen Engineering | `_data/settings.yml` (`courses`) |
+| `assets/img/research/hurricane-maria.jpg`, `hurricane-maria-team.jpg` | Research: Hurricane Maria project (landscape banner + banner of two upright photos) | `research.md` |
+| `assets/img/courses/kitchen-engineering-1/2/3.jpg`, `community-service-design.jpg` | Courses: 3:4 photo tiles | `_data/settings.yml` (`courses` → `images`) |
 
 These images are displayed whole, so new ones should be cropped to 2.2 : 1 first. To add more, add another `- {image: ..., caption: ...}` line under `gallery` in `_data/settings.yml`.
 

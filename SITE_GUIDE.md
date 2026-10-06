@@ -51,6 +51,7 @@ Images in the same place must have the same proportions. Each slot has a standar
 | --- | --- | --- | --- |
 | Research areas, home "In the Lab" strip, Research page banners | **2.2 : 1** | 1000–1320 × 455–600 px | Whole image, max 320 px tall (`.research-image`) |
 | People headshots | **1 : 1** | 800 × 800 px | `.person-photo` |
+| Course photos | **3 : 4** (upright) | ≤600 px wide | Row of equal tiles under each course (`.course-photo`); list them under `images:` in `_data/settings.yml` |
 | News thumbnails (lists) | 1 : 1 | any | Cropped to square by CSS (`.news-thumb`) |
 | News story galleries | **4 : 3 frame** | ≤1600 px long side | Whole image inside a 4:3 frame with a pale purple background (`.gallery-frame`), so portrait photos and flyers are never cut |
 | News story top photo | natural | ≤1600 px long side | Whole image, max 600 px tall |
@@ -61,7 +62,7 @@ Images in the same place must have the same proportions. Each slot has a standar
 ### Cropping policy
 
 - **Crop as little as possible.** Pick the ratio that most images already have, and center the crop on the subject rather than the middle of the frame if needed (e.g. the Jubilee poster is anchored at 42% so the colored vials stay in).
-- **Combine instead of cropping** when two photos have awkward shapes: place them side by side on a white 2.2:1 canvas. The Hurricane Maria banner (`assets/img/research/hurricane-maria.jpg`) is built this way, and many of the lab images are two-photo composites in the same style.
+- **Combine instead of cropping** when photos have awkward shapes: place two side by side to fill a 2.2:1 banner. The Hurricane Maria section uses a landscape banner (`hurricane-maria.jpg`) plus a banner of two upright photos (`hurricane-maria-team.jpg`), and many of the lab images are two-photo composites in the same style.
 - **Repeating patterns can take bigger crops** (the gold well plate keeps 3 of 6 rows); faces, text and flyers cannot.
 - **Keep the uncropped original** in `_image_sources/`, mirroring the `assets/img/` path, before cropping. Jekyll doesn't publish folders starting with `_`.
 
@@ -72,7 +73,7 @@ Images in the same place must have the same proportions. Each slot has a standar
 - **Size:** at most 1600 px on the long side, about 1 MB or less, JPEG quality ~85. Don't upscale small images (`sips -Z` enlarges them).
 - **Video:** compress (macOS: `avconvert -p PresetAppleM4V480pSD`) or embed from YouTube. GitHub rejects files over 100 MB.
 - **Alt text:** describe what the image shows, not its file name.
-- **Placeholders:** purple-striped labeled images (camera icon, slot name, file path, size) generated with Pillow. Two research areas still use them (Functional Emulsions, Ultrasound & Sonochemistry).
+- **Placeholders:** purple-striped labeled images (camera icon, slot name, file path, size) generated with Pillow. None are in use as of October 2026; use the same style if a new slot needs one.
 - **Raw uploads** go in `Images/`, which is git-ignored and never published or referenced.
 
 ## 4. Writing and content style
@@ -117,6 +118,6 @@ Images in the same place must have the same proportions. Each slot has a standar
 
 - Rebuilt from a Wix site (pozzorg.com) on the academic theme in October 2026; old news stories and images were carried over.
 - Twitter/X removed entirely at the owner's request; `jekyll-seo-tag` replaced by `_includes/seo.html` (Open Graph tags only).
-- Research and lab images standardized to 2.2:1 and headshots to 1:1; news galleries use uncropped 4:3 frames.
+- Research and lab images standardized to 2.2:1, headshots to 1:1, course photos to 3:4; news galleries use uncropped 4:3 frames.
 - The full CV PDF is intentionally not published (`*.pdf` is excluded from the build).
 - Alumni are listed without photos.

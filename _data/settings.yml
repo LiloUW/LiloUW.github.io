@@ -16,12 +16,22 @@ gallery:
 - {image: 'assets/img/lab/vials-and-plate.jpg', caption: 'Automated sample preparation'}
 - {image: 'assets/img/lab/hydrogel-membranes.jpg', caption: 'Hydrogel materials for biomanufacturing'}
 
+# Course photos are 3:4 tiles (see SITE_GUIDE.md); list any number under `images`.
 courses:
 - {name: 'Heat Transfer', description: 'Core chemical engineering transport phenomena.'}
 - {name: 'Surface & Colloid Science', description: 'Advanced interfacial phenomena and applications.'}
-- {name: 'Kitchen Engineering', description: 'Award-winning course introducing engineering through culinary science.', image: 'assets/img/courses/kitchen-engineering.png'}
+- name: 'Kitchen Engineering'
+  description: 'Award-winning course introducing engineering through culinary science.'
+  images:
+  - {image: 'assets/img/courses/kitchen-engineering-1.jpg', alt: 'Dropping liquid from a syringe into a glass to form spheres'}
+  - {image: 'assets/img/courses/kitchen-engineering-2.jpg', alt: 'Prof. Pozzo teaching a Kitchen Engineering class'}
+  - {image: 'assets/img/courses/kitchen-engineering-3.jpg', alt: 'Meat cooking in a pan with temperature probes'}
 - {name: 'Intermolecular & Surface Forces', description: 'Graduate-level course on colloidal systems.'}
 - {name: 'Entrepreneurial Capstone Design', description: 'Guiding students through product development and technology translation.'}
+- name: 'Community Service Design'
+  description: ''
+  images:
+  - {image: 'assets/img/courses/community-service-design.jpg', alt: 'Students in life vests on a boat during a Community Service Design course outing'}
 
 social:
 - {icon: 'fas fa-graduation-cap', title: 'Google Scholar', link: 'https://scholar.google.com/citations?user=XiHAbCsAAAAJ&hl=en'}
