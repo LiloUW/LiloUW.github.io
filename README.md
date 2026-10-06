@@ -25,6 +25,10 @@ Most content lives in YAML data files, so updates rarely require touching HTML:
 
 Images come from the old pozzorg.com site; a few placeholders remain. See [IMAGES_GUIDE.md](IMAGES_GUIDE.md) for every image slot. Original uploads go in `Images/`, which is git-ignored.
 
+## Rules and Style
+
+[SITE_GUIDE.md](SITE_GUIDE.md) records the site's visual style, image proportions, writing conventions, and how to check and publish changes. Read it before updating the site.
+
 ## Updating with Claude
 
 [CLAUDE.md](CLAUDE.md) holds instructions that Claude Code reads automatically, including step-by-step instructions for adding news stories. In a Claude chat opened on this repository, asking for something like "add a news story about X with these photos" is enough.

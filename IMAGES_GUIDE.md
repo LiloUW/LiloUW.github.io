@@ -4,7 +4,7 @@ Most images now come from the old pozzorg.com website. **Two slots still show la
 
 ## Page images
 
-Landscape photos, about **1200–1600 px** wide. Keep files under ~1 MB.
+Research-area and lab images are **2.2 : 1 banners** (e.g. 1320 × 600 px); all other proportions are in SITE_GUIDE.md section 3. Keep files under ~1 MB. Uncropped originals of every cropped image are kept in `_image_sources/`.
 
 | File | Where it appears | Configured in |
 | --- | --- | --- |
@@ -19,12 +19,12 @@ Landscape photos, about **1200–1600 px** wide. Keep files under ~1 MB.
 | `assets/img/research/scattering.jpg` | Research: Neutron & X-ray Scattering | `_data/research.yml` |
 | `assets/img/research/self-assembly.jpg` | Research: Self-Assembly & Nanostructures | `_data/research.yml` |
 | `assets/img/research/ultrasound.jpg` | ⚠ Research: Ultrasound & Sonochemistry (placeholder) | `_data/research.yml` |
-| `assets/img/research/science-jubilee.jpg` | Research: Science Jubilee spotlight (video poster) | `research.md` |
+| `assets/img/research/science-jubilee.jpg` | Research: Science Jubilee spotlight (square video poster) | `research.md` |
 | `assets/video/jubilee-color-match-demo.mp4` | Research: Science Jubilee demo video (480p) | `research.md` |
-| `assets/img/research/hurricane-maria-solar.png`, `pozzo-solar-installation.jpg` | Research: Hurricane Maria project | `research.md` |
+| `assets/img/research/hurricane-maria.jpg` | Research: Hurricane Maria project (two photos combined into one 2.2:1 banner) | `research.md` |
 | `assets/img/courses/kitchen-engineering.png` | Courses: Kitchen Engineering | `_data/settings.yml` (`courses`) |
 
-Research and lab images are always shown whole (scaled, never cropped), so photos of similar shape look tidiest side by side. To add more, add another `- {image: ..., caption: ...}` line under `gallery` in `_data/settings.yml`.
+These images are displayed whole, so new ones should be cropped to 2.2 : 1 first. To add more, add another `- {image: ..., caption: ...}` line under `gallery` in `_data/settings.yml`.
 
 ## News images
 

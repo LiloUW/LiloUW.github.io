@@ -17,7 +17,7 @@ layout: default
     <div class="row g-3 mt-2 align-items-start">
       {% for photo in page.gallery %}
       <figure class="col-sm-6 col-lg-4 mb-0">
-        <a href="{{ photo.image | relative_url }}"><img src="{{ photo.image | relative_url }}" alt="{{ photo.caption | default: page.title }}" class="img-fluid rounded"></a>
+        <a href="{{ photo.image | relative_url }}"><img src="{{ photo.image | relative_url }}" alt="{{ photo.caption | default: page.title }}" class="rounded gallery-frame"></a>
         {% if photo.caption %}<figcaption class="text-muted small mt-1">{{ photo.caption }}</figcaption>{% endif %}
       </figure>
       {% endfor %}

@@ -63,3 +63,13 @@ body a:hover {
 video {
   max-width: 100%;
 }
+
+// News galleries: every photo sits in the same 4:3 frame and is scaled to fit,
+// so portrait photos and flyers are never cropped.
+.gallery-frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background-color: #f3f1f7;
+}

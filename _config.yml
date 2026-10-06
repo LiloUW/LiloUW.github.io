@@ -37,6 +37,7 @@ exclude:
   - DEPLOYMENT_INSTRUCTIONS.md
   - IMAGES_GUIDE.md
   - CLAUDE.md
+  - SITE_GUIDE.md
   - Images
   - THEME_LICENSE.txt
   - "*.pdf"
