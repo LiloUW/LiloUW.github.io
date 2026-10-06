@@ -39,7 +39,7 @@ Writing style used in existing posts: third person ("Brenden Pelkie successfully
 ## Other common updates
 
 - **People:** `_data/people.yml`. Current members need a square (1:1) headshot at `assets/img/people/firstname-lastname.jpg`, about 800 × 800 px; crop non-square photos around the face and keep the original in `_image_sources/people/`.
-- **Publications:** `_data/publications.yml`, newest first, `number` counting up. Set `featured: true` on the four newest so they show on the home page. Author format `H.T. Chiang, L.D. Pozzo`; journal format `Journal, vol(issue), pages (year)`; link through `https://doi.org/...`.
+- **Publications:** `_data/publications.yml`, newest first, `number` counting up. Add `corresponding: true` when Prof. Pozzo is a corresponding author (verify it; see SITE_GUIDE.md section 4); the home page automatically features the six newest such papers. Author format `H.T. Chiang, L.D. Pozzo`; journal format `Journal, vol(issue), pages (year)`; link through `https://doi.org/...`.
 - **Images:** IMAGES_GUIDE.md lists every image slot. Research-area and lab images are 2.2:1 banners; see SITE_GUIDE.md section 3 before cropping anything.
 
 ## Constraints

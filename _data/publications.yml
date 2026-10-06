@@ -1,4 +1,7 @@
-# Publications list. Newest first; the home page shows the entries marked `featured: true`.
+# Publications list, newest first (highest number = newest).
+# `corresponding: true` marks papers where Prof. Pozzo is a corresponding author; the home page
+# automatically features the six newest of these (see SITE_GUIDE.md section 4).
+# Corresponding-author status has been checked for #91 and newer only.
 # Optional field `image:` (e.g. assets/img/toc/114.jpg) shows a TOC graphic next to the entry.
 # Legal name change in 2013 from Pozzo DC to Pozzo LD.
 
@@ -8,7 +11,6 @@
   authors: "E.K. Bacon-Gershman, S.M. Harvey, C. Agag, A. Moeez, G. Ren, S. Wilson, Y. Xu, D.R. Gamelin, L.D. Pozzo, J.C. Idrobo, B.M. Cossairt"
   journal: "Journal of the American Chemical Society, 148(33), 35898-35907 (2026)"
   url: "https://doi.org/10.1021/jacs.6c09346"
-  featured: true
 
 - number: 119
   year: 2026
@@ -16,7 +18,6 @@
   authors: "L. Le, G. Altin-Yavuzarslan, E.C. Klatt, N. Sadaba, A.C. Berg, A.V. Karanjia, S.M. Brooks, J.G. Zalatan, L.D. Pozzo, J.M. Carothers, H.S. Alper, A. Nelson"
   journal: "Biofabrication, 18(2), 025028 (2026)"
   url: "https://doi.org/10.1088/1758-5090/ae55cd"
-  featured: true
 
 - number: 118
   year: 2026
@@ -25,7 +26,7 @@
   journal: "Digital Discovery, 5(3), 1312-1324 (2026)"
   url: "https://doi.org/10.1039/d5dd00523j"
   open_access: true
-  featured: true
+  corresponding: true
 
 - number: 117
   year: 2026
@@ -33,7 +34,6 @@
   authors: "J.D. Kaff, M.N. Hodges, A. Moeez, S.M. Zeitler, L.D. Pozzo, M.R. Golder"
   journal: "Polymer Chemistry, 17(11), 1092-1099 (2026)"
   url: "https://doi.org/10.1039/d5py01061f"
-  featured: true
 
 - number: 116
   year: 2026
@@ -49,6 +49,7 @@
   journal: "ACS Polymers Au, 6(1), 388-398 (2026)"
   url: "https://doi.org/10.1021/acspolymersau.5c00155"
   open_access: true
+  corresponding: true
 
 - number: 114
   year: 2025
@@ -56,6 +57,7 @@
   authors: "H.T. Chiang, N. Kern, Z.R. Wylie, A. Moeez, H. Zhang, D. McKeen, N. SM Herringer, O. Gang, A.L. Ferguson, Z. Sherman, L.D. Pozzo"
   journal: "Soft Matter, 21(48), 9398-9411 (2025)"
   url: "https://doi.org/10.1039/D5SM00924C"
+  corresponding: true
 
 - number: 113
   year: 2025
@@ -71,6 +73,7 @@
   journal: "npj Computational Materials, 11(1), 335 (2025)"
   url: "https://doi.org/10.1038/s41524-025-01822-z"
   open_access: true
+  corresponding: true
 
 - number: 111
   year: 2025
@@ -86,6 +89,7 @@
   authors: "Z.R. Wylie, G.K. Lee, S. Lee, A. Moeez, G. Ren, J.C. Idrobo, P. Pauzauskie, L.D. Pozzo, V. Holmberg"
   journal: "J. Mater. Chem. A, 13, 31292 (2025)"
   url: "https://doi.org/10.1039/D5TA04184H"
+  corresponding: true
 
 - number: 109
   year: 2025
@@ -115,6 +119,7 @@
   journal: "Ultrasonics Sonochemistry, 114, 107275 (2025)"
   url: "https://doi.org/10.1016/j.ultsonch.2025.107275"
   open_access: true
+  corresponding: true
 
 - number: 105
   year: 2025
@@ -136,6 +141,7 @@
   authors: "S.L. Hilburg, A. Sokolova, M. Cagnes, L.D. Pozzo"
   journal: "Journal of Colloid and Interface Science, 677, 387-395 (2025)"
   url: "https://doi.org/10.1016/j.jcis.2024.08.061"
+  corresponding: true
 
 - number: 102
   year: 2024
@@ -157,6 +163,7 @@
   authors: "K. Li, K. Vaddi, S. Seifert, J. Mata, L.D. Pozzo"
   journal: "Macromolecules, 57(24), 11717-11726 (2024)"
   url: "https://doi.org/10.1021/acs.macromol.4c02429"
+  corresponding: true
 
 - number: 99
   year: 2024
@@ -165,6 +172,7 @@
   journal: "Digital Discovery, 3(11), 2252 (2024)"
   url: "https://doi.org/10.1039/D4DD00211C"
   open_access: true
+  corresponding: true
 
 - number: 98
   year: 2024
@@ -194,6 +202,7 @@
   authors: "S.C. Scheiwiller, J.P. Mata, L.D. Pozzo"
   journal: "Soft Matter, 20(31), 6247-6265 (2024)"
   url: "https://doi.org/10.1039/d4sm00495g"
+  corresponding: true
 
 - number: 94
   year: 2023
@@ -208,6 +217,7 @@
   authors: "K.J. Lachowski, H.T. Chiang, K. Torkelson, W. Zhou, S. Zhang, J. Pfaendtner, L.D. Pozzo"
   journal: "Langmuir, 39(45), 15878-15888 (2023)"
   url: "https://doi.org/10.1021/acs.langmuir.3c01577"
+  corresponding: true
 
 - number: 92
   year: 2023

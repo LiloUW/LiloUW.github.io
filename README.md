@@ -16,7 +16,7 @@ Most content lives in YAML data files, so updates rarely require touching HTML:
 | Menu, home/gallery images, courses, social links, contact info | `_data/settings.yml` |
 | Research areas (Research page) | `_data/research.yml` |
 | Group members and alumni (People page) | `_data/people.yml` |
-| Publications (`featured: true` entries also appear on the home page) | `_data/publications.yml` |
+| Publications (the six newest with `corresponding: true` are featured on the home page) | `_data/publications.yml` |
 | CV sections | `_data/cv/*.yml` (order set in `_data/cv/sections.yml`) |
 | News stories (News page; newest three on the home page) | One Markdown file per story in `_posts/`; see [CLAUDE.md](CLAUDE.md) |
 | Page intro text | `index.md`, `news.md`, `research.md`, `people.md`, `publications.md`, `courses.md`, `cv.md`, `contact.md` |

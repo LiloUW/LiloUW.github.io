@@ -2,6 +2,21 @@
 
 This is the reference for anyone, human or AI agent, updating this website. It records how the site is built, the visual and writing conventions, and the rules that keep it working. **Read it before making changes.** Step-by-step recipes for common tasks (adding a news story, a person, a paper) are in [CLAUDE.md](CLAUDE.md); every image slot is listed in [IMAGES_GUIDE.md](IMAGES_GUIDE.md).
 
+## Standing rules from the site owner
+
+These are explicit requests from Prof. Pozzo's group. Follow them on every update; details are in the sections referenced.
+
+1. **Featured publications** on the home page are always the **six newest papers where Prof. Pozzo is a corresponding author**, chosen automatically from `corresponding: true` flags (§4).
+2. **Open Access badge** only for papers in fully open-access journals (DOAJ-listed, published on or after the journal's open-access start year), e.g. ACS "Au" journals and Digital Discovery (§4).
+3. **Every publication link must be verified:** the DOI resolves to the same title with Pozzo as an author (§4).
+4. **Images in the same place share one proportion:** research/lab banners 2.2:1, headshots 1:1, course photos 3:4, news galleries in uncropped 4:3 frames. **Crop as little as possible** (combine or pad instead), and never cut faces or figure text (§3).
+5. **No Twitter/X anywhere:** no links, icons, mentions or meta tags (§2).
+6. **Lowercase-hyphen file names** that match references exactly; the live site is case-sensitive (§3).
+7. **Never invent facts** (dates, titles, positions, course descriptions); leave them out and ask (§4).
+8. **Check before reporting done:** build, run `_scripts/check_site.py`, and screenshot changed pages (§5).
+9. **Don't commit or push without asking.** The owner often pushes changes themselves, so start with `git pull --ff-only` (§5).
+10. **Alumni are listed without photos**, and the full CV PDF is not published (§6).
+
 ## 1. How the site works
 
 | | |
@@ -97,7 +112,8 @@ Images in the same place must have the same proportions. Each slot has a standar
   - Newest first, numbered consecutively (the newest has the highest number).
   - Authors as initials then surname (`H.T. Chiang, L.D. Pozzo`).
   - Journal as `Journal, vol(issue), pages (year)`, linked via `https://doi.org/...`.
-  - The four newest get `featured: true`, which shows them on the home page.
+  - **Home page "Featured Publications" = the six newest papers where Prof. Pozzo is a corresponding author.** This is automatic: mark each such paper `corresponding: true`, and `_includes/publications.html` shows the newest six. Don't hand-pick papers or add `featured` flags.
+  - **Deciding `corresponding: true`:** use the corresponding-author marking on the publisher's page or PDF (the asterisk or envelope icon), or OpenAlex (`api.openalex.org/works/doi:<doi>` → `authorships[].is_corresponding`). Being last author is *not* proof. If neither source says, ask the site owner. Status has been checked for papers #91 and newer; #111 and #108 are awaiting the owner's confirmation.
   - Only peer-reviewed journal articles go in; no abstracts, patents, theses or preprints.
   - Check titles, authors and DOIs against Crossref (`api.crossref.org/works/<doi>`) or the publisher, not just Google Scholar, which truncates author lists and sometimes misattributes papers.
   - **Every DOI must resolve to the paper it's listed under.** In October 2026, 59 of 120 links were wrong (dead or pointing to unrelated papers) and were corrected. Before adding or editing an entry, confirm that `api.crossref.org/works/<doi>` returns the same title with Pozzo among the authors.

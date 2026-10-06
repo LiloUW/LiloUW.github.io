@@ -2,8 +2,9 @@
   <div>
     <h3 class="fw-bold border-bottom pb-3 mb-5">{% if include.featured %}Featured Publications{% else %}Publications{% endif %}</h3>
     {% if include.featured %}
-      {% assign pubs = site.data.publications | where: "featured", true %}
-      {% for item in pubs %}{% include publication.html item=item %}{% endfor %}
+      {% comment %}The six newest papers with Prof. Pozzo as corresponding author (the list is newest first).{% endcomment %}
+      {% assign pubs = site.data.publications | where: "corresponding", true %}
+      {% for item in pubs limit: 6 %}{% include publication.html item=item %}{% endfor %}
       <p><a href="{{ '/publications/' | relative_url }}">All {{ site.data.publications.size }} publications &rarr;</a></p>
     {% else %}
       {% assign years = site.data.publications | group_by: "year" %}
