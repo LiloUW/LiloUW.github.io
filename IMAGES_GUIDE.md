@@ -18,7 +18,7 @@ Research-area and lab images are **2.2 : 1 banners** (e.g. 1320 × 600 px); all 
 | `assets/img/research/emulsions.jpg` | Research: Functional Emulsions | `_data/research.yml` |
 | `assets/img/research/scattering.jpg` | Research: Neutron & X-ray Scattering | `_data/research.yml` |
 | `assets/img/research/self-assembly.jpg` | Research: Self-Assembly & Nanostructures | `_data/research.yml` |
-| `assets/img/research/ultrasound.jpg` | Research: Ultrasound & Sonochemistry (photoacoustic imaging figure) | `_data/research.yml` |
+| `assets/img/research/ultrasound.jpg` | Research: Ultrasound & Sonochemistry (cavitation schematic with emission spectra; padded with white to 2.2:1) | `_data/research.yml` |
 | `assets/img/research/science-jubilee.jpg` | Research: Science Jubilee spotlight (square video poster) | `research.md` |
 | `assets/video/jubilee-color-match-demo.mp4` | Research: Science Jubilee demo video (480p) | `research.md` |
 | `assets/img/research/hurricane-maria.jpg`, `hurricane-maria-team.jpg` | Research: Hurricane Maria project (landscape banner + banner of two upright photos) | `research.md` |
