@@ -99,6 +99,8 @@ Images in the same place must have the same proportions. Each slot has a standar
   - The four newest get `featured: true`, which shows them on the home page.
   - Only peer-reviewed journal articles go in; no abstracts, patents, theses or preprints.
   - Check titles, authors and DOIs against Crossref (`api.crossref.org/works/<doi>`) or the publisher, not just Google Scholar, which truncates author lists and sometimes misattributes papers.
+  - **Every DOI must resolve to the paper it's listed under.** In October 2026, 59 of 120 links were wrong (dead or pointing to unrelated papers) and were corrected. Before adding or editing an entry, confirm that `api.crossref.org/works/<doi>` returns the same title with Pozzo among the authors.
+  - **Open Access badge (`open_access: true`):** mark a paper only if its journal is fully (gold) open access in the [DOAJ](https://doaj.org) **and** the paper's year is on or after the journal's DOAJ `oa_start` year. Current list: Digital Discovery (2022+), all ACS "Au" journals (e.g. ACS Polymers Au, 2021+), npj Computational Materials, Nature Communications, Photoacoustics (2013+), Ultrasonics Sonochemistry (2021+), Journal of Open Hardware, Journal of Open Source Software. Advanced Materials Interfaces became open access only in 2023, so its 2016 paper is not marked. Hybrid journals are not marked, even when an individual article happens to be free.
 - **Never invent facts:** dates, positions, graduation years, job titles. If something is unknown, leave it out or ask, and flag any assumption to the site owner.
 
 ## 5. Making and checking changes
