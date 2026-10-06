@@ -78,3 +78,11 @@ video {
   object-fit: contain;
   background-color: #f3f1f7;
 }
+
+// Collapsible sections in news stories (e.g. dissertation abstracts)
+details > summary {
+  cursor: pointer;
+  color: $accentColor;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}

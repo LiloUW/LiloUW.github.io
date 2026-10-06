@@ -34,6 +34,19 @@ Each story is one Markdown file in `_posts/`, named `YYYY-MM-DD-short-slug.md` (
 4. **Related updates.** A defense usually also means moving the person from `current` to `alumni` in `_data/people.yml` (alumni have no `image`; delete their headshot in `assets/img/people/`). A new paper goes in `_data/publications.yml`.
 5. **Verify.** Build locally (see "Building locally" below), then run `python3 _scripts/check_site.py <built _site>` to catch broken or wrong-case links and off-ratio images.
 
+**Defense stories:** quote the dissertation title and link the dissertation in ResearchWorks, the UW Libraries archive. Search `https://digital.lib.washington.edu/server/api/discover/search/objects?query=<surname>`, confirm the author and advisor, and link the `https://hdl.handle.net/1773/...` handle. Note any embargo (e.g. "restricted to UW users until 2028"). Dissertations usually appear about a month after the defense. If there's a defense announcement, add the location and put the abstract, verbatim, in a collapsible block after the research paragraph:
+
+```html
+<details class="mb-4" markdown="1">
+<summary>Read the dissertation abstract</summary>
+
+Abstract paragraph(s)...
+
+</details>
+```
+
+When working from a LinkedIn post, the post's date is encoded in its ID: `(activity_id >> 22) / 1000` gives Unix seconds. Public posts expose their photos in the page HTML (`media.licdn.com/.../feedshare-...`). Identify only people the source names.
+
 Writing style used in existing posts: third person ("Brenden Pelkie successfully defended his dissertation, titled \"…\", on May 30th, 2025."), dissertation or talk titles in quotes, and a closing "Congratulations, Dr. X!" for defenses. People are referred to by first name after the first mention.
 
 ## Other common updates
