@@ -10,4 +10,4 @@ Lorenzo Guio successfully defended his dissertation, titled "Understanding the R
 
 Congratulations, Dr. Guio!
 
-Connect with Lorenzo: [LinkedIn](https://www.linkedin.com/in/lorenzoguio/) | [Google Scholar](https://scholar.google.com/citations?user=Fu3N54cAAAAJ&hl=en)
+Connect with Lorenzo: [LinkedIn](https://www.linkedin.com/in/lorenzoguio/) · [Google Scholar](https://scholar.google.com/citations?user=Fu3N54cAAAAJ&hl=en)

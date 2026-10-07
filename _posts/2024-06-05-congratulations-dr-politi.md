@@ -10,4 +10,4 @@ On May 29th, 2024, Maria Politi successfully defended her dissertation, titled "
 
 Congratulations, Dr. Politi!
 
-Connect with Maria: [LinkedIn](https://www.linkedin.com/in/maria-politi-97a631170/) | [Google Scholar](https://scholar.google.com/citations?user=Kz82zFUAAAAJ&hl=en)
+Connect with Maria: [LinkedIn](https://www.linkedin.com/in/maria-politi-97a631170/) · [Google Scholar](https://scholar.google.com/citations?user=Kz82zFUAAAAJ&hl=en)

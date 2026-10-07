@@ -45,7 +45,11 @@ Abstract paragraph(s)...
 </details>
 ```
 
+**Finding social posts:** LinkedIn posts can't be found by searching. Profile and activity pages return HTTP 999 or a login wall, and search engines don't index posts (even an exact-quote search finds nothing). A post is only reachable through its direct link, so **ask the site owner for the LinkedIn link**. Prof. Pozzo's Bluesky (`lilopozzo.bsky.social`) is public and can be scanned by date: `https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=lilopozzo.bsky.social&limit=100` (page with `cursor`; full-size photos are under `embed.images[].fullsize`). Bluesky's search endpoint needs a login.
+
 When working from a LinkedIn post, the post's date is encoded in its ID: `(activity_id >> 22) / 1000` gives Unix seconds. Public posts expose their photos in the page HTML (`media.licdn.com/.../feedshare-...`). Identify only people the source names.
+
+**Don't put ` | ` in story text.** Kramdown turns any line containing a pipe into a table, which silently merges links (e.g. "LinkedIn | ORCID" becomes "LinkedInORCID"). Separate links with ` · `.
 
 Writing style used in existing posts: third person ("Brenden Pelkie successfully defended his dissertation, titled \"…\", on May 30th, 2025."), dissertation or talk titles in quotes, and a closing "Congratulations, Dr. X!" for defenses. People are referred to by first name after the first mention.
 

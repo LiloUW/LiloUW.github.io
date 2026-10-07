@@ -10,4 +10,4 @@ Brenden Pelkie successfully defended his dissertation, titled "Automated and Aut
 
 Congratulations, Dr. Pelkie!
 
-Connect with Brenden: [LinkedIn](https://www.linkedin.com/in/brenden-pelkie/) | [Google Scholar](https://scholar.google.com/citations?user=1qUO6mgAAAAJ&hl=en)
+Connect with Brenden: [LinkedIn](https://www.linkedin.com/in/brenden-pelkie/) · [Google Scholar](https://scholar.google.com/citations?user=1qUO6mgAAAAJ&hl=en)
