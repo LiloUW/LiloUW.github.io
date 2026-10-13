@@ -4,7 +4,7 @@ Every slot now has a real image; no placeholders remain. To replace any image, s
 
 ## Page images
 
-Research-area and lab images are **2.2 : 1 banners** (e.g. 1320 × 600 px); all other proportions are in SITE_GUIDE.md section 3. Keep files under ~1 MB. Uncropped originals of every cropped image are kept in `_image_sources/`.
+Research-area and lab images are **2.2 : 1 banners** (e.g. 1320 × 600 px); all other proportions are in SITE_GUIDE.md, "Images". Keep files under ~1 MB. Uncropped originals of every cropped image are kept in `_image_sources/`.
 
 | File | Where it appears | Configured in |
 | --- | --- | --- |

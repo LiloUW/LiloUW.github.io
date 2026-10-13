@@ -1,139 +1,276 @@
 # Pozzo Research Group Website: Rules and Style Guide
 
-This is the reference for anyone, human or AI agent, updating this website. It records how the site is built, the visual and writing conventions, and the rules that keep it working. **Read it before making changes.** Step-by-step recipes for common tasks (adding a news story, a person, a paper) are in [CLAUDE.md](CLAUDE.md); every image slot is listed in [IMAGES_GUIDE.md](IMAGES_GUIDE.md).
+This is the reference for anyone, human or AI agent, updating this website. It records how the site is built, its visual and writing conventions, where facts come from and how to verify them, and the rules that keep it working. **Read it before making changes.**
+
+Companion files:
+- [CLAUDE.md](CLAUDE.md): step-by-step recipes (adding a news story, person, paper; building locally). Claude Code loads it automatically.
+- [IMAGES_GUIDE.md](IMAGES_GUIDE.md): every image slot on the site and its file.
+- `_scripts/check_site.py`: the automated check to run before every publish.
+
+*Last updated: October 8, 2026.*
+
+## Before you start: checklist for every update
+
+1. `git pull --ff-only`. The site owner often commits and pushes directly, from this Mac or GitHub's web editor.
+2. Read the **standing rules** below and the section for the content you're changing.
+3. Make the change in the data file or post, not in HTML layouts, unless the design itself is changing.
+4. Verify every fact and link against a primary source (§6). Never fill gaps with guesses.
+5. Build locally, run `python3 _scripts/check_site.py <built _site>`, and screenshot the changed pages (§8).
+6. Stage the changes and **ask before committing or pushing**. Report anything you assumed or couldn't verify.
 
 ## Standing rules from the site owner
 
 These are explicit requests from Prof. Pozzo's group. Follow them on every update; details are in the sections referenced.
 
-1. **Featured publications** on the home page are always the **six newest papers where Prof. Pozzo is a corresponding author**, chosen automatically from `corresponding: true` flags (§4).
-2. **Open Access badge** only for papers in fully open-access journals (DOAJ-listed, published on or after the journal's open-access start year), e.g. ACS "Au" journals and Digital Discovery (§4).
-3. **Every publication link must be verified:** the DOI resolves to the same title with Pozzo as an author (§4).
-4. **Images in the same place share one proportion:** research/lab banners 2.2:1, headshots 1:1, course photos 3:4, news galleries in uncropped 4:3 frames. **Crop as little as possible** (combine or pad instead), and never cut faces or figure text (§3).
-5. **No Twitter/X anywhere:** no links, icons, mentions or meta tags (§2).
-6. **Lowercase-hyphen file names** that match references exactly; the live site is case-sensitive (§3).
-7. **Never invent facts** (dates, titles, positions, course descriptions); leave them out and ask (§4).
-8. **Check before reporting done:** build, run `_scripts/check_site.py`, and screenshot changed pages (§5).
-9. **Don't commit or push without asking.** The owner often pushes changes themselves, so start with `git pull --ff-only` (§5).
-10. **Alumni are listed without photos**, and the full CV PDF is not published (§6).
+1. **Featured publications** on the home page are always the **six newest papers where Prof. Pozzo is a corresponding author**, chosen automatically from `corresponding: true` flags (§5).
+2. **Open Access badge** only for papers in fully open-access journals (DOAJ-listed, published on or after the journal's open-access start year), e.g. ACS "Au" journals and Digital Discovery (§5).
+3. **Every publication link must be verified:** the DOI resolves to the same title with Pozzo as an author (§6).
+4. **Images in the same place share one proportion:** research/lab banners 2.2:1, headshots 1:1, course photos 3:4, news galleries in uncropped 4:3 frames. **Crop as little as possible** (combine or pad instead), and never cut faces or figure text (§4).
+5. **No Twitter/X anywhere:** no links, icons, mentions or meta tags (§3).
+6. **Lowercase-hyphen file names** that match references exactly; the live site is case-sensitive (§4).
+7. **Never invent facts** (dates, titles, positions, pronouns, course descriptions); leave them out and ask (§5).
+8. **Defense news stories** quote the dissertation title, link the dissertation, and include the abstract when an announcement is available (§5).
+9. **Check before reporting done:** build, run `_scripts/check_site.py`, and screenshot changed pages (§8).
+10. **Don't commit or push without asking**, and start every session with `git pull --ff-only` (§8).
+11. **Alumni are listed without photos**, and the full CV PDF is not published (§10).
 
 ## 1. How the site works
 
 | | |
 | --- | --- |
 | Live address | https://pozzorg.com (also https://LiloUW.github.io) |
-| Hosting | GitHub Pages, built automatically from the `main` branch of `LiloUW/LiloUW.github.io` |
-| Generator | Jekyll (GitHub Pages' built-in version), no theme gem (`theme: null`) |
+| Hosting | GitHub Pages, built automatically from the `main` branch of `LiloUW/LiloUW.github.io`, live 1–2 minutes after a push |
+| Generator | Jekyll (GitHub Pages' built-in version, Kramdown Markdown), no theme gem (`theme: null`) |
+| Plugins | `jekyll-feed` (RSS) and `jekyll-redirect-from` (old addresses). Not `jekyll-seo-tag` (§3). |
 | Design base | The "academic" Jekyll theme by Paul Le (MIT, see `THEME_LICENSE.txt`), copied into `_layouts/` and `_includes/` and customized |
-| Libraries | Bootstrap 5 and Font Awesome 5.15 (bundled in `assets/libs/`) |
+| Libraries | Bootstrap 5 and Font Awesome 5.15, bundled in `assets/libs/` |
 | Domain | `pozzorg.com`, registered at Wix with DNS managed at Wix. The apex A records point to GitHub (185.199.108–111.153), `www` is a CNAME to `lilouw.github.io`, and the `CNAME` file in the repo holds `pozzorg.com`. |
 
-**Content lives in data files, not HTML.** To change what the site says, edit:
+### Pages and templates
 
-| Content | File |
+| Address | Page file | Layout | Notes |
+| --- | --- | --- | --- |
+| `/` | `index.md` | `home.html` | Intro + group photo, "In the Lab" strip, 3 latest news, 6 featured publications |
+| `/news/` | `news.md` | `news.html` | All stories, newest first (`_includes/news-item.html`) |
+| `/news/YYYY/slug/` | `_posts/*.md` | `post.html` | One page per story |
+| `/research/` | `research.md` | `research.html` | Research areas from `_data/research.yml`, then the page text |
+| `/people/` | `people.md` | `people.html` | Current members (photo cards), alumni (list); footer text in front matter |
+| `/people/lilo-pozzo/` | `people/lilo-pozzo.md` | `page.html` | PI profile |
+| `/publications/` | `publications.md` | `publications.html` | Grouped by year (`_includes/publications.html` + `publication.html`) |
+| `/courses/` | `courses.md` | `courses.html` | Courses and photo tiles from `_data/settings.yml` |
+| `/cv/` | `cv.md` | `cv.html` | Sections from `_data/cv/` |
+| `/contact/` | `contact.md` | `contact.html` | Contact card + "Join the Group" |
+
+Old addresses redirect: `/students/` → `/people/`, `/about/` → `/contact/`, and the old Wix `/post/<slug>/` links go to the matching story (via `redirect_from`).
+
+Folders starting with `_` are never published: `_image_sources/` (uncropped originals), `_scripts/`. Neither are `Images/` (raw uploads, also git-ignored), the `.md` guides, or any `*.pdf`.
+
+## 2. Where content lives (data files and fields)
+
+**Content lives in data files, not HTML.** Fields marked *optional* can be omitted.
+
+**`_data/settings.yml`**: `menu` (name, url), `home_image` (image, alt), `gallery` ("In the Lab": image, caption), `courses`, `social` (footer icons: icon, title, link), `contacts` (contact card).
+- Course: `name`, `description` (may be `''`), *optional* `images:` list of `{image, alt}` tiles, *optional* `url`.
+
+**`_data/research.yml`**: one entry per research area: `title`, `image` (2.2:1 banner), `description`.
+
+**`_data/people.yml`**: `current` and `alumni`, each a list of groups `{title, members}`. Member fields:
+
+| Field | Use |
 | --- | --- |
-| Menu, home image, "In the Lab" strip, courses, footer icons, contact card | `_data/settings.yml` |
-| Research areas | `_data/research.yml` |
-| Current members and alumni | `_data/people.yml` |
-| Publications | `_data/publications.yml` |
-| CV sections | `_data/cv/*.yml` (order in `_data/cv/sections.yml`) |
-| News stories | `_posts/YYYY-MM-DD-slug.md` |
-| Intro text of each page | `index.md`, `news.md`, `research.md`, `people.md`, `publications.md`, `courses.md`, `cv.md`, `contact.md` |
+| `name` | Alumni include the degree and year: `'Claire Benstead (Ph.D. 2026)'` |
+| `role` | Current members: program and expected year, e.g. `'Chemical Engineering Ph.D. (expected 2028)'` |
+| `research` | One line, sentence case, no final period |
+| `image` | Current members only: `assets/img/people/firstname-lastname.jpg` |
+| `now` | Alumni: current position, shown as "Currently: …"; prefix "Incoming" for positions not yet started |
+| `note` | Co-advisors, fellowships, previous positions |
+| `linkedin`, `scholar`, `orcid`, `website` | Full URLs; shown as icons |
+| `url` | Slug of a profile page in `people/` (only the PI has one) |
 
-Pages and their addresses: `/` home, `/news/`, `/research/`, `/people/`, `/publications/`, `/courses/`, `/cv/`, `/contact/`, plus `/people/lilo-pozzo/` and one page per news story at `/news/YYYY/slug/`. Old addresses redirect: `/students/` → `/people/`, `/about/` → `/contact/`, and the old Wix `/post/<slug>/` links go to the matching story.
+**`_data/publications.yml`**: newest first. Fields: `number`, `year`, `title`, `authors`, `journal`, `url` (DOI link), *optional* `open_access: true`, `corresponding: true`, `image` (TOC graphic). Rules in §5.
 
-## 2. Visual style
+**`_data/cv/*.yml`**: `education`, `academic-experience`, `awards`, `entrepreneurship`, `service`, each a list of `{title, description}`; display order in `sections.yml`.
+
+**`_posts/YYYY-MM-DD-slug.md`** (news): front matter `title` (required), *optional* `image`, `image_alt`, `image_caption`, `thumbnail`, `gallery` (list of `{image, caption}`), `redirect_from`. The filename date is the story date. Template in CLAUDE.md.
+
+## 3. Visual style
 
 Keep the look clean, white and minimal, as in the academic theme. Don't add new colors, fonts or decorative elements.
 
-- **Colors:** black text on white. Links are dark gray (`#212529`) and turn **UW purple `#4b2e83`** on hover. UW purple is the only accent color: section underlines, the "Open Access" badge, and placeholder images.
-- **Fonts:** the system font stack defined in `_sass/main.scss`. Body text stays at Bootstrap's default size.
-- **Page width:** one centered column (`col-lg-8`), with a 16 px or larger side gutter on phones.
-- **Section headings:** `<h3 class="fw-bold border-bottom pb-3 mb-5">`, giving bold text with a thin purple rule underneath. Sub-headings inside sections are `h4`/`h5` bold.
-- **Menu:** lowercase single words (`news research people publications courses cv contact`). The current page is shown in bold. The menu must fit on one line at desktop width; check this when adding an item.
-- **Two-column rows:** text beside an image (Bootstrap `row` with `col-md-6`/`col-md-7`). On the Research page the image side alternates left and right.
-- **Icons:** Font Awesome 5 only. Google Scholar uses `fas fa-graduation-cap` (FA5 has no Scholar icon), and ORCID `fab fa-orcid`.
-- **Footer:** department and university on the left; icons for Google Scholar, ORCID, LinkedIn and GitHub on the right.
-- **No Twitter/X anywhere:** no icons, links, mentions, or `twitter:` meta tags. The SEO plugin was replaced with `_includes/seo.html` for exactly this reason, so don't re-enable `jekyll-seo-tag`.
+### Design tokens (`_sass/main.scss`)
 
-## 3. Images
+| Token | Value | Used for |
+| --- | --- | --- |
+| Background | `#ffffff` | Page |
+| Text | `#000000` | Body text |
+| Links | `#212529` (dark gray), underlined | All links |
+| **Accent: UW purple** | `#4b2e83` | Link hover, section-heading rules, "Open Access" badge, abstract toggles, placeholder images. The **only** accent color. |
+| Pale purple | `#f3f1f7` | Background of news gallery frames |
+| Font | System font stack (`-apple-system, Segoe UI, Helvetica, Arial…`) | Everything; Bootstrap default sizes |
+
+### Layout conventions
+
+- **Page width:** one centered column (`col-lg-8`), with a 16 px or larger side gutter on phones.
+- **Section headings:** `<h3 class="fw-bold border-bottom pb-3 mb-5">`, giving bold text with a thin purple rule. Sub-headings are bold `h4`/`h5`.
+- **Menu:** lowercase single words (`news research people publications courses cv contact`); the current page is bold. It must fit on one line at desktop width (1280 px), so check this when adding an item.
+- **Two-column rows:** text beside an image (`row` with `col-md-6`/`col-md-7`). On the Research page the image side alternates left and right.
+- **Icons:** Font Awesome 5 only. Google Scholar is `fas fa-graduation-cap` (FA5 has no Scholar icon), and ORCID `fab fa-orcid`.
+- **Footer:** department and university on the left; Google Scholar, ORCID, LinkedIn and GitHub icons on the right.
+- **No Twitter/X anywhere:** no icons, links, mentions, or `twitter:` meta tags. Page metadata comes from `_includes/seo.html` (title, description, Open Graph tags); don't re-enable `jekyll-seo-tag`, which adds Twitter tags.
+
+### Components (CSS classes)
+
+Reuse these instead of writing new styles.
+
+| Class / element | What it does | Where |
+| --- | --- | --- |
+| `.research-image` | Pre-cropped 2.2:1 banner shown whole at full column width | Research areas, "In the Lab" (via `img-fluid`), Hurricane Maria banners |
+| `.person-photo` | Square headshot (1:1, `object-fit: cover`) | People cards, PI page |
+| `.course-photo` | Upright 3:4 tile | Courses page |
+| `.news-thumb` | Square thumbnail, CSS-cropped | News lists (home and `/news/`) |
+| `.news-hero` | Story's top photo, whole, max 600 px tall | Top of each story |
+| `.gallery-frame` | Uniform 4:3 frame, image scaled to fit (never cropped), pale purple background | Galleries at the bottom of stories |
+| `details > summary` | Collapsible block with a purple bold toggle | "Read the dissertation abstract" |
+| `.open-access-badge` | Purple "Open Access" pill | Publications |
+| `.publication-image` | Optional TOC graphic, 120 px wide | Publications |
+
+## 4. Images
 
 ### Shape rules
 
-Images in the same place must have the same proportions. Each slot has a standard ratio:
+Images in the same place must have the same proportions:
 
 | Where | Ratio | Typical size | How it's shown |
 | --- | --- | --- | --- |
-| Research areas, home "In the Lab" strip, Research page banners | **2.2 : 1** | 1000–1320 × 455–600 px | Whole image, max 320 px tall (`.research-image`) |
+| Research areas, "In the Lab" strip, Research page banners | **2.2 : 1** | 1000–1320 × 455–600 px | Whole, full column width (`.research-image`) |
 | People headshots | **1 : 1** | 800 × 800 px | `.person-photo` |
-| Course photos | **3 : 4** (upright) | ≤600 px wide | Row of equal tiles under each course (`.course-photo`); list them under `images:` in `_data/settings.yml` |
+| Course photos | **3 : 4** (upright) | ≤600 px wide | Row of equal tiles under each course (`.course-photo`) |
 | News thumbnails (lists) | 1 : 1 | any | Cropped to square by CSS (`.news-thumb`) |
-| News story galleries | **4 : 3 frame** | ≤1600 px long side | Whole image inside a 4:3 frame with a pale purple background (`.gallery-frame`), so portrait photos and flyers are never cut |
-| News story top photo | natural | ≤1600 px long side | Whole image, max 600 px tall |
-| Home group photo | ~2 : 1 | 1600 px wide | Whole image |
-| Contact portrait | 4 : 5 | 900 × 1125 px | Whole image |
+| News story galleries | **4 : 3 frame** | ≤1600 px long side | Whole image inside the frame (`.gallery-frame`) |
+| News story top photo | natural | ≤1600 px long side | Whole, max 600 px tall |
+| Home group photo | ~2 : 1 | 1600 px wide | Whole |
+| Contact portrait | 4 : 5 | 900 × 1125 px | Whole |
 | Science Jubilee video poster | 1 : 1 | matches the square video | Video poster |
+
+`_scripts/check_site.py` reports any research, lab, people or course image off its ratio.
 
 ### Cropping policy
 
-- **Crop as little as possible.** Pick the ratio that most images already have, and center the crop on the subject rather than the middle of the frame if needed (e.g. the Jubilee poster is anchored at 42% so the colored vials stay in).
-- **Combine instead of cropping** when photos have awkward shapes: place two side by side to fill a 2.2:1 banner. The Hurricane Maria section uses a landscape banner (`hurricane-maria.jpg`) plus a banner of two upright photos (`hurricane-maria-team.jpg`), and many of the lab images are two-photo composites in the same style.
-- **Repeating patterns can take bigger crops** (the gold well plate keeps 3 of 6 rows); faces, text and flyers cannot.
-- **Keep the uncropped original** in `_image_sources/`, mirroring the `assets/img/` path, before cropping. Jekyll doesn't publish folders starting with `_`.
+- **Crop as little as possible.** Pick the ratio most images in the group already have. Anchor the crop on the subject, not the center, when needed: the Jubilee poster is anchored at 42% so the colored vials stay in, and the rooftop photo is anchored high to keep the person's head.
+- **Combine instead of cropping** when photos have awkward shapes. Two upright photos side by side make one 2.2:1 banner (`hurricane-maria-team.jpg`), and many lab images are two-photo composites in the same style.
+- **Pad instead of cropping** figures with white backgrounds. Adding white side margins brings them to the target ratio invisibly (`ultrasound.jpg` was 1.9:1 and was padded to 2.2:1).
+- **Repeating patterns can take bigger crops:** the gold well plate keeps 3 of 6 rows. Faces, text, figure labels and flyers cannot.
+- **Keep the uncropped original** in `_image_sources/`, mirroring the `assets/img/` path (e.g. `_image_sources/research/emulsions-original.png`).
+- **Preview before applying:** draw the proposed crop boxes on a contact sheet and look at them before saving.
 
 ### File rules
 
-- **Names:** lowercase, words separated by hyphens, `.jpg` (PNG only when transparency is needed), for example `assets/img/people/firstname-lastname.jpg`. **Capitalization must match exactly.** macOS ignores case but GitHub Pages doesn't, so `Kevin-lee.jpg` works locally and breaks online. To fix a case-only rename on a Mac, go through a temporary name or use `git mv`.
-- **Formats:** uploads saved from the web are often AVIF or WebP with a `.png`/`.jpg` extension. Check with `file <name>` and convert (`sips -s format jpeg ...` or Pillow).
-- **Size:** at most 1600 px on the long side, about 1 MB or less, JPEG quality ~85. Don't upscale small images (`sips -Z` enlarges them).
+- **Names:** lowercase, words separated by hyphens, `.jpg` (PNG only when transparency must be kept), e.g. `assets/img/people/firstname-lastname.jpg`, `assets/img/news/<slug>/01.jpg`. **Capitalization must match exactly.** macOS ignores case but GitHub Pages doesn't, so `Kevin-lee.jpg` works locally and breaks online. Fix case-only renames via a temporary name or `git mv`.
+- **Formats:** web downloads are often AVIF or WebP with a `.png`/`.jpg` extension. Check with `file <name>` and convert (`sips -s format jpeg …` or Pillow).
+- **Size:** at most 1600 px on the long side, about 1 MB or less, JPEG quality 85–88. Never upscale (`sips -Z` enlarges small images). Small sources (under ~600 px) look soft; ask the owner for a larger version.
 - **Video:** compress (macOS: `avconvert -p PresetAppleM4V480pSD`) or embed from YouTube. GitHub rejects files over 100 MB.
-- **Alt text:** describe what the image shows, not its file name.
-- **Placeholders:** purple-striped labeled images (camera icon, slot name, file path, size) generated with Pillow. None are in use as of October 2026; use the same style if a new slot needs one.
-- **Raw uploads** go in `Images/`, which is git-ignored and never published or referenced.
+- **Alt text:** describe what the image shows. Name only people the source identifies.
+- **Placeholders:** purple-striped labeled images generated with Pillow (camera icon, slot name, path, size). None are in use; use the same style if a new slot needs one.
 
-## 4. Writing and content style
+## 5. Writing and content style
 
-- **Voice:** clear, factual, third person for the group ("The Pozzo Research Group develops…", "our team"). No marketing superlatives.
+### General
+
+- **Voice:** clear, factual, warm. Third person for people; "the group" / "our team" for the lab. No marketing superlatives beyond what a source says.
 - **Names:**
-  - Full name on first mention, first name after that ("Brenden Pelkie… Brenden").
-  - Prof. Pozzo is "Lilo D. Pozzo" or "Prof. Pozzo".
-  - Her legal name changed in 2013 from D.C. Pozzo to L.D. Pozzo. Both forms (and "L. Pozzo") appear in author lists and are bolded automatically.
-  - Use they/them for anyone whose pronouns aren't known.
-- **Dates:** "May 30th, 2025" in story text; filenames and data use ISO dates.
-- **News stories:**
-  - The first paragraph must work alone as the summary on the news list.
-  - Dissertation and talk titles go in quotes.
-  - Defenses close with "Congratulations, Dr. X!" and use the shared graduation-cap thumbnail; candidacy exams use the balloons thumbnail.
-- **People entries:**
-  - `role` is the program and expected year for students.
-  - `now:` is the current position for alumni ("Currently: …"); use "Incoming …" for positions not yet started.
-  - `note:` holds co-advisors and previous positions.
-- **Publications:**
-  - Newest first, numbered consecutively (the newest has the highest number).
-  - Authors as initials then surname (`H.T. Chiang, L.D. Pozzo`).
-  - Journal as `Journal, vol(issue), pages (year)`, linked via `https://doi.org/...`.
-  - **Home page "Featured Publications" = the six newest papers where Prof. Pozzo is a corresponding author.** This is automatic: mark each such paper `corresponding: true`, and `_includes/publications.html` shows the newest six. Don't hand-pick papers or add `featured` flags.
-  - **Deciding `corresponding: true`:** use the corresponding-author marking on the publisher's page or PDF (the asterisk or envelope icon), or OpenAlex (`api.openalex.org/works/doi:<doi>` → `authorships[].is_corresponding`). Being last author is *not* proof. If neither source says, ask the site owner. Status has been checked for papers #91 and newer; #111 and #108 are awaiting the owner's confirmation.
-  - Only peer-reviewed journal articles go in; no abstracts, patents, theses or preprints.
-  - Check titles, authors and DOIs against Crossref (`api.crossref.org/works/<doi>`) or the publisher, not just Google Scholar, which truncates author lists and sometimes misattributes papers.
-  - **Every DOI must resolve to the paper it's listed under.** In October 2026, 59 of 120 links were wrong (dead or pointing to unrelated papers) and were corrected. Before adding or editing an entry, confirm that `api.crossref.org/works/<doi>` returns the same title with Pozzo among the authors.
-  - **Open Access badge (`open_access: true`):** mark a paper only if its journal is fully (gold) open access in the [DOAJ](https://doaj.org) **and** the paper's year is on or after the journal's DOAJ `oa_start` year. Current list: Digital Discovery (2022+), all ACS "Au" journals (e.g. ACS Polymers Au, 2021+), npj Computational Materials, Nature Communications, Photoacoustics (2013+), Ultrasonics Sonochemistry (2021+), Journal of Open Hardware, Journal of Open Source Software. Advanced Materials Interfaces became open access only in 2023, so its 2016 paper is not marked. Hybrid journals are not marked, even when an individual article happens to be free.
-- **Never invent facts:** dates, positions, graduation years, job titles. If something is unknown, leave it out or ask, and flag any assumption to the site owner.
+  - Full name on first mention, first name after ("Brenden Pelkie… Brenden"). A known nickname goes in parentheses once: "Zachery (Zach) Wylie".
+  - Prof. Pozzo is "Lilo D. Pozzo" or "Prof. Pozzo". Her legal name changed in 2013 from D.C. Pozzo to L.D. Pozzo. Both forms (and "L. Pozzo") appear in author lists and are bolded automatically.
+- **Pronouns:** use the ones the source uses (e.g. Prof. Pozzo's post refers to Karen Li as "she"). If no source gives them, write around them with the person's name, or use they/them.
+- **Dates:** "May 30th, 2025" or "August 7, 2026" in text; ISO dates (`2026-08-07`) in filenames and data.
+- **Never invent facts:** dates, titles, positions, graduation years, pronouns, course descriptions. Leave them out, ask, and flag any assumption to the owner.
 
-## 5. Making and checking changes
+### News stories
 
-1. **Sync first:** `git pull --ff-only`. The site owner often commits and pushes directly, from this Mac or GitHub's web editor.
-2. Make the change in the data file or post, following the rules above.
-3. **Build locally:** see CLAUDE.md, "Building locally". The Mac's system Ruby is too old for the current gems, so the build uses a separate pinned Gemfile.
-4. **Check:** `python3 _scripts/check_site.py <built _site>`. It flags broken links (case-sensitive), off-ratio images and files over 1 MB, and exits with an error if any link is broken.
-5. **Look at it:** screenshot the changed pages at desktop width and about 520 px (narrow/phone). Headless Chrome cannot render narrower than ~500 px.
-6. **Commit and push only when the site owner asks.** Pushing to `main` publishes the site within a minute or two.
-7. **After a push:** `gh run list` shows the Pages deploy. A deploy that fails with "job was not acquired by Runner" is a GitHub outage, not a site error; re-run it or push again.
+- **First paragraph** works alone as the summary on the news lists: who, what, when.
+- **Photos:** the best group photo is `image`; extra photos go in `gallery` with short captions.
+- **Defense stories** follow this structure:
+  1. Front matter: `title: "Congratulations, Dr. Surname!"`, `thumbnail: /assets/img/news/defense.jpg`, photos.
+  2. "<Name> successfully defended <a> dissertation, titled "<Title>," on <date>, at/in <location>. … now holds a PhD in <field>." Add the advisor(s) or "Nth PhD student to graduate from the Pozzo group" when the source says so.
+  3. The research in plain language, then a link to the dissertation in ResearchWorks, with any access restriction ("full text restricted to UW users until 2028"), then links to the person's papers.
+  4. The abstract, verbatim from the announcement, in a collapsible `<details class="mb-4" markdown="1">` block with `<summary>Read the dissertation abstract</summary>` (template in CLAUDE.md).
+  5. Collaborations, mentoring, celebrations (the hoodie ceremony) as the source describes them.
+  6. "Congratulations, Dr. Surname!" and a "Connect with <first name>:" line, with links separated by ` · `.
+- **Candidacy exams** use `/assets/img/news/candidacy.jpg` as the thumbnail.
+- **After a defense:** move the person to `alumni` in `_data/people.yml` (no `image`; delete the headshot) with "(Ph.D. YEAR)".
 
-## 6. Decisions on record
+### People
 
-- Rebuilt from a Wix site (pozzorg.com) on the academic theme in October 2026; old news stories and images were carried over.
+- `research` is one line in sentence case.
+- `now:` holds verified current positions only; "Incoming …" for positions not yet started.
+- Spell names as the person does on official documents; e.g. "Huat Thart Chiang", surname Chiang.
+
+### Courses
+
+- Name, a one-sentence description, and optional 3:4 photo tiles. An unknown description stays `''` (empty) until the owner provides it.
+
+### Publications
+
+- Newest first, numbered consecutively (newest = highest number).
+- Authors as initials then surname (`H.T. Chiang, L.D. Pozzo`); journal as `Journal, vol(issue), pages (year)`; `url` = `https://doi.org/<doi>`.
+- Only peer-reviewed journal articles (plus the existing SPIE proceedings entry); no abstracts, patents, theses or preprints.
+- **Featured on the home page = the six newest papers with `corresponding: true`.** This is automatic: mark each paper where Prof. Pozzo is a corresponding author, and `_includes/publications.html` picks the newest six. Don't hand-pick papers or add `featured` flags. How to decide is in §6.
+- **Open Access badge (`open_access: true`):** only if the journal is fully (gold) open access in the [DOAJ](https://doaj.org) **and** the paper's year is on or after the journal's DOAJ `oa_start` year. Currently qualifying: Digital Discovery (2022+), ACS "Au" journals (e.g. ACS Polymers Au, 2021+), npj Computational Materials, Nature Communications, Photoacoustics (2013+), Ultrasonics Sonochemistry (2021+), Journal of Open Hardware, Journal of Open Source Software. Not Advanced Materials Interfaces before 2023, and never hybrid journals.
+
+## 6. Sources and verification
+
+| What | Where to get it | How to verify / notes |
+| --- | --- | --- |
+| Publication metadata | Crossref `api.crossref.org/works/<doi>`; Google Scholar profile for discovering new papers | Title must match and Pozzo must be an author. In Oct 2026, 59 of 120 DOIs were wrong (dead or pointing to unrelated papers). Scholar truncates author lists and misattributes some papers. Crossref rate-limits parallel requests, so query one at a time with short pauses. |
+| Corresponding author | Publisher page/PDF (asterisk or envelope), or OpenAlex `api.openalex.org/works/doi:<doi>` → `authorships[].is_corresponding` | Last author is *not* proof. RSC, ACS and IUCr pages block scripts (Cloudflare). Checked for #91 and newer. |
+| Open access status | DOAJ `doaj.org/api/search/journals/issn:<ISSN>` → `oa_start` | ISSN from Crossref |
+| Dissertations | UW ResearchWorks: `digital.lib.washington.edu/server/api/discover/search/objects?query=<surname>` | Confirm author and advisor; link the `https://hdl.handle.net/1773/…` handle; read `dc.embargo.terms` for access limits. Deposits appear 1–4 months after the defense (5 weeks for Wylie/Benstead, 4 months for Li). |
+| Defense details and abstracts | The department's "Ph.D. Defense Announcement" PDF (owner provides) | Gives the title, date, room and abstract; quote abstracts verbatim |
+| LinkedIn posts | **Ask the owner for the direct link** | Profiles and activity pages block scripts (HTTP 999 or a login wall), and search engines don't index posts, so posts can't be found by searching. A direct `linkedin.com/feed/update/urn:li:activity:<id>` link loads publicly; post date = `(id >> 22) / 1000` Unix seconds. Photos are at `media.licdn.com/…/feedshare-…`, sometimes only at 800 px. |
+| Bluesky posts | Prof. Pozzo is `lilopozzo.bsky.social`; `public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=…` | The account's feed is public (search needs a login). Full-size photos are under `embed.images[].fullsize`. |
+| Positions, titles, awards | Prof. Pozzo's CV (`Pozzo_long_CV2025.pdf`, not published) or the owner | Don't rely on search-engine snippets about people's jobs; they can be out of date or wrong. |
+
+## 7. Markdown and Jekyll pitfalls
+
+- **No ` | ` in story or page text.** Kramdown turns any line containing a pipe into a table, which merges the links ("LinkedIn | ORCID" became "LinkedInORCID"). Separate links with ` · `.
+- **HTML blocks with Markdown inside** need `markdown="1"` on the outer tag (e.g. `<details markdown="1">`, `<div class="col-md-7" markdown="1">`), with blank lines around the Markdown.
+- **Internal links in layouts/includes** use `{{ '/path/' | relative_url }}`. Posts may use plain `/path/`.
+- **Front matter:** quote strings containing `:` or `"`; keep the `---` lines intact. A YAML error stops the whole site from building.
+- **Case sensitivity:** see §4. The local Mac build won't catch it, but `check_site.py` does.
+- **Special characters** (ʻokina, macrons, subscripts like Sb₂S₃) are fine in UTF-8 files; don't replace them with HTML entities.
+
+## 8. Checking and publishing
+
+1. **Build locally:** the Mac's system Ruby (2.6) is too old for the current gems, so the build uses a separate pinned Gemfile outside the repo (details in CLAUDE.md, "Building locally").
+2. **Run the check:** `python3 _scripts/check_site.py <built _site>`. It flags broken internal links (case-sensitive), off-ratio images and files over 1 MB, and exits with an error on broken links. Also check new outside links resolve (`curl -s -o /dev/null -w '%{http_code}' <url>`, expect 200/30x).
+3. **Look at it:** screenshot the changed pages at 1280 px and ~520 px wide (headless Chrome can't go narrower than ~500 px). Confirm the menu stays on one line and nothing renders as a table or shows raw Markdown.
+4. **Stage, report, and ask** before committing or pushing. Pushing to `main` publishes within a minute or two.
+5. **After a push:** `gh run list` shows the Pages deploy. Live files are cached for up to 10 minutes; a hard refresh (Cmd+Shift+R) shows changes sooner.
+
+**When a push or deploy fails**, check [githubstatus.com](https://www.githubstatus.com) first. GitHub had incidents on Oct 5, 6 and 7, 2026.
+
+| Symptom | Meaning | Fix |
+| --- | --- | --- |
+| Push: `remote rejected … (Internal Server Error)` | GitHub server fault | Wait for the incident to clear, then push again |
+| Push/fetch: `Could not resolve host: github.com` | Local network drop | Retry when online |
+| Deploy: `job was not acquired by Runner` | GitHub Actions outage | `gh run rerun <id>` or push again |
+| GitHub Desktop errors | Details are in `~/Library/Application Support/GitHub Desktop/logs/<date>.desktop.production.log` | Read the log before guessing |
+
+## 9. Open items (awaiting the site owner)
+
+Remove each item once it's resolved.
+
+- **Corresponding author for #111 and #108** (Pozzo is last author; no data in OpenAlex), and confirmation for #110 (OpenAlex flags Pozzo; Holmberg is last author).
+- **Community Service Design course:** exact title and a one-line description.
+- **Older defense stories** (Pelkie, Guio, Politi, Scheiwiller, Lachowski) have no dissertation links. They're likely in ResearchWorks. Brenden Pelkie's archived title reads "Automation and Autonomous Experimentation for Sol-Gel Nanomaterial Synthesis", while the story says "Automated and Autonomous Experiments…".
+- **Low-resolution images worth replacing:** `research/emulsions.jpg` (368 px source), `research/ultrasound.jpg` (342 px source), Claire Benstead's group selfie and Karen Li's hooding photo (800 px from LinkedIn).
+- **Unplaced figures** from the old site: "AI Sampling", "DynamicLandscape" (possibly animated) and "Paella"; the originals are needed.
+
+## 10. Decisions on record
+
+- **Oct 2026:** rebuilt from the Wix site (pozzorg.com) on the academic theme; old news stories and images carried over; domain moved to GitHub Pages.
 - Twitter/X removed entirely at the owner's request; `jekyll-seo-tag` replaced by `_includes/seo.html` (Open Graph tags only).
-- Research and lab images standardized to 2.2:1, headshots to 1:1, course photos to 3:4; news galleries use uncropped 4:3 frames.
+- Image proportions standardized: research/lab 2.2:1 (full column width), headshots 1:1, course photos 3:4; news galleries use uncropped 4:3 frames.
+- Publication list audited against Crossref (59 links corrected); Open Access badges follow DOAJ; featured publications follow corresponding authorship.
+- Defense stories include the dissertation link and the abstract in a collapsible block.
 - The full CV PDF is intentionally not published (`*.pdf` is excluded from the build).
 - Alumni are listed without photos.
