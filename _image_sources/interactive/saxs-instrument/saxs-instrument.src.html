@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAXS instrument</title></head><body>
+<script src="core.js"></script>
+<script>
+/* ============================================================
+   Small-angle X-ray scattering (SAXS / WAXS) laboratory beamline, modelled on a Xenocs Xeuss 3.0.
+   Shown open: no radiation-safety enclosure, so the beamline stands in plain view on the base cabinet's top.
+   1 unit = 1 cm. x = depth (front of the base at x = W), y = length along the beam (+y = viewer-left: the source end),
+   z = up. The beam runs from high y (source) to low y (detector) along x = BX, z = BZ.
+
+   HOW IT REALLY WORKS (each button is one real step; material only moves along its real path)
+   1. Load sample: the autosampler needle moves over the chosen vial and dips in; the syringe pump draws the liquid
+      (vial -> needle -> needle line -> valve -> syringe). The valve turns and the pump pushes it out
+      (syringe -> valve -> inlet line -> feedthrough in the front band -> along the enclosure floor -> up the
+      chamber stand -> through the chamber floor -> bottom of the quartz capillary). The capillary fills from the
+      bottom (no bubbles); the overflow leaves its top (outlet tube -> chamber floor -> stand -> floor ->
+      feedthrough -> outlet line -> waste bottle). A loaded sample is first flushed with water from the reservoir.
+   2. Detector distance: the detector rides a carriage on two rails inside the evacuated flight tube, driven by a
+      lead screw from a motor at the tube end (Xenocs "Q-Xoom"). Sample-to-detector distance L = 5 cm (WAXS),
+      37 cm (MAXS), 90 cm (SAXS) or 180 cm (ESAXS). A long L puts small angles (large structures) on the
+      detector; a short L catches wide angles (atomic spacings).
+   3. Measure: the Cu micro-focus source (lambda = 1.54 A) makes X-rays; multilayer optics shape them; two scatterless
+      slits (S1, S2) 90 cm apart trim the beam (a longer collimation gives a finer, less divergent beam); all of it is under vacuum. The beam crosses the capillary; the straight-through
+      beam is caught by the beamstop; the scattered X-rays spread in a cone and land on the 2D detector as rings.
+      Ring radius r = L tan(2 theta), q = 4 pi sin(theta) / lambda. The detector half-width (75 mm) and the beamstop
+      (1.5 mm) set the q range, and so the length scales d = 2 pi / q one distance can see.
+      The red roof lamp and the X-RAY ON sign are lit while X-rays are on.
+   4. Flush: water from the reservoir rinses the capillary to the waste bottle.
+
+   PARTS (each fixed to another)
+   CASE      base cabinet (palette colour) on four feet; its top is the beamline bench: three doors with vents and
+             handles, control-screen bezel, X-RAY ON sign . X-ray lamp on a post . back service panels, vents, mains
+             inlet . detector position rail along the bench front with a marker
+   SOURCE    source housing on its stand . HV cable up from the generator . coolant in and out from the chiller
+   BEAM      multilayer optics on a post . collimation tube in three pieces . slits S1 and S2 (90 cm apart), each on a post,
+             each with a motor box . optical bench on three legs
+   SAMPLE    sample chamber (glass front, frame) on a stand . stage post . lower and upper clamps . quartz capillary .
+             hanger to the roof . inlet and outlet tubes inside the chamber
+   DETECTOR  flight tube with two end flanges . two saddles . vacuum line . position scale on two brackets with a
+             marker . rail base plate, pedestal in the chamber . two rails . lead screw in two pieces either side of
+             the carriage nut . drive motor at the tube end . carriage . 2D detector with sensor face . beamstop disc on
+             a wire arm . cable drag chain
+   FLUIDICS  ledge on two brackets . vial rack, five vials, five caps . needle arm: post, arm, carriage, needle .
+             syringe pump: body, display, lead screw, pusher block, glass syringe, valve . water reservoir . waste
+             bottle . needle line, reservoir line, inlet line, outlet line
+   BASE      HV generator . chiller with fan . scroll vacuum pump and motor . control PC behind the screen . vacuum hose
+   ============================================================ */
+const W = 72, D = 420, ZB = 4, HB = 86, HT = 156;
+const TOPZ = HB + 1;                                     // the base cabinet's top: the bench the beamline stands on
+const OUT = [[0, ZB], [D, ZB], [D, TOPZ], [0, TOPZ]];      // the base cabinet's profile (no enclosure)
+const BX = 40, BZ = 128, YS = 205;                       // beam axis (x, z) and the sample position along y
+const LAMBDA = 1.5406, RDET = 75, RBS = 1.5;             // A; detector half-width and beamstop radius, mm
+const DIST = [ { name:'WAXS', L:5, lab:'50 mm' }, { name:'MAXS', L:37, lab:'370 mm' }, { name:'SAXS', L:90, lab:'0.9 m' }, { name:'ESAXS', L:180, lab:'1.8 m' } ];
+const WATER = '#d8eef5', WASTEC = '#9a9480', LINE = '#e3eef1';
+// samples: colour, low-q diffuse scattering, rings [q (1/A), intensity, width]
+const SAMPLES = [
+  { name:'Gold nanoparticles', col:'#b3203a', halo:.9,  rings:[[.072, .8, 1.2], [.114, .45, 1.2], [2.67, .5, .7], [3.08, .3, .7]] },
+  { name:'Silica spheres',     col:'#ece6d6', halo:1,   rings:[[.0144, .8, 1.3], [.0228, .45, 1.3]] },
+  { name:'Dyed micelles',      col:'#3f6fd6', halo:.5,  rings:[[.063, .65, 3.2]] },
+  { name:'Lamellar gel',       col:'#f2c230', halo:.3,  rings:[[.1047, .95, .6], [.209, .55, .6], [.314, .32, .6]] },
+  { name:'Quantum dots',       col:'#3fae58', halo:.4,  rings:[[.288, .5, 2.6], [1.75, .6, 1], [2.88, .4, 1], [3.39, .35, 1]] },
+];
+const VIAL_Y = [236, 242, 248, 254, 260];
+const GRAPH = matOf('#5b6068'), SRCM = matOf('#ece8df'), STEEL = matOf('#c3cace'), DETM = matOf('#4a4f58');
+const GLASS = '#cfe9f0';
+
+/* ---------- physics: where a ring at q lands, and what a distance sees ---------- */
+const twoTheta = q => 2*Math.asin(Math.min(1, q*LAMBDA/(4*Math.PI)));
+const ringR = (q, Lcm) => Lcm*10*Math.tan(twoTheta(q));                       // mm on the detector
+const qAt = (rmm, Lcm) => 4*Math.PI/LAMBDA*Math.sin(Math.atan(rmm/(Lcm*10))/2);
+const scales = Lcm => { const qmin = qAt(RBS, Lcm), qmax = qAt(RDET, Lcm); return { qmin, qmax, dmin: 2*Math.PI/qmax/10, dmax: 2*Math.PI/qmin/10 }; };
+const nm = v => v < 1 ? v.toFixed(2) : v < 10 ? v.toFixed(1) : String(Math.round(v));
+
+/* ---------- part helpers: every part carries a box for byDepth ---------- */
+const bx = (x0, y0, z0, x1, y1, z1, mt, w = .9) => ({ box:[[x0, y0, z0], [x1, y1, z1]], svg: box(x0, y0, z0, x1, y1, z1, mt, toneI, w) });
+const rodp = (a, b, r, mt, w = .8) => ({ box:[[0,1,2].map(i => Math.min(a[i], b[i]) - r), [0,1,2].map(i => Math.max(a[i], b[i]) + r)], svg: rod(a, b, r, mt, toneI, w) });
+const cylp = (x, y, z0, z1, r, mt, w = 1) => ({ box:[[x - r, y - r, z0], [x + r, y + r, z1]], svg: cyl(x, y, z0, z1, r, mt, toneI, w) });
+const ptsBox = (pts, pad = .8) => [[0,1,2].map(i => Math.min(...pts.map(p => p[i])) - pad), [0,1,2].map(i => Math.max(...pts.map(p => p[i])) + pad)];
+const plen = pts => { let t = 0; for (let i = 1; i < pts.length; i++) t += Math.hypot(...sub(pts[i], pts[i-1])); return t; };
+const cutPath = (pts, fr) => { if (fr <= 0) return null; const lim = plen(pts)*Math.min(1, fr), o = [pts[0]]; let acc = 0;
+  for (let i = 1; i < pts.length; i++){ const d = Math.hypot(...sub(pts[i], pts[i-1]));
+    if (acc + d >= lim){ const t = d ? (lim - acc)/d : 0; o.push(pts[i-1].map((v, j) => v + (pts[i][j] - v)*t)); return o; } o.push(pts[i]); acc += d; } return o; };
+// a tube or cable along a path, split into short pieces so it sorts with solids: ink edge, own colour, and a
+// coloured liquid front up to fr (0..1) of the whole path
+function tubeParts(pts, base, w = .55, front = null, fr = 0){
+  const total = plen(pts), lim = total*Math.max(0, Math.min(1, fr)), out = []; let acc = 0;
+  for (let i = 1; i < pts.length; i++){ const a = pts[i-1], b = pts[i], d = Math.hypot(...sub(b, a)), seg = [a, b], pdv = pd(seg, false);
+    let svg = `<path d="${pdv}" fill="none" stroke="${INK}" stroke-width="${f(2*w + 1)}" stroke-linecap="round"/><path d="${pdv}" fill="none" stroke="${base}" stroke-width="${f(2*w)}" stroke-linecap="round"/>`;
+    if (front && lim > acc){ const t = Math.min(1, (lim - acc)/(d || 1)), e = a.map((v, j) => v + (b[j] - v)*t);
+      svg += `<path d="${pd([a, e], false)}" fill="none" stroke="${front}" stroke-width="${f(2*w)}" stroke-linecap="round"/>`; }
+    out.push({ box: ptsBox(seg, w + .3), svg }); acc += d; }
+  return out;
+}
+// a clear glass cylinder with liquid up to zl
+const glassCyl = (x, y, z0, z1, r, liq, zl, w = .9) => {
+  let s = ''; if (liq && zl > z0 + .2) s += cyl(x, y, z0, Math.min(z1, zl), r*.84, matOf(liq), toneI, .4);
+  const A = on(PZ(z0), ellUV(x, y, r, r, 20)), B = on(PZ(z1), ellUV(x, y, r, r, 20));
+  s += `<g opacity=".45">${loft(A, B, n => toneI(n, CLEAR))}${fill(pd(B), CLEAR.l)}</g>` + hullInk([...A, ...B], w) + ink(pd(B), w*.7);
+  return { box:[[x - r, y - r, z0], [x + r, y + r, z1]], svg: s }; };
+
+/* ---------- fluid paths (along the ledge, the bench top and the chamber stand; over the scale rail) ---------- */
+const VALVE = [79, 221, 102, 87, 227, 110];
+const IN_OUT  = [[79, 224, 104], [76, 223, 90.6], [72.6, 222, 90.6]];                                                // valve -> ledge back edge
+const IN_IN   = [[72.6, 222, 90.6], [71, 222, TOPZ + .6], [52.6, 222, TOPZ + .6], [52.6, 222, 104], [46, 212, 104.6], [BX, YS, 108]];   // -> capillary bottom
+const OUT_IN  = [[BX, YS, 148], [46, 200, 152], [56, 188, 152], [56, 188, 104.6], [52.6, 188, 104], [52.6, 188, TOPZ + .6], [66, 180, TOPZ + .6], [68, 180, 93.6], [71, 180, 93.6], [72.6, 180, 90.6]];
+const OUT_OUT = [[72.6, 180, 90.6], [76, 176, 90.6], [80, 166, 104], [83, 162, 109.5]];                              // -> waste
+const RES_LN  = [[83, 186, 112.5], [75, 190, 106], [73.6, 196, 90.6], [73.6, 224, 90.6], [79, 225, 103]];            // reservoir -> valve
+const L_IO = plen(IN_OUT), L_II = plen(IN_IN), L_OI = plen(OUT_IN), L_OO = plen(OUT_OUT);
+// one liquid front runs the whole way: split its progress between the outside and inside pieces
+const splitFr = (fr, a, b) => [Math.min(1, fr*(a + b)/a), Math.max(0, (fr*(a + b) - a)/b)];
+
+/* ---------- the beamline, source end ---------- */
+function sourceEnd(st){
+  const lit = st.beam > .05, ps = [];
+  ps.push(bx(25, 366, TOPZ, 55, 392, 108, STEEL));                                              // source stand
+  { const s0 = bx(22, 362, 108, 58, 396, 150, SRCM, 1.1); let deco = '';
+    if (facing([1,0,0])){ deco += shape(on(PX(58.1), rectUV(366, 141, 392, 145)), '#f2c230', .6);
+      for (let y = 368; y < 391; y += 5) deco += fill(pd(on(PX(58.15), [[y, 141], [y + 2.2, 141], [y + 4.2, 145], [y + 2, 145]])), INK);
+      deco += tx(58.2, 379, 131, 'X-RAY', 4, INK, 800) + shape(on(PX(58.1), ellUV(379, 119, 3, 3, 16)), lit ? '#ffb347' : '#7d7169', .7); }
+    ps.push({ box: s0.box, svg: s0.svg + deco }); }
+  ps.push(bx(32, 342, 121, 48, 362, 135, METAL));                                               // multilayer optics
+  ps.push(bx(30, 238, 104, 50, 360, 109, STEEL));                                                // optical bench
+  for (const y of [250, 300, 348]) ps.push(bx(34, y - 3, TOPZ, 46, y + 3, 104, STEEL, .7));    // bench legs
+  for (const [y0, y1] of [[328, 334], [238, 244]]){                                             // slits S1, S2 (90 cm apart), motor boxes, posts
+    ps.push(bx(29, y0, 118, 51, y1, 138, matOf('#7c8389')));
+    ps.push(bx(35, y0, 138, 45, y1, 143, DARK, .7));
+    ps.push(bx(37, y0 + 1, 109, 43, y1 - 1, 118, STEEL, .6)); }
+  ps.push(bx(37, 345, 109, 43, 359, 121, STEEL, .6));                                           // optics post
+  for (const [a, b] of [[342, 334], [328, 244], [238, 236]]) ps.push(rodp([BX, a, BZ], [BX, b, BZ], 3.5, METAL, .8));
+  ps.push(...tubeParts([[24, 393, 108], [20, 394, 100], [20, 394, TOPZ]], '#2b2723', 1.1));       // HV cable down to the generator
+  ps.push(...tubeParts([[22, 376, 124], [8, 376, 124], [8, 376, TOPZ]], '#3d7bd0', .8));           // coolant in
+  ps.push(...tubeParts([[22, 382, 120], [11, 382, 120], [11, 382, TOPZ]], '#d0503d', .8));         // coolant out
+  // X-ray warning lamp on a post at the source end, lit while X-rays are on
+  ps.push(rodp([8, 412, TOPZ], [8, 412, 140], 1.1, STEEL, .7));
+  { let l = cyl(8, 412, 140, 143, 4.2, DARK, toneI, .9) + cyl(8, 412, 143, 151, 3.5, matOf(lit ? '#ff5a3d' : '#8a4038'), toneI, .9) + cyl(8, 412, 151, 152.5, 3.8, DARK, toneI, .8);
+    if (lit){ const c = P(8, 412, 147); l += `<circle cx="${f(c[0])}" cy="${f(c[1])}" r="9" fill="#ff6a3d" opacity="${f(.45*st.beam)}" filter="url(#sxGlow)"/>`; }
+    ps.push({ box:[[3.8, 407.8, 140], [12.2, 416.2, 152.5]], svg: l }); }
+  return ps;
+}
+/* ---------- the sample chamber ---------- */
+const CH = [22, 174, 104, 58, 236, 156];                  // x0, y0, z0, x1, y1, z1 (front x1 is glass)
+function chamberBack(){
+  // the parts of the chamber behind its contents: inner back wall, floor, side walls facing the viewer, roof (from below)
+  const [x0, y0, z0, x1, y1, z1] = CH; let s = '';
+  if (facing([1,0,0])) s += shape(on(PX(x0), rectUV(y0, z0, y1, z1)), '#7d868b', .8);
+  if (facing([-1,0,0])) s += shape(on(PX(x1), rectUV(y0, z0, y1, z1)), '#7d868b', .8);
+  if (facing([0,0,1])) s += shape(on(PZ(z0), rectUV(x0, y0, x1, y1)), '#9aa3a7', .8);
+  if (facing([0,1,0])) s += shape(on(PY(y0), rectUV(x0, z0, x1, z1)), '#6c7479', .8);
+  if (facing([0,-1,0])) s += shape(on(PY(y1), rectUV(x0, z0, x1, z1)), '#6c7479', .8);
+  return { box:[[x0 - .1, y0 - .1, z0 - .1], [x0 + .1, y1 + .1, z1 + .1]], svg: s };
+}
+function chamberFront(){
+  // the walls between the viewer and the contents: glass front (with frame), the near metal side walls and the lid
+  const [x0, y0, z0, x1, y1, z1] = CH; let s = '';
+  if (facing([1,0,0])){ s += fill(pd(on(PX(x1), rectUV(y0, z0, y1, z1))), GLASS, 'opacity=".22"') + fill(pd(on(PX(x1 + .05), [[y0 + 14, z0 + 4], [y0 + 18, z0 + 4], [y0 + 30, z1 - 4], [y0 + 26, z1 - 4]])), '#ffffff', 'opacity=".28"');
+    s += fill(pd(on(PX(x1), rectUV(y0, z0, y1, z1))) + pd(on(PX(x1), rectUV(y0 + 3, z0 + 3, y1 - 3, z1 - 3))), toneI([1,0,0], STEEL), 'fill-rule="evenodd"') + ink(pd(on(PX(x1), rectUV(y0, z0, y1, z1))), 1.2) + ink(pd(on(PX(x1 + .05), rectUV(y0 + 3, z0 + 3, y1 - 3, z1 - 3))), .7); }
+  if (facing([-1,0,0])) s += shape(on(PX(x0), rectUV(y0, z0, y1, z1)), toneI([-1,0,0], STEEL), 1.1);
+  if (facing([0,-1,0])) s += shape(on(PY(y0), rectUV(x0, z0, x1, z1)), toneI([0,-1,0], STEEL), 1.1);
+  if (facing([0,1,0])) s += shape(on(PY(y1), rectUV(x0, z0, x1, z1)), toneI([0,1,0], STEEL), 1.1);
+  s += shape(on(PZ(z1), rectUV(x0, y0, x1, y1)), toneI([0,0,1], STEEL), 1.1);
+  return s;
+}
+function chamberParts(st, withDetector){
+  const ps = [];
+  ps.push(bx(28, 186, HB + 1, 52, 226, CH[2], STEEL, 1));                                         // chamber stand
+  ps.push(bx(37, 202, 104, 43, 208, 108, STEEL, .7));                                             // stage post
+  ps.push(bx(35, 200, 108, 45, 210, 113, METAL, .8));                                             // lower clamp
+  ps.push(bx(35, 200, 143, 45, 210, 148, METAL, .8));                                             // upper clamp
+  ps.push(bx(37, 202, 148, 43, 208, 156, STEEL, .7));                                             // hanger to the lid
+  ps.push(glassCyl(BX, YS, 113, 143, 1.9, st.capF > 0 ? st.capCol : null, 113 + 30*st.capF, .9));   // quartz capillary
+  ps.push(...innerTubes(st).filter(p => p.box[0][2] >= CH[2] - 1));
+  if (withDetector) ps.push(...detectorParts(st, 'chamber'));
+  return ps;
+}
+// the inlet and outlet tubes inside the case (the pieces below the chamber floor run along the floor and the stand)
+function innerTubes(st){ const [, fi] = splitFr(st.inF, L_IO, L_II), [oi] = splitFr(st.outF, L_OI, L_OO);
+  return [...tubeParts(IN_IN, st.inBase, .55, st.inCol, fi), ...tubeParts(OUT_IN, st.outBase, .55, st.outCol, oi)]; }
+// a whole chamber as one drawing: back walls, contents sorted, then the near walls. The contents never cross its walls.
+function chamberSvg(st, inBeam){ return chamberBack().svg + byDepth(chamberParts(st, true).filter(p => p.box[0][2] >= CH[2] - 1)) + (inBeam ? beamSvg(st, CH[4], CH[1], true) : '') + chamberFront(); }
+
+/* ---------- the flight tube and detector ---------- */
+const TR = 18, TY0 = 12, TY1 = CH[1];
+const tubeRing = (y, r) => on(PY(y), ellUV(BX, BZ, r, r, 28));
+function flightTube(ghost){
+  const A = tubeRing(TY0, TR), B = tubeRing(TY1, TR), fl = (y0, y1) => loft(tubeRing(y0, TR + 2.2), tubeRing(y1, TR + 2.2), n => toneI(n, STEEL));
+  if (ghost) return { far: `<g opacity=".4">${loft(A, B, n => mix(toneI(n.map(v => -v), STEEL), '#ffffff', .45), true)}</g>`,
+    near: `<g opacity=".25">${loft(A, B, n => toneI(n, STEEL))}</g><g opacity=".6">${hullInk([...A, ...B], 1.6)}</g>` };
+  let s = loft(A, B, n => toneI(n, STEEL)) + fl(TY0, TY0 + 3) + fl(TY1 - 3, TY1);
+  if (facing([0,-1,0])){ const cr = tubeRing(TY0, TR + 2.2); s += fill(pd(cr), toneI([0,-1,0], STEEL)) + ink(pd(cr), 1); }
+  s += hullInk([...tubeRing(TY0, TR + 2.2), ...tubeRing(TY1, TR + 2.2)], 2);
+  for (const y of [TY0 + 3, TY1 - 3]) s += ink(pd(tubeRing(y, TR), false), .7);
+  return { box:[[BX - TR - 2.2, TY0, BZ - TR - 2.2], [BX + TR + 2.2, TY1, BZ + TR + 2.2]], svg: s };
+}
+function tubeOutside(st){
+  const ps = [], yF = YS - st.L;
+  for (const y of [40, 140]) ps.push(bx(30, y - 3, HB + 1, 50, y + 3, BZ - TR, STEEL, .8));      // saddles
+  ps.push(rodp([BX, 100, BZ - TR], [BX, 100, HB + 1], 1.6, METAL, .8));                           // vacuum line down to the pump
+  ps.push(bx(30, 2, 118, 50, TY0, 138, DARK, 1));                                                  // drive motor at the tube end
+  return ps;
+}
+// inside the flight tube and chamber: rails, screw, carriage, detector, beamstop, drag chain
+function detectorParts(st, mode){
+  const ps = [], yF = YS - st.L, zP = BZ - TR, yA = mode === 'chamber' ? CH[1] : 14, yB = mode === 'chamber' ? 202 : CH[1];
+  const mine = y => y >= yA && y < yB;
+  ps.push(bx(31, yA, zP, 49, yB, zP + 2, STEEL, .7));                                              // rail base plate
+  if (mode === 'chamber') ps.push(bx(35, 190, CH[2], 45, 196, zP, STEEL, .6));                    // its pedestal in the chamber
+  for (const x of [34, 46]) ps.push(rodp([x, yA, zP + 2.9], [x, yB, zP + 2.9], .9, METAL, .5));  // rails
+  const scr = (a, b) => { a = Math.max(a, yA); b = Math.min(b, yB, 200); if (b - a > .3) ps.push(rodp([BX, a, zP + 2.9], [BX, b, zP + 2.9], .6, matOf('#d9c27a'), .4)); };
+  scr(14, yF - 11); scr(yF - 1, 200);                                                             // lead screw, either side of the carriage nut
+  if (mine(yF - 6)){
+    ps.push(bx(31, yF - 11, zP + 3.8, 49, yF - 1, zP + 7, STEEL, .8));                            // carriage
+    const d = bx(30, yF - 12, zP + 7, 50, yF, zP + 29, DETM, 1.1); let face = '';
+    if (facing([0,1,0])){ face += shape(on(PY(yF + .05), rectUV(32, zP + 9, 48, zP + 27)), mix('#1a1f2a', '#ff9a3d', .55*st.beam), .7);
+      let g = ''; for (const z of [zP + 15, zP + 21]) g += pd([[32, yF + .1, z], [48, yF + .1, z]], false); g += pd([[40, yF + .1, zP + 9], [40, yF + .1, zP + 27]], false);
+      face += `<path d="${g}" fill="none" stroke="#3a4250" stroke-width=".4"/>`; }
+    ps.push({ box: d.box, svg: d.svg + face });
+    ps.push(rodp([BX, yF + 3, zP + 29], [BX, yF, zP + 29], .3, METAL, .3)); }                       // beamstop arm, top leg
+  if (mine(yF + 3)){
+    ps.push(rodp([BX, yF + 3.4, BZ], [BX, yF + 2.6, BZ], 1.2, DARK, .6));                         // beamstop disc
+    ps.push(rodp([BX, yF + 3, BZ + 1.2], [BX, yF + 3, zP + 29], .3, METAL, .3)); }               // its wire arm
+  if (mode === 'tube') ps.push(...tubeParts([[46.5, Math.min(yF - 11, CH[1]), zP + 5], [46.5, Math.min(yF - 15, CH[1] - 2), zP + 2.6], [46.5, 15, zP + 2.6]], '#3d3935', .9));   // drag chain
+  return ps;
+}
+// the beam: from the optics exit straight through the capillary to the beamstop; the scattered cone to the detector
+function beamSvg(st, yHi, yLo, cone){
+  if (st.beam <= .01) return '';
+  const yF = YS - st.L, a = st.beam, y0 = Math.min(yHi, 342), y1 = Math.max(yLo, yF + 3.4);
+  if (y0 <= y1) return '';
+  const d = pd([[BX, y0, BZ], [BX, y1, BZ]], false);
+  let s = `<path d="${d}" fill="none" stroke="#ff8a3d" stroke-width="2.4" opacity="${f(.45*a)}" filter="url(#sxGlow)"/><path d="${d}" fill="none" stroke="#ff4d1a" stroke-width=".7" opacity="${f(a)}"/>`;
+  if (cone && YS <= yHi && YS >= yLo){ const ring = on(PY(Math.max(yLo, yF) + .2), ellUV(BX, BZ, 8, 8, 24)), apex = P(BX, YS, BZ);
+    s += `<path d="${sp(hull([apex, ...ring.map(p => P(...p))]))}" fill="#ffb347" opacity="${f(.22*a)}"/>`;
+    s += `<circle cx="${f(apex[0])}" cy="${f(apex[1])}" r="2" fill="#ffd27a" opacity="${f(.9*a)}" filter="url(#sxGlow)"/>`; }
+  return s;
+}
+
+/* ---------- the ledge: autosampler, syringe pump, bottles (outside the case, at hand height ~ 90 cm) ---------- */
+const LZ = 90;                                            // ledge top
+function ledgeParts(st){
+  const ps = [], loading = st.phase === 'load' || st.phase === 'flush';
+  ps.push(bx(W, 148, LZ - 4, 94, 264, LZ, STEEL, 1));                                              // shelf
+  for (const y of [154, 258]) ps.push(bx(W, y - 1, LZ - 14, 86, y + 1, LZ - 4, STEEL, .7));        // brackets
+  ps.push(bx(76, 231, LZ, 91, 263, LZ + 4.5, matOf('#d9d4c6'), .8));                               // vial rack
+  SAMPLES.forEach((smp, i) => { const y = VIAL_Y[i], z0 = LZ + 4.5, v = glassCyl(83.5, y, z0, z0 + 11.5, 2.3, smp.col, z0 + 9*st.vial[i], .8);
+    ps.push({ box:[[81.05, y - 2.45, z0], [85.95, y + 2.45, z0 + 14.1]], svg: v.svg + cyl(83.5, y, z0 + 11.5, z0 + 14.1, 2.45, i % 2 ? DARK : GRAPH, toneI, .7) }); });
+  // needle arm: post, arm along the rack, carriage, needle at the chosen vial
+  ps.push(cylp(90, 229, LZ, LZ + 32, 1.2, STEEL, .8));
+  ps.push(rodp([90, 229, LZ + 31], [90, 263, LZ + 31], .9, STEEL, .6));
+  const vy = st.ny, ztip = LZ + 20 - 13*st.nz;
+  ps.push(bx(81.5, vy - 2, LZ + 29, 91, vy + 2, LZ + 33.5, DARK, .8));
+  ps.push(rodp([83.5, vy, LZ + 29], [83.5, vy, ztip], .3, METAL, .3));
+  // syringe pump: body + display, lead screw, pusher block, glass syringe, valve
+  ps.push(bx(75, 198, LZ, 91, 226, LZ + 12, matOf('#e7e3d8'), 1));
+  if (facing([1,0,0])) ps.push({ box:[[91, 200, LZ + 4], [91.2, 210, LZ + 10]], svg: shape(on(PX(91.1), rectUV(201, LZ + 5, 209, LZ + 9)), '#1d2a26', .6)
+      + tx(91.2, 205, LZ + 6.2, loading ? 'RUN' : 'IDLE', 2.2, '#8af0ae', 800) });
+  const yp = 203 + 16*(1 - st.syr), sz = LZ + 16;
+  ps.push(rodp([83, 199, LZ + 14], [83, Math.max(199.5, yp - 4.5), LZ + 14], .5, matOf('#d9c27a'), .4));
+  ps.push(bx(78, yp - 4.5, LZ + 12, 88, yp - 1, LZ + 19, DARK, .8));
+  { const A = on(PY(203), ellUV(83, sz, 2.6, 2.6, 18)), B = on(PY(221), ellUV(83, sz, 2.6, 2.6, 18)); let s = '';
+    if (st.syr > .02) s += loft(on(PY(yp), ellUV(83, sz, 2.2, 2.2, 18)), on(PY(221), ellUV(83, sz, 2.2, 2.2, 18)), n => toneI(n, matOf(st.syrCol)));
+    s += box(81.4, yp - 1, sz - 1.6, 84.6, yp, sz + 1.6, DARK, toneI, .5);
+    s += `<g opacity=".5">${loft(A, B, n => toneI(n, CLEAR))}</g>` + hullInk([...A, ...B], .9);
+    ps.push({ box:[[80.4, 203, sz - 2.6], [85.6, 221, sz + 2.6]], svg: s }); }
+  ps.push(bx(...VALVE, GRAPH, .8));
+  // water reservoir and waste bottle
+  { const r = glassCyl(83, 186, LZ, LZ + 20, 5, WATER, LZ + 17, 1.1); ps.push({ box:[[78, 181, LZ], [88, 191, LZ + 22.5]], svg: r.svg + cyl(83, 186, LZ + 20, LZ + 22.5, 2.4, DARK, toneI, .7) });
+    const w = glassCyl(83, 162, LZ, LZ + 16, 5, WASTEC, LZ + .5 + 13*st.waste, 1.1); ps.push({ box:[[78, 157, LZ], [88, 167, LZ + 19]], svg: w.svg + cyl(83, 162, LZ + 16, LZ + 19, 2.4, DARK, toneI, .7) }); }
+  // lines: needle -> valve, reservoir -> valve, valve -> inlet feedthrough, outlet feedthrough -> waste
+  ps.push(...tubeParts([[86, vy, LZ + 33.5], [86, (vy + 229)/2, LZ + 37], [83, 229, LZ + 28], [83, 225, VALVE[5]]], LINE, .5, st.needleCol, st.needleF));
+  ps.push(...tubeParts(RES_LN, LINE, .5, WATER, 1));
+  const [fo] = splitFr(st.inF, L_IO, L_II), [, oo] = splitFr(st.outF, L_OI, L_OO);
+  ps.push(...tubeParts(IN_OUT, st.inBase, .55, st.inCol, fo));
+  ps.push(...tubeParts(OUT_OUT, st.outBase, .55, st.outCol, oo));
+  return ps;
+}
+
+/* ---------- the control screen on the base front: the 2D detector image ---------- */
+const SCY = 130, SCZ = 55, SCH = 21;
+function screenSvg(st){
+  const x = W + .3, sqr = rectUV(SCY - SCH, SCZ - SCH, SCY + SCH, SCZ + SCH); let s = '';
+  s += shape(on(PX(W + .1), rectUV(98, 22, 162, 86)), '#2b2723', 1.4);
+  s += fill(pd(on(PX(x), sqr)), '#120d1f');
+  const img = st.img, Lcm = st.L;
+  if (img){ const smp = SAMPLES[img.s], I = st.imgI, sc = SCH/RDET; let g = '';
+    const rh = Math.min(RDET*1.4, ringR(.03, Lcm))*sc;                                            // low-q diffuse glow
+    for (const [k, o] of [[1, .22], [.66, .32], [.38, .45]]) g += fill(pd(on(PX(x + .02), ellUV(SCY, SCZ, rh*k, rh*k, 32))), '#8a4fe0', `opacity="${f(o*smp.halo*I)}"`);
+    for (const [q, a, w] of [...smp.rings, [2.0, .3, 3.2]]){ const r = ringR(q, Lcm);           // rings, plus the solvent (water) halo
+      if (r < RBS || r > RDET*1.42) continue;
+      g += `<path d="${pd(on(PX(x + .05), ellUV(SCY, SCZ, r*sc, r*sc, 56)))}" fill="none" stroke="${mix('#ff6a3d', '#fff2a8', a)}" stroke-width="${f(w*.55)}" opacity="${f((.35 + .65*a)*I)}"/>`; }
+    s += clipTo(on(PX(x), sqr), g);
+    s += fill(pd(on(PX(x + .1), rectUV(SCY - .35, SCZ, SCY + .35, SCZ + SCH))), '#120d1f') + fill(pd(on(PX(x + .1), ellUV(SCY, SCZ, 1.3, 1.3, 14))), '#120d1f');
+  } else s += tx(x + .1, SCY, SCZ - 1, st.phase === 'expose' ? '' : 'NO IMAGE', 3, '#8af0ae', 800);
+  s += ink(pd(on(PX(x), sqr)), .8);
+  s += tx(x + .1, 155.5, 80, 'L', 3, '#8af0ae', 800) + tx(x + .1, 155.5, 75, (Lcm/100).toFixed(2), 2.6, '#8af0ae', 800) + tx(x + .1, 155.5, 71, 'm', 2.6, '#8af0ae', 800);
+  s += tx(x + .1, 104.5, 80, 'DET', 2.6, '#8af0ae', 800);
+  return s;
+}
+
+/* ---------- the base cabinet: the beamline stands on its top (no radiation enclosure) ---------- */
+const DOORS = [[6, 94], [166, 262], [270, 414]];
+const txBk = (x, y, z, str, size, col = INK, weight = 700) => `<text transform="${txM(P(x, y, z), Dv(0, 1, 0), Dv(0, 0, -1))}" font-size="${size}" fill="${col}" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-weight="${weight}" letter-spacing=".04em">${str}</text>`;
+// everything on the bench top, sorted: the beamline (flight tube opaque in the closed view, its insides in see-through)
+function insideParts(st, xr){
+  const ps = [...sourceEnd(st), ...tubeOutside(st), scaleRail(st)];
+  ps.push(xr ? { box:[[BX - TR - 2.2, TY0, BZ - TR - 2.2], [BX + TR + 2.2, TY1, BZ + TR + 2.2]], svg: '' } : flightTube(false));
+  // the chamber and everything in it is one unit (its own back walls, contents, near walls)
+  ps.push({ box:[[CH[0], CH[1], TOPZ], [CH[3], CH[4], CH[5]]], svg: chamberStand() + chamberSvg(st, true) });
+  ps.push(...innerTubes(st).filter(p => p.box[0][2] < CH[2] - 1));
+  return ps;
+}
+const chamberStand = () => box(28, 186, TOPZ, 52, 226, CH[2], STEEL, toneI, 1);
+// detector position rail along the bench front, lined up with the beam: a tick per 10 cm from the sample, numbers every
+// 0.5 m, and a marker riding above the detector's real position
+function scaleRail(st){
+  const yF = YS - st.L, x0 = 68.5, x1 = 70.5, z0 = TOPZ, z1 = TOPZ + 6, y0 = YS - 183, y1 = YS + 2;
+  let s = box(x0, y0, z0, x1, y1, z1, matOf('#f4f1e8'), toneI, .8);
+  if (facing([1,0,0])){ let tk = '';
+    for (let L = 10; L <= 180; L += 10){ const big = L % 50 === 0; tk += pd([[x1 + .05, YS - L, z1], [x1 + .05, YS - L, big ? z1 - 3.6 : z1 - 2]], false); }
+    s += `<path d="${tk}" fill="none" stroke="${INK}" stroke-width=".5"/>` + ink(pd([[x1 + .05, YS, z0], [x1 + .05, YS, z1]], false), 1.1);
+    for (const L of [50, 100, 150]) s += tx(x1 + .1, YS - L + 3.4, z0 + .8, (L/100).toFixed(1), 2.2, INK, 800);
+    s += tx(x1 + .1, YS + 5.5, z0 + .8, 'L', 2.4, INK, 800); }
+  s += box(x0 - .5, yF - 1.3, z1, x1 + .5, yF + 1.3, z1 + 2.2, matOf(st.phase === 'move' ? '#ff5a3d' : '#e2483d'), toneI, .7);
+  return { box:[[x0 - .5, y0, z0], [x1 + .5, y1, z1 + 2.2]], svg: s };
+}
+function frontFace(st, m){
+  const x = W, lit = st.beam > .05;
+  let s = fill(pd(on(PX(x), OUT)), tone([1,0,0], m));
+  for (const [y0, y1] of DOORS){
+    s += ink(pd(on(PX(x + .1), rectUV(y0, 10, y1, 80))), 1.3);
+    let v = ''; for (let z = 60; z <= 74; z += 3.5) v += pd([[x + .12, y0 + 10, z], [x + .12, y1 - 10, z]], false);
+    s += `<path d="${v}" fill="none" stroke="${INK}" stroke-width=".9" opacity=".7"/>`; }
+  s += shape(on(PX(x + .2), rectUV(300, 81.4, 336, 85.8)), lit ? '#e2483d' : '#6b3a34', .9) + tx(x + .3, 318, 82.5, 'X-RAY ON', 3.2, lit ? '#fff4d6' : '#c9a49e', 800);
+  s += tx(x + .2, 50, 82.4, 'SAXS / WAXS', 4.2, INK, 800);
+  s += screenSvg(st);
+  return s;
+}
+function frontMounted(){ return DOORS.map(([y0, y1]) => bx(W, (y0 + y1)/2 - 8, 44, W + 1.6, (y0 + y1)/2 + 8, 47, DARK, .7)); }
+function backFace(m){
+  let s = fill(pd(on(PX(0), OUT)), tone([-1,0,0], m));
+  for (const [y0, y1] of [[20, 130], [150, 270], [290, 400]]){ s += ink(pd(on(PX(-.1), rectUV(y0, 12, y1, 78))), 1.2);
+    let v = ''; for (let z = 22; z <= 64; z += 4) v += pd([[-.12, y0 + 8, z], [-.12, y1 - 8, z]], false); s += `<path d="${v}" fill="none" stroke="${INK}" stroke-width=".9" opacity=".6"/>`; }
+  s += shape(on(PX(-.15), rectUV(392, 30, 408, 40)), '#2b2723', .8) + txBk(-.2, 360, 33, 'MAINS 230V', 2.8, INK, 800);
+  return s;
+}
+function sideFaces(m){
+  let s = '';
+  for (const [n, y] of [[[0,1,0], D + .05], [[0,-1,0], -.05]]) if (facing(n)){
+    let v = ''; for (let z = 24; z <= 64; z += 5) v += pd([[14, y + n[1]*.05, z], [58, y + n[1]*.05, z]], false); s += `<path d="${v}" fill="none" stroke="${INK}" stroke-width="1" opacity=".7"/>`;
+    s += ink(pd(on(PY(y + n[1]*.05), rectUV(9, 12, 63, 78))), 1.2); }
+  return s;
+}
+/* ---------- the base (see-through only) ---------- */
+function baseParts(){
+  const ps = [];
+  ps.push(bx(6, 342, ZB + 4, 40, 410, 72, matOf('#d9d6cf'), 1.1));                                // HV generator under the source
+  ps.push(bx(6, 256, ZB + 4, 40, 330, 62, matOf('#cfd8dc'), 1.1));                                // chiller
+  if (facing([1,0,0])) ps.push({ box:[[40, 280, 22], [40.3, 306, 46]], svg: shape(on(PX(40.1), ellUV(293, 34, 11, 11, 24)), '#a9b4b8', .8) + ink(pd(on(PX(40.15), ellUV(293, 34, 5.5, 5.5, 18))), .6) });
+  ps.push(bx(6, 120, ZB + 4, 36, 180, 40, matOf('#7c8a6e'), 1));                                  // scroll vacuum pump
+  ps.push(rodp([21, 120, 24], [21, 106, 24], 9, matOf('#5f6b55'), .9));                           // its motor
+  ps.push(bx(42, 100, 26, 68, 160, 82, DARK, 1));                                                  // control PC behind the screen
+  ps.push(...tubeParts([[21, 150, 40], [21, 150, 80], [21, 100, 80], [BX, 100, 80], [BX, 100, HB + 1]], '#7c8389', 1.2));   // vacuum hose
+  ps.push(...tubeParts([[20, 390, 72], [20, 394, TOPZ]], '#2b2723', 1.1));                     // HV cable up to the source
+  ps.push(...tubeParts([[8, 296, 62], [8, 296, 80], [8, 376, 80], [8, 376, TOPZ]], '#3d7bd0', .8));
+  ps.push(...tubeParts([[11, 302, 62], [11, 302, 76], [11, 382, 76], [11, 382, TOPZ]], '#d0503d', .8));
+  return ps;
+}
+
+/* ---------- scene ---------- */
+function scene(st, m){
+  const FRONT = facing([1,0,0]), BACK = facing([-1,0,0]), k = ease(st.xr || 0);
+  let s = `<defs><filter id="sxGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="${(1.6*INK_K).toFixed(2)}"/></filter></defs>`;
+  s += castShadow([...on(PX(0), OUT), ...on(PX(W), OUT), [94, 148, LZ - 4], [94, 264, LZ - 4], [22, 12, 150], [58, 12, 150], [22, 396, 150], [58, 396, 150]]);
+  for (const [x0, y0] of [[2, 2], [2, D - 14], [W - 14, 2], [W - 14, D - 14]]) s += box(x0, y0, 0, x0 + 12, y0 + 12, ZB, DARK, toneI, .8);
+  // the base cabinet
+  let body = '';
+  if (BACK) body += backFace(m);
+  if (FRONT) body += frontFace(st, m);
+  body += extrude(OUT, 0, W, m) + sideFaces(m);
+  if (FRONT) body += ink(pd(on(PX(W), OUT)), 2.2);
+  if (BACK) body += ink(pd(on(PX(0), OUT)), 2.2);
+  body += hullInk([...on(PX(0), OUT), ...on(PX(W), OUT)], 2.8);
+  // the beamline on the bench top; in see-through the flight tube turns to glass to show the detector, and the cabinet
+  // fades to show the generator, chiller, pump and PC inside it
+  let line;
+  if (k > 0){ const tg = flightTube(true);
+    body = xrGhost(body, '', k, OUT, 0, W, m) + `<g opacity="${f(k)}">${byDepth(baseParts())}</g>`;
+    line = byDepth([...insideParts(st, false).filter(p => !(p.box[0][1] === TY0 && p.box[1][1] === TY1)), ...detectorParts(st, 'tube').map(p => ({ ...p, svg: `<g opacity="${f(k)}">${p.svg}</g>` }))]);
+    line = `<g opacity="${f(1 - k)}">${flightTube(false).svg}</g>` + `<g opacity="${f(k)}">${tg.far}</g>` + line + `<g opacity="${f(k)}">${tg.near}${beamSvg(st, 342, -1e9, true)}</g>`;
+  } else line = byDepth(insideParts(st, false));
+  const mounted = byDepth(frontMounted()), ledge = byDepth(ledgeParts(st));
+  s += FRONT ? body + line + mounted + ledge : ledge + mounted + body + line;
+  s += labels(st, k, FRONT);
+  return s;
+}
+function labels(st, k, FRONT){
+  const yF = YS - st.L, B = [0, 94, 0, D, 0, HT + 2], ex = st.phase === 'expose', ld = st.phase === 'load' || st.phase === 'flush', mv = st.phase === 'move';
+  if (k > .6) return xrCallouts([
+    { at:[40, 379, 150], text:'X-RAY SOURCE', on: ex }, { at:[40, 352, 135], text:'OPTICS', on: ex },
+    { at:[40, 331, 143], text:'SLIT 1', on: ex }, { at:[40, 241, 143], text:'SLIT 2', on: ex }, { at:[BX, YS, 143], text:'SAMPLE CAPILLARY', on: ex || ld },
+    { at:[40, yF - 6, BZ - TR + 29], text:'DETECTOR', on: ex || mv }, { at:[BX, yF + 3, BZ], text:'BEAMSTOP', on: ex },
+    { at:[40, 60, BZ + TR], text:'FLIGHT TUBE', on: false }, { at:[46, 40, BZ - TR + 3], text:'RAILS + LEAD SCREW', on: mv },
+    { at:[21, 150, 40], text:'VACUUM PUMP', on: false }, { at:[23, 376, 72], text:'HV GENERATOR', on: ex },
+    { at:[83, 212, LZ + 19], text:'SYRINGE PUMP', on: ld }, { at:[83.5, 248, LZ + 18.6], text:'SAMPLE VIALS', on: ld } ], B);
+  const it = [{ at:[8, 412, 152], text:'X-RAY LAMP', on: ex }, { at:[58, 379, 145], text:'X-RAY SOURCE', on: ex }, { at:[40, 286, 138], text:'COLLIMATION', on: ex }];
+  if (FRONT) it.push({ at:[83.5, 248, LZ + 18.6], text:'SAMPLE VIALS', on: ld }, { at:[83, 212, LZ + 19], text:'SYRINGE PUMP', on: ld },
+    { at:[83, 162, LZ + 19], text:'WASTE', on: ld }, { at:[CH[3], YS, CH[5]], text:'SAMPLE CHAMBER', on: ex || ld },
+    { at:[W, SCY, SCZ + SCH], text:'DETECTOR IMAGE', on: !!st.img }, { at:[70.5, YS - st.L, TOPZ + 8], text:'DISTANCE SCALE', on: mv });
+  return xrCallouts(it, B);
+}
+
+/* ---------- behaviour (one state object; every action is a timeline) ---------- */
+let ui, simStep = null;
+const SIM = new URLSearchParams(location.search).has('sim');
+const busy = st => st.phase !== 'idle';
+const lerp = (a, b, t) => a + (b - a)*Math.max(0, Math.min(1, t));
+const seg = (t, t0, t1) => ease(Math.max(0, Math.min(1, (t - t0)/(t1 - t0))));
+function run(st, phase, T, step, done){
+  st.phase = phase; let t = 0; simStep = tt => { step(Math.min(tt, T)); if (tt >= T){ st.phase = 'idle'; if (done) done(); } };
+  if (SIM) return;                                                  // screenshot helper: the action is frozen, not played
+  ui.animate(dt => { t += dt; step(Math.min(t, T)); if (t >= T){ st.phase = 'idle'; if (done) done(); return false; } return true; });
+}
+// water: reservoir -> valve -> syringe -> valve -> inlet -> capillary -> outlet -> waste (u = 0..1)
+function flushStep(st, u){
+  if (u < .3){ st.syrCol = WATER; st.syr = seg(u, 0, .3); return; }
+  st.syr = 1 - .9*seg(u, .3, .75);
+  st.inCol = WATER; st.inF = seg(u, .3, .65);
+  if (u > .55) st.capCol = mix(st.capCol0, WATER, seg(u, .55, .85));
+  if (u > .65){ st.outCol = mix(st.capCol0, WATER, .5); st.outF = seg(u, .65, 1); st.waste = Math.min(1, st.waste0 + .05*seg(u, .65, 1)); }
+}
+function startFlush(st){ st.capCol0 = st.capCol; st.waste0 = st.waste; st.inBase = st.inCol || st.inBase; st.outBase = st.outCol || st.outBase; st.inF = st.outF = 0; }
+function endFlush(st){ st.sample = -1; st.capCol = WATER; st.capF = 1; st.inBase = st.outBase = WATER; st.inCol = st.outCol = null; st.inF = st.outF = 0; st.syr = .1; }
+function loadSample(st, i){
+  if (busy(st)) return ui.flash(st.phase === 'expose' ? 'Wait for the exposure to finish' : 'Wait, the instrument is busy');
+  if (st.sample === i) return ui.flash(`${SAMPLES[i].name} is already in the capillary`);
+  st.img = null;
+  const pre = st.sample >= 0, TF = pre ? 1.8 : 0, col = SAMPLES[i].col, vy = VIAL_Y[i];
+  let ny0 = st.ny, began = false;
+  if (pre){ ui.flash('Flushing the previous sample with water', 1600); startFlush(st); }
+  run(st, 'load', TF + 3.6, t => {
+    if (t < TF) return flushStep(st, t/TF);
+    if (!began){ began = true; if (pre) endFlush(st); ny0 = st.ny;
+      st.inBase = st.inCol || st.inBase; st.outBase = st.outCol || st.outBase; st.inF = st.outF = 0; st.capCol0 = st.capCol; st.waste0 = st.waste; st.syr = 0; }
+    const u = t - TF;
+    st.ny = lerp(ny0, vy, seg(u, 0, .5));
+    st.nz = u < 1 ? seg(u, .5, .8) : 1 - seg(u, 1.4, 1.7);
+    if (u > .8){ st.syrCol = col; st.needleCol = col; st.needleF = 1; }
+    if (u > .8 && u < 1.7){ st.syr = seg(u, .8, 1.3); st.vial[i] = Math.max(.35, st.vial0 - .12*seg(u, .8, 1.3)); }
+    if (u >= 1.7){ st.syr = 1 - .85*seg(u, 1.7, 2.6); st.inCol = col; st.inF = seg(u, 1.7, 2.5); }
+    if (u >= 2.3){ const c = seg(u, 2.3, 3.0);
+      if (st.capF0 === 0){ st.capCol = col; st.capF = c; } else { st.capF = 1; st.capCol = mix(st.capCol0, col, c); } }
+    if (u >= 2.9){ st.outCol = col; st.outF = seg(u, 2.9, 3.6); st.waste = Math.min(1, st.waste0 + .04*seg(u, 2.9, 3.6)); }
+  }, () => { st.sample = i; st.capCol = col; st.capF = 1; st.inBase = st.outBase = col; st.inCol = st.outCol = null; st.inF = st.outF = 0; st.needleF = 0; st.syr = .15; });
+  st.capF0 = st.capF; st.vial0 = st.vial[i];
+}
+function flush(st){
+  if (busy(st)) return ui.flash(st.phase === 'expose' ? 'Wait for the exposure to finish' : 'Wait, the instrument is busy');
+  if (st.sample < 0) return ui.flash(st.capF ? 'The capillary is already clean' : 'The capillary is empty');
+  st.img = null; startFlush(st);
+  run(st, 'flush', 1.8, t => flushStep(st, t/1.8), () => endFlush(st));
+}
+function setDistance(st, i){
+  if (st.phase === 'expose') return ui.flash('Wait for the exposure to finish');
+  if (busy(st)) return ui.flash('Wait, the instrument is busy');
+  const L0 = st.L, L1 = DIST[i].L, T = .6 + Math.abs(L1 - L0)/110; st.di = i; st.img = null;
+  run(st, 'move', T, t => { st.L = lerp(L0, L1, ease(Math.min(1, t/T))); }, () => { st.L = L1; });
+}
+function measure(st){
+  if (busy(st)) return ui.flash(st.phase === 'expose' ? 'Already measuring' : 'Wait, the instrument is busy');
+  if (st.sample < 0) return ui.flash('Load a sample into the capillary first');
+  st.img = { s: st.sample, di: st.di }; st.imgI = 0;
+  run(st, 'expose', 3, t => { st.beam = Math.min(1, t/.3)*(t > 2.7 ? (3 - t)/.3 : 1); st.imgI = seg(t, .3, 2.7); }, () => { st.beam = 0; st.imgI = 1; });
+}
+
+ui = mountFigure({
+  fig:'08', title:'SAXS instrument', palette:'cobalt', turn:'full',
+  size:[94, D, HT + 50], center:[47, D/2],   // extra headroom keeps the flight tube clear of the stats
+  state:{ phase:'idle', sample:-1, di:2, L:90, beam:0, img:null, imgI:0,
+    capF:0, capF0:0, capCol:WATER, capCol0:WATER, inF:0, inCol:null, inBase:LINE, outF:0, outCol:null, outBase:LINE,
+    syr:0, syrCol:WATER, ny:VIAL_Y[2], nz:0, needleF:0, needleCol:null, vial:[1, 1, 1, 1, 1], vial0:1, waste:.25, waste0:.25 },
+  scene,
+  buttons:[
+    { label:'Load sample', choices: st => SAMPLES.map((smp, i) => ({ label: smp.name, current: st.sample === i, disabled: busy(st), why:'Wait, the instrument is busy', onClick: st => loadSample(st, i) })) },
+    { label:'Detector distance', choices: st => DIST.map((d, i) => ({ label:`${d.name} ${d.lab}`, current: st.di === i && st.phase !== 'move', disabled: busy(st), why: st.phase === 'expose' ? 'Wait for the exposure to finish' : 'Wait, the instrument is busy', onClick: st => setDistance(st, i) })) },
+    { label:'Measure', onClick: st => measure(st) },
+    { label:'Flush capillary', onClick: st => flush(st) },
+  ],
+  stats: st => { const sc = scales(st.L); return [{ label:'Distance', value:`${(st.L/100).toFixed(2)} m` }, { label:'Sees structures', value:`${nm(sc.dmin)}–${nm(sc.dmax)} nm`, small: true }]; },
+  acts:{},
+  params:(st, q) => {
+    if (q.has('sample')){ const i = +q.get('sample'); st.sample = i; st.capF = 1; st.capCol = SAMPLES[i].col; st.inBase = st.outBase = SAMPLES[i].col; }
+    if (q.has('dist')){ st.di = +q.get('dist'); st.L = DIST[st.di].L; }
+    if (q.get('img') === '1' && st.sample >= 0){ st.img = { s: st.sample, di: st.di }; st.imgI = 1; }
+    if (q.has('beam')) st.beam = +q.get('beam');
+    if (q.has('ny')) st.ny = +q.get('ny');
+    if (q.has('nz')) st.nz = +q.get('nz');
+    if (q.has('syr')){ st.syr = +q.get('syr'); st.syrCol = st.sample >= 0 ? SAMPLES[st.sample].col : WATER; }
+  },
+});
+xrMount(() => ui, () => '');
+// testing: ?sim=load:2,0;measure:1.5;dist:3,1.2 runs actions in order, each frozen at the given second (a screenshot helper)
+{ const q = new URLSearchParams(location.search);
+  if (q.has('sim')) for (const item of q.get('sim').split(';')){ const [act, rest] = item.split(':'), [a, b] = (rest || '').split(',').map(Number), st = ui.st;
+    if (act === 'load') loadSample(st, a), simStep && simStep(b);
+    else if (act === 'dist') setDistance(st, a), simStep && simStep(b);
+    else if (act === 'measure') measure(st), simStep && simStep(a);
+    else if (act === 'flush') flush(st), simStep && simStep(a);
+    ui.render(); } }
+</script></body></html>

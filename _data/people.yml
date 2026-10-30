@@ -25,9 +25,9 @@ alumni:
   - {name: 'Shayna Hilburg, Ph.D.', now: 'NRC Postdoctoral Fellow, National Institute of Standards and Technology (NIST)', research: 'Autonomous retrosynthesis of non-viral DNA delivery vectors', linkedin: 'https://www.linkedin.com/in/shaynahilburg/', scholar: 'https://scholar.google.com/citations?user=_N2HOCIAAAAJ&hl=en'}
   - {name: 'Greg Newbloom, Ph.D.', now: 'CEO & Founder, Membrion Inc.', research: 'Nanostructured ceramic membranes for redox flow batteries', linkedin: 'https://www.linkedin.com/in/greg-newbloom-ab125458/'}
   - {name: 'Fabio Baum, Ph.D.', now: 'Professor Visitante, Universidade Federal da Integração Latino-Americana (UNILA)', research: 'AI-driven sonochemical synthesis of nanomaterials', linkedin: 'https://linkedin.com/in/fábio-baum'}
-  - {name: 'Kiran Vaddi, Ph.D.', research: 'Data representation for AI-driven materials acceleration', linkedin: 'https://www.linkedin.com/in/kiranvaddi27/'}
-  - {name: 'Rebecca Vincent, Ph.D.', research: 'Non-invasive analysis of battery health using non-linear EIS', linkedin: 'https://www.linkedin.com/in/rebecca-vincent/'}
-  - {name: 'David Li, Ph.D.', research: 'Photoacoustic clot breakup using functional nanoemulsions', linkedin: 'https://www.linkedin.com/in/dsli/'}
+  - {name: 'Kiran Vaddi, Ph.D.', now: 'Researcher, National Institute of Standards and Technology (NIST)', research: 'Data representation for AI-driven materials acceleration', linkedin: 'https://www.linkedin.com/in/kiranvaddi27/'}
+  - {name: 'Rebecca Vincent, Ph.D.', now: 'ESS Test Engineer, magniX', research: 'Non-invasive analysis of battery health using non-linear EIS', linkedin: 'https://www.linkedin.com/in/rebecca-vincent/'}
+  - {name: 'David Li, Ph.D.', now: 'DeepSight Technology', research: 'Photoacoustic clot breakup using functional nanoemulsions', linkedin: 'https://www.linkedin.com/in/dsli/'}
 
 - title: 'Ph.D. Graduates'
   members:

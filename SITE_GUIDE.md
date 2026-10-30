@@ -69,7 +69,7 @@ Folders starting with `_` are never published: `_image_sources/` (uncropped orig
 
 **Content lives in data files, not HTML.** Fields marked *optional* can be omitted.
 
-**`_data/settings.yml`**: `menu` (name, url), `home_image` (image, alt), `home_figure` (interactive figure under the group photo: src, title, *optional* caption; remove to hide), `gallery` ("In the Lab": image, caption), `courses`, `social` (footer icons: icon, title, link), `contacts` (contact card).
+**`_data/settings.yml`**: `menu` (name, url), `home_image` (image, alt), `home_figures` (interactive figures side by side under the group photo, stacked on phones: src, title, *optional* caption and `left` offset; remove an entry to hide it), `gallery` ("In the Lab": image, caption), `courses`, `social` (footer icons: icon, title, link), `contacts` (contact card).
 - Course: `name`, `description` (may be `''`), *optional* `images:` list of `{image, alt}` tiles, *optional* `url`.
 
 **`_data/research.yml`**: one entry per research area: `title`, `image` (2.2:1 banner), `description`.
@@ -134,7 +134,7 @@ Reuse these instead of writing new styles.
 | `.open-access-badge` | Purple "Open Access" pill | Publications |
 | `.publication-image` | Optional TOC graphic, 120 px wide | Publications |
 | `.figure-embed` | Plain 4:3 frame (`<iframe sandbox="allow-scripts" loading="lazy">`) for an interactive figure | Available; not currently used |
-| `.figure-crop` | Square window onto a 4:3 figure page: the page is drawn at the window's height and centered (nudged 3% right), trimming its empty sides so the robot fills the window | Home page robot, under the group photo |
+| `.figure-crop` | Square window onto a 4:3 figure page: the page is drawn at the window's height and centered (nudged 3% right), trimming its empty sides so the figure fills the window; a figure's `left` setting overrides the offset | Home page robot and SAXS instrument, under the group photo |
 
 ## 4. Images
 
@@ -172,7 +172,7 @@ Images in the same place must have the same proportions:
 - **Size:** at most 1600 px on the long side, about 1 MB or less, JPEG quality 85–88. Never upscale (`sips -Z` enlarges small images). Small sources (under ~600 px) look soft; ask the owner for a larger version.
 - **Video:** compress (macOS: `avconvert -p PresetAppleM4V480pSD`) or embed from YouTube. GitHub rejects files over 100 MB.
 - **Alt text:** describe what the image shows. Name only people the source identifies.
-- **Interactive figures:** self-contained HTML pages (no outside files or network calls) in `assets/interactive/`, lowercase-hyphen names (e.g. `pipetting-robot.html`), with no Jekyll header so they're published untouched. Use the figure's "web version" (no labels or buttons, white background, sized for a 4:3 frame), embed it via `home_figure` in `_data/settings.yml`, and give it a `title` that describes it for screen readers. It currently has no visible caption, at the owner's request. Before publishing a new one, read the whole file and check it has no `fetch`, storage, cookies, `eval`, or `window.parent`/`top` access. The frame is sandboxed (scripts only). On phones it must use `touch-action: pan-y` so a vertical swipe still scrolls the page.
+- **Interactive figures:** self-contained HTML pages (no outside files or network calls) in `assets/interactive/`, lowercase-hyphen names (e.g. `pipetting-robot.html`), with no Jekyll header so they're published untouched. Use the figure's "web version" (no labels or buttons, white background, sized for a 4:3 frame), embed it via `home_figures` in `_data/settings.yml`, and give it a `title` that describes it for screen readers. It currently has no visible caption, at the owner's request. Before publishing a new one, read the whole file and check it has no `fetch`, storage, cookies, `eval`, or `window.parent`/`top` access. The frame is sandboxed (scripts only). Interactive figures made with the Colorfigures skill come in two builds: a web version for embedding (`<name>.html`: no controls or labels, 4:3, looping demo) and a full one (`<name>-interactive.html`); their editable sources and rebuild steps live in `_image_sources/interactive/<name>/` (e.g. the SAXS instrument). On phones it must use `touch-action: pan-y` so a vertical swipe still scrolls the page.
 - **Placeholders:** purple-striped labeled images generated with Pillow (camera icon, slot name, path, size). None are in use; use the same style if a new slot needs one.
 
 ## 5. Writing and content style
@@ -276,5 +276,6 @@ Remove each item once it's resolved.
 - Publication list audited against Crossref (59 links corrected); Open Access badges follow DOAJ; featured publications follow corresponding authorship.
 - Defense stories include the dissertation link and the abstract in a collapsible block.
 - **Oct 30, 2026:** interactive pipetting-robot figure (`assets/interactive/pipetting-robot.html`) added to the home page in a sandboxed frame, without a caption. At the owner's request it sits under the group photo at the photo's width; the photo column was widened (intro `col-md-5`, photo `col-md-7`) and the figure trimmed to a square window (`.figure-crop`) so the robot fills it (about 430 px tall at 1280 px).
+- **Oct 30, 2026:** SAXS instrument figure (`assets/interactive/saxs-instrument.html`, drawn open with 90 cm collimation) added next to the robot; `home_figure` became the list `home_figures`, shown in two columns (`col-sm-6`) under the photo, each in a square window (SAXS shifted with `left: '-20%'`).
 - The full CV PDF is intentionally not published (`*.pdf` is excluded from the build).
 - Alumni are listed without photos.

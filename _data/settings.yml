@@ -13,9 +13,11 @@ home_image: {image: 'assets/img/home.jpg', alt: 'The Pozzo Research Group on the
 # Interactive figure shown under the group photo on the home page, at the photo's width (self-contained
 # HTML in assets/interactive/, drawn 4:3 and trimmed to a square window: .figure-crop in _sass/main.scss). `title` is read by screen readers;
 # add an optional `caption:` line to show text under it. Remove this entry to hide the figure.
-home_figure:
-  src: 'assets/interactive/pipetting-robot.html'
-  title: 'Animated pipetting robot filling a 96-well plate'
+# Interactive figures under the group photo, side by side (stacked on phones), each in a square window.
+# Optional `left` shifts the 4:3 page inside the window (default -13.667%) to centre a figure that sits off-centre.
+home_figures:
+- {src: 'assets/interactive/pipetting-robot.html', title: 'Animated pipetting robot filling a 96-well plate'}
+- {src: 'assets/interactive/saxs-instrument.html', title: 'Animated small-angle X-ray scattering instrument measuring coloured samples at several detector distances', left: '-20%'}
 
 # Laboratory photo strip on the home page (images in assets/img/lab/).
 gallery:
