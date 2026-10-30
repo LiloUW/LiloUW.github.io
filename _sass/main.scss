@@ -86,3 +86,13 @@ details > summary {
   font-weight: 600;
   margin-bottom: 0.75rem;
 }
+
+// Interactive figures (self-contained HTML in assets/interactive/) shown in a 4:3 frame.
+// The figure's own page scales itself to fill whatever frame it is given.
+.figure-embed {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 0;
+  background: #fff;
+}

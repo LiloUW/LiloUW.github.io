@@ -50,7 +50,7 @@ These are explicit requests from Prof. Pozzo's group. Follow them on every updat
 
 | Address | Page file | Layout | Notes |
 | --- | --- | --- | --- |
-| `/` | `index.md` | `home.html` | Intro + group photo, "In the Lab" strip, 3 latest news, 6 featured publications |
+| `/` | `index.md` | `home.html` | Intro + group photo + interactive figure, "In the Lab" strip, 3 latest news, 6 featured publications |
 | `/news/` | `news.md` | `news.html` | All stories, newest first (`_includes/news-item.html`) |
 | `/news/YYYY/slug/` | `_posts/*.md` | `post.html` | One page per story |
 | `/research/` | `research.md` | `research.html` | Research areas from `_data/research.yml`, then the page text |
@@ -69,7 +69,7 @@ Folders starting with `_` are never published: `_image_sources/` (uncropped orig
 
 **Content lives in data files, not HTML.** Fields marked *optional* can be omitted.
 
-**`_data/settings.yml`**: `menu` (name, url), `home_image` (image, alt), `gallery` ("In the Lab": image, caption), `courses`, `social` (footer icons: icon, title, link), `contacts` (contact card).
+**`_data/settings.yml`**: `menu` (name, url), `home_image` (image, alt), `home_figure` (interactive figure under the group photo: src, title, caption; remove to hide), `gallery` ("In the Lab": image, caption), `courses`, `social` (footer icons: icon, title, link), `contacts` (contact card).
 - Course: `name`, `description` (may be `''`), *optional* `images:` list of `{image, alt}` tiles, *optional* `url`.
 
 **`_data/research.yml`**: one entry per research area: `title`, `image` (2.2:1 banner), `description`.
@@ -133,6 +133,7 @@ Reuse these instead of writing new styles.
 | `details > summary` | Collapsible block with a purple bold toggle | "Read the dissertation abstract" |
 | `.open-access-badge` | Purple "Open Access" pill | Publications |
 | `.publication-image` | Optional TOC graphic, 120 px wide | Publications |
+| `.figure-embed` | 4:3 frame (`<iframe sandbox="allow-scripts" loading="lazy">`) for an interactive figure | Home page, under the group photo |
 
 ## 4. Images
 
@@ -170,6 +171,7 @@ Images in the same place must have the same proportions:
 - **Size:** at most 1600 px on the long side, about 1 MB or less, JPEG quality 85–88. Never upscale (`sips -Z` enlarges small images). Small sources (under ~600 px) look soft; ask the owner for a larger version.
 - **Video:** compress (macOS: `avconvert -p PresetAppleM4V480pSD`) or embed from YouTube. GitHub rejects files over 100 MB.
 - **Alt text:** describe what the image shows. Name only people the source identifies.
+- **Interactive figures:** self-contained HTML pages (no outside files or network calls) in `assets/interactive/`, lowercase-hyphen names (e.g. `pipetting-robot.html`), with no Jekyll header so they're published untouched. Use the figure's "web version" (no labels or buttons, white background, sized for a 4:3 frame), embed it via `home_figure` in `_data/settings.yml`, and give it a `title` that describes it for screen readers. Before publishing a new one, read the whole file and check it has no `fetch`, storage, cookies, `eval`, or `window.parent`/`top` access. The frame is sandboxed (scripts only). On phones it must use `touch-action: pan-y` so a vertical swipe still scrolls the page.
 - **Placeholders:** purple-striped labeled images generated with Pillow (camera icon, slot name, path, size). None are in use; use the same style if a new slot needs one.
 
 ## 5. Writing and content style
@@ -272,5 +274,6 @@ Remove each item once it's resolved.
 - Image proportions standardized: research/lab 2.2:1 (full column width), headshots 1:1, course photos 3:4; news galleries use uncropped 4:3 frames.
 - Publication list audited against Crossref (59 links corrected); Open Access badges follow DOAJ; featured publications follow corresponding authorship.
 - Defense stories include the dissertation link and the abstract in a collapsible block.
+- **Oct 30, 2026:** interactive pipetting-robot figure (`assets/interactive/pipetting-robot.html`) added under the home-page group photo, in a sandboxed 4:3 frame.
 - The full CV PDF is intentionally not published (`*.pdf` is excluded from the build).
 - Alumni are listed without photos.

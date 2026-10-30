@@ -9,6 +9,13 @@ layout: default
   </div>
   <div class="col-md-6">
     <img src="{{ site.data.settings.home_image.image | relative_url }}" alt="{{ site.data.settings.home_image.alt }}" class="img-fluid rounded">
+    {% assign fig = site.data.settings.home_figure %}
+    {% if fig %}
+    <figure class="mt-4 mb-0">
+      <iframe src="{{ fig.src | relative_url }}" title="{{ fig.title }}" class="figure-embed rounded" loading="lazy" sandbox="allow-scripts"></iframe>
+      {% if fig.caption %}<figcaption class="text-muted small mt-2">{{ fig.caption }}</figcaption>{% endif %}
+    </figure>
+    {% endif %}
   </div>
 </div>
 
