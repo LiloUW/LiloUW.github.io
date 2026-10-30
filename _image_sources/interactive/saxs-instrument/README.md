@@ -16,7 +16,7 @@ Published builds (single self-contained files):
 
 Rebuild after editing `saxs-instrument.src.html` (from this folder): `python3 make_web.py`
 
-The instrument is drawn open (no radiation-safety enclosure) on its base cabinet; slits S1 and S2 are 90 cm apart.
+The instrument is drawn open (no radiation-safety enclosure) on its base cabinet; slits S1 and S2 are 90 cm apart. The flight tube is drawn semi-transparent (glass, with solid steel end flanges) so the detector can be seen moving inside it.
 
 Testing hooks: `?sim=load:0,9;measure:1.6` freezes actions at given seconds for screenshots;
 `?free=1&yaw=200&pitch=40` sets the view; `?xr=1&labels=1` opens the see-through with labels.

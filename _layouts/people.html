@@ -30,7 +30,7 @@ layout: default
     {% for person in group.members %}
     <div class="mb-4">
       <p class="fw-bold mb-1">{{ person.name }}</p>
-      {% if person.now %}<p class="mb-1">Currently: {{ person.now }}</p>{% endif %}
+      {% if person.now %}<p class="mb-1">Currently: {% if person.now_url %}<a href="{{ person.now_url }}">{{ person.now }}</a>{% else %}{{ person.now }}{% endif %}</p>{% endif %}
       <p class="mb-1 text-muted">{{ person.research }}</p>
       {% if person.note %}<p class="mb-1 small">{{ person.note }}</p>{% endif %}
       {% include person-links.html person=person %}

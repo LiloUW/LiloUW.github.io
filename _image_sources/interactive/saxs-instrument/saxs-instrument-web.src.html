@@ -6,6 +6,7 @@
 /* ============================================================
    Small-angle X-ray scattering (SAXS / WAXS) laboratory beamline, modelled on a Xenocs Xeuss 3.0.
    Shown open: no radiation-safety enclosure, so the beamline stands in plain view on the base cabinet's top.
+   The flight tube is drawn semi-transparent (glass, steel end flanges) so the detector can be watched moving inside.
    1 unit = 1 cm. x = depth (front of the base at x = W), y = length along the beam (+y = viewer-left: the source end),
    z = up. The beam runs from high y (source) to low y (detector) along x = BX, z = BZ.
 
@@ -186,6 +187,14 @@ function flightTube(ghost){
   const A = tubeRing(TY0, TR), B = tubeRing(TY1, TR), fl = (y0, y1) => loft(tubeRing(y0, TR + 2.2), tubeRing(y1, TR + 2.2), n => toneI(n, STEEL));
   if (ghost) return { far: `<g opacity=".4">${loft(A, B, n => mix(toneI(n.map(v => -v), STEEL), '#ffffff', .45), true)}</g>`,
     near: `<g opacity=".25">${loft(A, B, n => toneI(n, STEEL))}</g><g opacity=".6">${hullInk([...A, ...B], 1.6)}</g>` };
+  // shown semi-transparent (as glass) so the detector can be watched riding along it; steel end flanges stay solid
+  if (ghost === 'glass'){ let near = `<g opacity=".22">${loft(A, B, n => mix(toneI(n, STEEL), '#cfe9f0', .5))}</g>` + fl(TY0, TY0 + 3) + fl(TY1 - 3, TY1);
+    if (facing([0,-1,0])){ const cr = tubeRing(TY0, TR + 2.2); near += fill(pd(cr), toneI([0,-1,0], STEEL)) + ink(pd(cr), 1); }
+    near += hullInk([...tubeRing(TY0, TR + 2.2), ...tubeRing(TY1, TR + 2.2)], 2);
+    for (const y of [TY0 + 3, TY1 - 3]) near += ink(pd(tubeRing(y, TR), false), .7);
+    const st = pd([[BX + TR*.5, TY0 + 6, BZ + TR*.85], [BX + TR*.5, TY1 - 6, BZ + TR*.85]], false);      // a glint along the top
+    near += `<path d="${st}" fill="none" stroke="#fff" stroke-width="1.6" opacity=".38"/>`;
+    return { far: `<g opacity=".55">${loft(A, B, n => mix(toneI(n.map(v => -v), STEEL), '#ffffff', .35), true)}</g>`, near }; }
   let s = loft(A, B, n => toneI(n, STEEL)) + fl(TY0, TY0 + 3) + fl(TY1 - 3, TY1);
   if (facing([0,-1,0])){ const cr = tubeRing(TY0, TR + 2.2); s += fill(pd(cr), toneI([0,-1,0], STEEL)) + ink(pd(cr), 1); }
   s += hullInk([...tubeRing(TY0, TR + 2.2), ...tubeRing(TY1, TR + 2.2)], 2);
@@ -201,9 +210,9 @@ function tubeOutside(st){
 }
 // inside the flight tube and chamber: rails, screw, carriage, detector, beamstop, drag chain
 function detectorParts(st, mode){
-  const ps = [], yF = YS - st.L, zP = BZ - TR, yA = mode === 'chamber' ? CH[1] : 14, yB = mode === 'chamber' ? 202 : CH[1];
+  const ps = [], yF = YS - st.L, zP = BZ - TR + 2, yA = mode === 'chamber' ? CH[1] : 14, yB = mode === 'chamber' ? 202 : CH[1];
   const mine = y => y >= yA && y < yB;
-  ps.push(bx(31, yA, zP, 49, yB, zP + 2, STEEL, .7));                                              // rail base plate
+  ps.push(bx(33, yA, zP, 47, yB, zP + 2, STEEL, .7));                                              // rail base plate, clear of the tube wall
   if (mode === 'chamber') ps.push(bx(35, 190, CH[2], 45, 196, zP, STEEL, .6));                    // its pedestal in the chamber
   for (const x of [34, 46]) ps.push(rodp([x, yA, zP + 2.9], [x, yB, zP + 2.9], .9, METAL, .5));  // rails
   const scr = (a, b) => { a = Math.max(a, yA); b = Math.min(b, yB, 200); if (b - a > .3) ps.push(rodp([BX, a, zP + 2.9], [BX, b, zP + 2.9], .6, matOf('#d9c27a'), .4)); };
@@ -387,7 +396,9 @@ function scene(st, m){
     body = xrGhost(body, '', k, OUT, 0, W, m) + `<g opacity="${f(k)}">${byDepth(baseParts())}</g>`;
     line = byDepth([...insideParts(st, false).filter(p => !(p.box[0][1] === TY0 && p.box[1][1] === TY1)), ...detectorParts(st, 'tube').map(p => ({ ...p, svg: `<g opacity="${f(k)}">${p.svg}</g>` }))]);
     line = `<g opacity="${f(1 - k)}">${flightTube(false).svg}</g>` + `<g opacity="${f(k)}">${tg.far}</g>` + line + `<g opacity="${f(k)}">${tg.near}${beamSvg(st, 342, -1e9, true)}</g>`;
-  } else line = byDepth(insideParts(st, false));
+  } else { const tg = flightTube('glass');                   // closed view: the tube as glass, the detector moving inside
+    line = tg.far + byDepth([...insideParts(st, false).filter(p => !(p.box[0][1] === TY0 && p.box[1][1] === TY1)), ...detectorParts(st, 'tube')])
+      + tg.near + beamSvg(st, CH[1], -1e9, false); }
   const mounted = byDepth(frontMounted()), ledge = byDepth(ledgeParts(st));
   s += FRONT ? body + line + mounted + ledge : ledge + mounted + body + line;
   s += labels(st, k, FRONT);
@@ -398,8 +409,8 @@ function labels(st, k, FRONT){
   if (k > .6) return xrCallouts([
     { at:[40, 379, 150], text:'X-RAY SOURCE', on: ex }, { at:[40, 352, 135], text:'OPTICS', on: ex },
     { at:[40, 331, 143], text:'SLIT 1', on: ex }, { at:[40, 241, 143], text:'SLIT 2', on: ex }, { at:[BX, YS, 143], text:'SAMPLE CAPILLARY', on: ex || ld },
-    { at:[40, yF - 6, BZ - TR + 29], text:'DETECTOR', on: ex || mv }, { at:[BX, yF + 3, BZ], text:'BEAMSTOP', on: ex },
-    { at:[40, 60, BZ + TR], text:'FLIGHT TUBE', on: false }, { at:[46, 40, BZ - TR + 3], text:'RAILS + LEAD SCREW', on: mv },
+    { at:[40, yF - 6, BZ - TR + 31], text:'DETECTOR', on: ex || mv }, { at:[BX, yF + 3, BZ], text:'BEAMSTOP', on: ex },
+    { at:[40, 60, BZ + TR], text:'FLIGHT TUBE', on: false }, { at:[46, 40, BZ - TR + 5], text:'RAILS + LEAD SCREW', on: mv },
     { at:[21, 150, 40], text:'VACUUM PUMP', on: false }, { at:[23, 376, 72], text:'HV GENERATOR', on: ex },
     { at:[83, 212, LZ + 19], text:'SYRINGE PUMP', on: ld }, { at:[83.5, 248, LZ + 18.6], text:'SAMPLE VIALS', on: ld } ], B);
   const it = [{ at:[8, 412, 152], text:'X-RAY LAMP', on: ex }, { at:[58, 379, 145], text:'X-RAY SOURCE', on: ex }, { at:[40, 286, 138], text:'COLLIMATION', on: ex }];

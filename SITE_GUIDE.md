@@ -83,6 +83,7 @@ Folders starting with `_` are never published: `_image_sources/` (uncropped orig
 | `research` | One line, sentence case, no final period |
 | `image` | Current members only: `assets/img/people/firstname-lastname.jpg` |
 | `now` | Alumni: current position, shown as "Currently: …"; prefix "Incoming" for positions not yet started |
+| `now_url` | Alumni, optional: link for the current position, e.g. a company page (`'https://membrion.com/'`) |
 | `note` | Co-advisors, fellowships, previous positions |
 | `linkedin`, `scholar`, `orcid`, `website` | Full URLs; shown as icons |
 | `url` | Slug of a profile page in `people/` (only the PI has one) |
