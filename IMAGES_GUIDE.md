@@ -12,7 +12,7 @@ Research-area and lab images are **2.2 : 1 banners** (e.g. 1320 × 600 px); all 
 | `assets/img/lab/well-plate-synthesis.jpg` | Home page "In the Lab" strip | `_data/settings.yml` (`gallery`) |
 | `assets/img/lab/vials-and-plate.jpg` | Home page "In the Lab" strip | `_data/settings.yml` (`gallery`) |
 | `assets/img/lab/hydrogel-membranes.jpg` | Home page "In the Lab" strip | `_data/settings.yml` (`gallery`) |
-| `assets/interactive/pipetting-robot.html` | Home page, interactive figure full width below the intro and group photo (4:3 frame; self-contained HTML; no caption) | `_data/settings.yml` (`home_figure`) |
+| `assets/interactive/pipetting-robot.html` | Home page, interactive figure under the group photo at the same width (4:3 page shown through a square window, `.figure-crop`; self-contained HTML; no caption) | `_data/settings.yml` (`home_figure`) |
 | `assets/img/contact.jpg` | Contact page (portrait of Prof. Pozzo) | `_data/settings.yml` (`contacts`) |
 | `assets/img/research/ai-discovery.jpg` | Research: AI-Driven Materials Discovery | `_data/research.yml` |
 | `assets/img/research/energy-storage.jpg` | Research: Energy Storage Materials | `_data/research.yml` |

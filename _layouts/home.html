@@ -3,24 +3,21 @@ layout: default
 ---
 
 <div class="row g-5 mb-5">
-  <div class="col-md-6">
+  <div class="col-md-5">
     <h3 class="fw-bold">Research</h3>
     {{ content }}
   </div>
-  <div class="col-md-6">
+  <div class="col-md-7">
     <img src="{{ site.data.settings.home_image.image | relative_url }}" alt="{{ site.data.settings.home_image.alt }}" class="img-fluid rounded">
+    {% assign fig = site.data.settings.home_figure %}
+    {% if fig %}
+    <figure class="mt-4 mb-0">
+      <div class="figure-crop rounded"><iframe src="{{ fig.src | relative_url }}" title="{{ fig.title }}" loading="lazy" sandbox="allow-scripts"></iframe></div>
+      {% if fig.caption %}<figcaption class="text-muted small mt-2">{{ fig.caption }}</figcaption>{% endif %}
+    </figure>
+    {% endif %}
   </div>
 </div>
-
-{% assign fig = site.data.settings.home_figure %}
-{% if fig %}
-<div class="row mb-5">
-  <figure class="col-12 mb-0">
-    <iframe src="{{ fig.src | relative_url }}" title="{{ fig.title }}" class="figure-embed rounded" loading="lazy" sandbox="allow-scripts"></iframe>
-    {% if fig.caption %}<figcaption class="text-muted small mt-2">{{ fig.caption }}</figcaption>{% endif %}
-  </figure>
-</div>
-{% endif %}
 
 <div class="row g-4 mb-5 align-items-start">
   <div class="col-12">

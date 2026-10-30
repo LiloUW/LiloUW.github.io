@@ -96,3 +96,21 @@ details > summary {
   border: 0;
   background: #fff;
 }
+
+// Home-page robot: a square window onto the figure's 4:3 page. The page is drawn 4:3 at the window's
+// height and centred, so its empty left and right margins are trimmed and the robot fills the window.
+.figure-crop {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #fff;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: -13.667%;   // centred, then nudged right ~3% to balance the shadow on the left
+    width: 133.333%;
+    height: 100%;
+    border: 0;
+  }
+}

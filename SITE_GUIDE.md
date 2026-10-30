@@ -50,7 +50,7 @@ These are explicit requests from Prof. Pozzo's group. Follow them on every updat
 
 | Address | Page file | Layout | Notes |
 | --- | --- | --- | --- |
-| `/` | `index.md` | `home.html` | Intro + group photo + interactive figure, "In the Lab" strip, 3 latest news, 6 featured publications |
+| `/` | `index.md` | `home.html` | Intro text (`col-md-5`) beside the group photo with the interactive figure beneath it (`col-md-7`), "In the Lab" strip, 3 latest news, 6 featured publications |
 | `/news/` | `news.md` | `news.html` | All stories, newest first (`_includes/news-item.html`) |
 | `/news/YYYY/slug/` | `_posts/*.md` | `post.html` | One page per story |
 | `/research/` | `research.md` | `research.html` | Research areas from `_data/research.yml`, then the page text |
@@ -69,7 +69,7 @@ Folders starting with `_` are never published: `_image_sources/` (uncropped orig
 
 **Content lives in data files, not HTML.** Fields marked *optional* can be omitted.
 
-**`_data/settings.yml`**: `menu` (name, url), `home_image` (image, alt), `home_figure` (interactive figure, full width below the intro and group photo: src, title, *optional* caption; remove to hide), `gallery` ("In the Lab": image, caption), `courses`, `social` (footer icons: icon, title, link), `contacts` (contact card).
+**`_data/settings.yml`**: `menu` (name, url), `home_image` (image, alt), `home_figure` (interactive figure under the group photo: src, title, *optional* caption; remove to hide), `gallery` ("In the Lab": image, caption), `courses`, `social` (footer icons: icon, title, link), `contacts` (contact card).
 - Course: `name`, `description` (may be `''`), *optional* `images:` list of `{image, alt}` tiles, *optional* `url`.
 
 **`_data/research.yml`**: one entry per research area: `title`, `image` (2.2:1 banner), `description`.
@@ -133,7 +133,8 @@ Reuse these instead of writing new styles.
 | `details > summary` | Collapsible block with a purple bold toggle | "Read the dissertation abstract" |
 | `.open-access-badge` | Purple "Open Access" pill | Publications |
 | `.publication-image` | Optional TOC graphic, 120 px wide | Publications |
-| `.figure-embed` | 4:3 frame (`<iframe sandbox="allow-scripts" loading="lazy">`) for an interactive figure | Home page, full width below the intro and group photo |
+| `.figure-embed` | Plain 4:3 frame (`<iframe sandbox="allow-scripts" loading="lazy">`) for an interactive figure | Available; not currently used |
+| `.figure-crop` | Square window onto a 4:3 figure page: the page is drawn at the window's height and centered (nudged 3% right), trimming its empty sides so the robot fills the window | Home page robot, under the group photo |
 
 ## 4. Images
 
@@ -274,6 +275,6 @@ Remove each item once it's resolved.
 - Image proportions standardized: research/lab 2.2:1 (full column width), headshots 1:1, course photos 3:4; news galleries use uncropped 4:3 frames.
 - Publication list audited against Crossref (59 links corrected); Open Access badges follow DOAJ; featured publications follow corresponding authorship.
 - Defense stories include the dissertation link and the abstract in a collapsible block.
-- **Oct 30, 2026:** interactive pipetting-robot figure (`assets/interactive/pipetting-robot.html`) added to the home page in a sandboxed 4:3 frame; enlarged to full width below the intro and group photo, without a caption, at the owner's request.
+- **Oct 30, 2026:** interactive pipetting-robot figure (`assets/interactive/pipetting-robot.html`) added to the home page in a sandboxed frame, without a caption. At the owner's request it sits under the group photo at the photo's width; the photo column was widened (intro `col-md-5`, photo `col-md-7`) and the figure trimmed to a square window (`.figure-crop`) so the robot fills it (about 430 px tall at 1280 px).
 - The full CV PDF is intentionally not published (`*.pdf` is excluded from the build).
 - Alumni are listed without photos.
