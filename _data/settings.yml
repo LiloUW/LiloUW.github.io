@@ -10,14 +10,12 @@ menu:
 # Image shown beside the introduction on the home page.
 home_image: {image: 'assets/img/home.jpg', alt: 'The Pozzo Research Group on the UW campus'}
 
-# Interactive figure shown under the group photo on the home page, at the photo's width (self-contained
-# HTML in assets/interactive/, drawn 4:3 and trimmed to a square window: .figure-crop in _sass/main.scss). `title` is read by screen readers;
-# add an optional `caption:` line to show text under it. Remove this entry to hide the figure.
-# Interactive figures stacked under the group photo at its width, each in a square window onto its 4:3 page.
-# Optional: `wide: true` uses a 5:4 window trimmed on all sides (for long figures like the SAXS instrument); `left` shifts the page inside a
-# square window (default -13.667%) to centre a figure that sits off-centre.
+# Interactive figures under the group photo on the home page, at the photo's width (self-contained HTML in
+# assets/interactive/, drawn 4:3 and trimmed to a square window: .figure-crop in _sass/main.scss). `title` is read
+# by screen readers; an optional `caption:` shows text under it. Optional: `wide: true` uses a 5:4 window trimmed on
+# all sides (for long figures like the SAXS instrument); `left` shifts the page inside a square window (default
+# -13.667%) to centre a figure that sits off-centre. Several entries are stacked; remove one to hide it.
 home_figures:
-- {src: 'assets/interactive/pipetting-robot.html', title: 'Animated pipetting robot filling a 96-well plate'}
 - {src: 'assets/interactive/saxs-instrument.html', title: 'Animated small-angle X-ray scattering instrument measuring coloured samples at several detector distances', wide: true}
 
 # Laboratory photo strip on the home page (images in assets/img/lab/).
@@ -26,10 +24,13 @@ gallery:
 - {image: 'assets/img/lab/vials-and-plate.jpg', caption: 'Automated sample preparation'}
 - {image: 'assets/img/lab/hydrogel-membranes.jpg', caption: 'Hydrogel materials for biomanufacturing'}
 
-# Course photos are 3:4 tiles (see SITE_GUIDE.md); list any number under `images`.
+# Course photos are 3:4 tiles (see SITE_GUIDE.md); list any number under `images`. An optional `figure`
+# (src, title) shows an interactive figure from assets/interactive/ in a square window under the description.
 courses:
 - {name: 'Heat Transfer', description: 'Core chemical engineering transport phenomena.'}
-- {name: 'Surface & Colloid Science', description: 'Advanced interfacial phenomena and applications.'}
+- name: 'Surface & Colloid Science'
+  description: 'Advanced interfacial phenomena and applications.'
+  figure: {src: 'assets/interactive/pipetting-robot.html', title: 'Animated pipetting robot filling a 96-well plate'}
 - name: 'Kitchen Engineering'
   description: 'Award-winning course introducing engineering through culinary science.'
   images:

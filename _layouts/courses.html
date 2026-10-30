@@ -19,6 +19,13 @@ layout: default
         {% endfor %}
       </div>
       {% endif %}
+      {% if course.figure %}
+      <div class="row mb-2">
+        <figure class="col-md-6 mb-0">
+          <div class="figure-crop rounded"><iframe src="{{ course.figure.src | relative_url }}" title="{{ course.figure.title }}" loading="lazy" sandbox="allow-scripts"></iframe></div>
+        </figure>
+      </div>
+      {% endif %}
     </div>
     {% endfor %}
   </div>

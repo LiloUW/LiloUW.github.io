@@ -12,8 +12,8 @@ Research-area and lab images are **2.2 : 1 banners** (e.g. 1320 × 600 px); all 
 | `assets/img/lab/well-plate-synthesis.jpg` | Home page "In the Lab" strip | `_data/settings.yml` (`gallery`) |
 | `assets/img/lab/vials-and-plate.jpg` | Home page "In the Lab" strip | `_data/settings.yml` (`gallery`) |
 | `assets/img/lab/hydrogel-membranes.jpg` | Home page "In the Lab" strip | `_data/settings.yml` (`gallery`) |
-| `assets/interactive/pipetting-robot.html` | Home page, interactive figure under the group photo at the same width, above the SAXS figure (4:3 page shown through a square window, `.figure-crop`; self-contained HTML; no caption) | `_data/settings.yml` (`home_figures`) |
-| `assets/interactive/saxs-instrument.html` | Home page, under the robot at the group photo's width (4:3 page in a trimmed 5:4 window, `wide: true`; demo protocol on a loop; no caption) | `_data/settings.yml` (`home_figures`) |
+| `assets/interactive/pipetting-robot.html` | Courses page, under Surface & Colloid Science (4:3 page shown through a square window, `.figure-crop`, half the page width on desktop; self-contained HTML; no caption) | `_data/settings.yml` (`courses` → `figure`) |
+| `assets/interactive/saxs-instrument.html` | Home page, under the group photo at its width (4:3 page in a trimmed 5:4 window, `wide: true`; demo protocol on a loop; no caption) | `_data/settings.yml` (`home_figures`) |
 | `assets/interactive/saxs-instrument-interactive.html` | Not linked from the site yet. Full interactive SAXS figure (buttons, see-through, labels) for linking to directly | n/a |
 | `assets/img/contact.jpg` | Contact page (portrait of Prof. Pozzo) | `_data/settings.yml` (`contacts`) |
 | `assets/img/research/ai-discovery.jpg` | Research: AI-Driven Materials Discovery | `_data/research.yml` |
