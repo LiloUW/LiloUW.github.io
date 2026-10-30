@@ -42,10 +42,10 @@ alumni:
   - {name: 'Kacper Lachowski (Ph.D. 2023)', now: 'Scientist, Arzeda', research: 'Self-assembly in sequence defined polymers and their use in controlled synthesis of nanomaterials', linkedin: 'https://www.linkedin.com/in/klachowski/', website: 'https://www.moles.washington.edu/student/kacper-lachowski/'}
   - {name: 'Jaime Rodriguez (Ph.D. 2021)', now: 'Data Scientist, Pacific Northwest National Laboratory', research: 'Advanced materials for flow batteries', linkedin: 'https://www.linkedin.com/in/jaimerodriguez26/'}
   - {name: 'Caitlyn Wolf (Ph.D. 2021)', now: 'NRC Postdoctoral Fellow, NIST Center for Neutron Research', research: 'Polymer simulation and neutron scattering', scholar: 'https://scholar.google.com/citations?user=RZdroV4AAAAJ&hl=en'}
-  - {name: 'Yi-Ting Lee (Ph.D. 2019)', research: 'Ultrasound manipulation of emulsion systems', linkedin: 'https://www.linkedin.com/in/yi-ting-lee-2267135b/'}
+  - {name: 'Yi-Ting Lee (Ph.D. 2019)', now: 'Engineer, Intel', research: 'Ultrasound manipulation of emulsion systems', linkedin: 'https://www.linkedin.com/in/yi-ting-lee-2267135b/'}
   - {name: 'Ryan Kastilani (Ph.D. 2019)', now: 'Software Engineer, The Trade Desk, Inc.', research: 'Nanomaterial synthesis via interfacial structuring', linkedin: 'https://www.linkedin.com/in/ryan-kastilani/'}
   - {name: 'Yuyin Xi (Ph.D. 2018)', now: 'Postdoctoral Researcher, National Institute of Standards and Technology', research: 'Field-directed and self-assembly of conjugated polymers', linkedin: 'https://www.linkedin.com/in/yuyin-xi-03339b3b/'}
-  - {name: 'Pablo de la Iglesia (Ph.D. 2015)', research: 'Structure of conductive organogels', linkedin: 'https://www.linkedin.com/in/pablo-de-la-iglesia-13854912/'}
+  - {name: 'Pablo de la Iglesia (Ph.D. 2015)', now: 'Engineer, Intel', research: 'Structure of conductive organogels', linkedin: 'https://www.linkedin.com/in/pablo-de-la-iglesia-13854912/'}
   - {name: 'Jeff Richards (Ph.D. 2014)', now: 'Associate Professor, Northwestern University', research: 'Structure control in polymer solar-cells', linkedin: 'https://www.linkedin.com/in/jeffrey-richards-90617512/', scholar: 'https://scholar.google.com/citations?user=pfAdrBcAAAAJ&hl=en'}
   - {name: 'Greg Newbloom (Ph.D. 2014)', research: 'Percolation in conjugated polymer networks', note: 'See also: Postdoctoral Researchers', linkedin: 'https://www.linkedin.com/in/greg-newbloom-ab125458/'}
   - {name: 'Monica Ospinal (Ph.D. 2013)', research: 'Advanced nanostructures for protein separations'}
