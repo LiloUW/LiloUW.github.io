@@ -10,14 +10,12 @@ layout: default
   <div class="col-md-7">
     <img src="{{ site.data.settings.home_image.image | relative_url }}" alt="{{ site.data.settings.home_image.alt }}" class="img-fluid rounded">
     {% if site.data.settings.home_figures %}
-    <div class="row g-3 mt-1">
-      {% for fig in site.data.settings.home_figures %}
-      <figure class="col-sm-6 mb-0">
-        <div class="figure-crop rounded"><iframe src="{{ fig.src | relative_url }}"{% if fig.left %} style="left: {{ fig.left }}"{% endif %} title="{{ fig.title }}" loading="lazy" sandbox="allow-scripts"></iframe></div>
-        {% if fig.caption %}<figcaption class="text-muted small mt-2">{{ fig.caption }}</figcaption>{% endif %}
-      </figure>
-      {% endfor %}
-    </div>
+    {% for fig in site.data.settings.home_figures %}
+    <figure class="mt-4 mb-0">
+      <div class="figure-crop{% if fig.wide %} figure-crop--wide{% endif %} rounded"><iframe src="{{ fig.src | relative_url }}"{% if fig.left %} style="left: {{ fig.left }}"{% endif %} title="{{ fig.title }}" loading="lazy" sandbox="allow-scripts"></iframe></div>
+      {% if fig.caption %}<figcaption class="text-muted small mt-2">{{ fig.caption }}</figcaption>{% endif %}
+    </figure>
+    {% endfor %}
     {% endif %}
   </div>
 </div>

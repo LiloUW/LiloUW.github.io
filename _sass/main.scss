@@ -114,3 +114,9 @@ details > summary {
     border: 0;
   }
 }
+// Wide figures (`wide: true` in home_figures, e.g. the SAXS instrument): a 5:4 window, with the 4:3 page drawn
+// 1.45x the window's width and shifted so its empty margins are trimmed on all four sides.
+.figure-crop--wide {
+  aspect-ratio: 5 / 4;
+  iframe { left: -25%; top: -24.5%; width: 145%; height: 136%; }
+}

@@ -69,7 +69,7 @@ Folders starting with `_` are never published: `_image_sources/` (uncropped orig
 
 **Content lives in data files, not HTML.** Fields marked *optional* can be omitted.
 
-**`_data/settings.yml`**: `menu` (name, url), `home_image` (image, alt), `home_figures` (interactive figures side by side under the group photo, stacked on phones: src, title, *optional* caption and `left` offset; remove an entry to hide it), `gallery` ("In the Lab": image, caption), `courses`, `social` (footer icons: icon, title, link), `contacts` (contact card).
+**`_data/settings.yml`**: `menu` (name, url), `home_image` (image, alt), `home_figures` (interactive figures stacked under the group photo at its width: src, title, *optional* caption, `left` offset, and `wide: true` for a 5:4 window; remove an entry to hide it), `gallery` ("In the Lab": image, caption), `courses`, `social` (footer icons: icon, title, link), `contacts` (contact card).
 - Course: `name`, `description` (may be `''`), *optional* `images:` list of `{image, alt}` tiles, *optional* `url`.
 
 **`_data/research.yml`**: one entry per research area: `title`, `image` (2.2:1 banner), `description`.
@@ -134,7 +134,8 @@ Reuse these instead of writing new styles.
 | `.open-access-badge` | Purple "Open Access" pill | Publications |
 | `.publication-image` | Optional TOC graphic, 120 px wide | Publications |
 | `.figure-embed` | Plain 4:3 frame (`<iframe sandbox="allow-scripts" loading="lazy">`) for an interactive figure | Available; not currently used |
-| `.figure-crop` | Square window onto a 4:3 figure page: the page is drawn at the window's height and centered (nudged 3% right), trimming its empty sides so the figure fills the window; a figure's `left` setting overrides the offset | Home page robot and SAXS instrument, under the group photo |
+| `.figure-crop` | Square window onto a 4:3 figure page: the page is drawn at the window's height and centered (nudged 3% right), trimming its empty sides so the figure fills the window; a figure's `left` setting overrides the offset | Home page robot, under the group photo |
+| `.figure-crop--wide` | 5:4 window for long figures (`wide: true`): the 4:3 page drawn 1.45× the window width and shifted, trimming its empty margins on all sides | Home page SAXS instrument, under the robot |
 
 ## 4. Images
 
@@ -276,6 +277,6 @@ Remove each item once it's resolved.
 - Publication list audited against Crossref (59 links corrected); Open Access badges follow DOAJ; featured publications follow corresponding authorship.
 - Defense stories include the dissertation link and the abstract in a collapsible block.
 - **Oct 30, 2026:** interactive pipetting-robot figure (`assets/interactive/pipetting-robot.html`) added to the home page in a sandboxed frame, without a caption. At the owner's request it sits under the group photo at the photo's width; the photo column was widened (intro `col-md-5`, photo `col-md-7`) and the figure trimmed to a square window (`.figure-crop`) so the robot fills it (about 430 px tall at 1280 px).
-- **Oct 30, 2026:** SAXS instrument figure (`assets/interactive/saxs-instrument.html`, drawn open with 90 cm collimation) added next to the robot; `home_figure` became the list `home_figures`, shown in two columns (`col-sm-6`) under the photo, each in a square window (SAXS shifted with `left: '-20%'`).
+- **Oct 30, 2026:** SAXS instrument figure (`assets/interactive/saxs-instrument.html`, drawn open with 90 cm collimation) added; `home_figure` became the list `home_figures`. At the owner's request the photo, robot and SAXS figure are stacked vertically at the photo's width; the SAXS figure uses a trimmed 5:4 window (`.figure-crop--wide`).
 - The full CV PDF is intentionally not published (`*.pdf` is excluded from the build).
 - Alumni are listed without photos.
