@@ -10,12 +10,12 @@ menu:
 # Image shown beside the introduction on the home page.
 home_image: {image: 'assets/img/home.jpg', alt: 'The Pozzo Research Group on the UW campus'}
 
-# Interactive figure shown under the group photo on the home page (self-contained HTML in
-# assets/interactive/, displayed in a 4:3 frame). Remove this entry to hide it.
+# Interactive figure shown full width below the introduction and group photo on the home page
+# (self-contained HTML in assets/interactive/, in a 4:3 frame). `title` is read by screen readers;
+# add an optional `caption:` line to show text under it. Remove this entry to hide the figure.
 home_figure:
   src: 'assets/interactive/pipetting-robot.html'
   title: 'Animated pipetting robot filling a 96-well plate'
-  caption: 'A pipetting robot running a protocol. Drag to turn it around.'
 
 # Laboratory photo strip on the home page (images in assets/img/lab/).
 gallery:
