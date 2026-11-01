@@ -14,7 +14,9 @@ Published builds (single self-contained files):
 - `assets/interactive/saxs-instrument-interactive.html` (from `saxs-instrument.src.html`)
 - `assets/interactive/saxs-instrument.html` (from `saxs-instrument-web.src.html`; the one to embed)
 
-Rebuild after editing `saxs-instrument.src.html` (from this folder): `python3 make_web.py`
+Rebuild after editing `saxs-instrument.src.html`: `python3 make_web.py` (from this folder), or from the repository root
+`python3 _sources/interactive/saxs-instrument/make_web.py`. It needs the Colorfigures skill's `build.py`
+(`~/.claude/skills/colorfigures/scripts/build.py`).
 
 The instrument is drawn open (no radiation-safety enclosure) on its base cabinet; slits S1 and S2 are 90 cm apart. The flight tube is drawn semi-transparent (glass, with solid steel end flanges) so the detector can be seen moving inside it.
 

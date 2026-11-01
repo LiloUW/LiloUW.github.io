@@ -5,7 +5,7 @@ Usage: python3 _scripts/check_site.py <path to built _site>
 
 - Every internal src/href/poster link must point to a file that exists with the
   exact same capitalization (macOS ignores case, GitHub Pages does not).
-- Reports images that break the size and proportion rules in SITE_GUIDE.md.
+- Reports images that break the size and proportion rules in docs/SITE_GUIDE.md.
 Exits with status 1 if any link is broken.
 """
 import os
@@ -34,7 +34,7 @@ for root, _, names in os.walk(site):
 broken = sorted(p for p in refs if not exists(p))
 print(f"{len(refs)} internal links checked; broken: {broken or 'none'}")
 
-# Image rules (see SITE_GUIDE.md, "Images"): ratio groups and file size.
+# Image rules (see docs/SITE_GUIDE.md, "Images"): ratio groups and file size.
 try:
     from PIL import Image
 except ImportError:

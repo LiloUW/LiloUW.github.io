@@ -4,7 +4,7 @@ Every slot now has a real image; no placeholders remain. To replace any image, s
 
 ## Page images
 
-Research-area and lab images are **2.2 : 1 banners** (e.g. 1320 × 600 px); all other proportions are in SITE_GUIDE.md, "Images". Keep files under ~1 MB. Uncropped originals of every cropped image are kept in `_image_sources/`.
+Research-area and lab images are **2.2 : 1 banners** (e.g. 1320 × 600 px); all other proportions are in [SITE_GUIDE.md](SITE_GUIDE.md) §4, "Images". Keep files under ~1 MB. Uncropped originals of every cropped image are kept in `_sources/images/`, mirroring the `assets/img/` folders.
 
 | File | Where it appears | Configured in |
 | --- | --- | --- |
@@ -14,7 +14,7 @@ Research-area and lab images are **2.2 : 1 banners** (e.g. 1320 × 600 px); all 
 | `assets/img/lab/hydrogel-membranes.jpg` | Home page "In the Lab" strip | `_data/settings.yml` (`gallery`) |
 | `assets/interactive/pipetting-robot.html` | Courses page, under Surface & Colloid Science (4:3 page shown through a square window, `.figure-crop`, half the page width on desktop; self-contained HTML; no caption) | `_data/settings.yml` (`courses` → `figure`) |
 | `assets/interactive/saxs-instrument.html` | Home page, under the group photo at its width (4:3 page in a trimmed 5:4 window, `wide: true`; demo protocol on a loop; no caption) | `_data/settings.yml` (`home_figures`) |
-| `assets/interactive/saxs-instrument-interactive.html` | Not linked from the site yet. Full interactive SAXS figure (buttons, see-through, labels) for linking to directly | n/a |
+| `assets/interactive/saxs-instrument-interactive.html` | Not linked from the site yet. Full interactive SAXS figure (buttons, see-through, labels) for linking to directly. Both SAXS files are built from `_sources/interactive/saxs-instrument/` | n/a |
 | `assets/img/contact.jpg` | Contact page (portrait of Prof. Pozzo) | `_data/settings.yml` (`contacts`) |
 | `assets/img/research/ai-discovery.jpg` | Research: AI-Driven Materials Discovery | `_data/research.yml` |
 | `assets/img/research/energy-storage.jpg` | Research: Energy Storage Materials | `_data/research.yml` |
@@ -22,16 +22,16 @@ Research-area and lab images are **2.2 : 1 banners** (e.g. 1320 × 600 px); all 
 | `assets/img/research/scattering.jpg` | Research: Neutron & X-ray Scattering | `_data/research.yml` |
 | `assets/img/research/self-assembly.jpg` | Research: Self-Assembly & Nanostructures | `_data/research.yml` |
 | `assets/img/research/ultrasound.jpg` | Research: Ultrasound & Sonochemistry (cavitation schematic with emission spectra; padded with white to 2.2:1) | `_data/research.yml` |
-| `assets/img/research/science-jubilee.jpg` | Research: Science Jubilee spotlight (square video poster) | `research.md` |
-| `assets/video/jubilee-color-match-demo.mp4` | Research: Science Jubilee demo video (480p) | `research.md` |
-| `assets/img/research/hurricane-maria.jpg`, `hurricane-maria-team.jpg` | Research: Hurricane Maria project (landscape banner + banner of two upright photos) | `research.md` |
+| `assets/img/research/science-jubilee.jpg` | Research: Science Jubilee spotlight (square video poster) | `_pages/research.md` |
+| `assets/video/jubilee-color-match-demo.mp4` | Research: Science Jubilee demo video (480p) | `_pages/research.md` |
+| `assets/img/research/hurricane-maria.jpg`, `hurricane-maria-team.jpg` | Research: Hurricane Maria project (landscape banner + banner of two upright photos) | `_pages/research.md` |
 | `assets/img/courses/kitchen-engineering-1/2/3.jpg`, `community-service-design.jpg` | Courses: 3:4 photo tiles | `_data/settings.yml` (`courses` → `images`) |
 
 These images are displayed whole, so new ones should be cropped to 2.2 : 1 first. To add more, add another `- {image: ..., caption: ...}` line under `gallery` in `_data/settings.yml`.
 
 ## News images
 
-Each story's images are in `assets/img/news/<story>/`. Shared thumbnails: `assets/img/news/defense.jpg` (defenses) and `assets/img/news/candidacy.jpg` (candidacy exams). See CLAUDE.md for how to add a story.
+Each story's images are in `assets/img/news/<story>/`. Shared thumbnails: `assets/img/news/defense.jpg` (defenses) and `assets/img/news/candidacy.jpg` (candidacy exams). See [HOW_TO.md](HOW_TO.md) for how to add a story.
 
 ## Group member photos
 

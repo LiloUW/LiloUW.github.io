@@ -24,7 +24,7 @@ gallery:
 - {image: 'assets/img/lab/vials-and-plate.jpg', caption: 'Automated sample preparation'}
 - {image: 'assets/img/lab/hydrogel-membranes.jpg', caption: 'Hydrogel materials for biomanufacturing'}
 
-# Course photos are 3:4 tiles (see SITE_GUIDE.md); list any number under `images`. An optional `figure`
+# Course photos are 3:4 tiles (see docs/SITE_GUIDE.md); list any number under `images`. An optional `figure`
 # (src, title) shows an interactive figure from assets/interactive/ in a square window under the description.
 courses:
 - {name: 'Heat Transfer', description: 'Core chemical engineering transport phenomena.'}

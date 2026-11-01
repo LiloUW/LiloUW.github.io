@@ -1,48 +1,48 @@
 # Pozzo Research Group Website
 
-Website for the Pozzo Research Group (Prof. Lilo D. Pozzo), Department of Chemical Engineering, University of Washington. Live at https://LiloUW.github.io.
+Website of the Pozzo Research Group (Prof. Lilo D. Pozzo), Department of Chemical Engineering, University of Washington. Live at **https://pozzorg.com** (also https://LiloUW.github.io).
 
-## Built With
+It is a [Jekyll](https://jekyllrb.com/) site hosted on [GitHub Pages](https://pages.github.com/): pushing to the `main` branch publishes it within a minute or two. The design is adapted from the [academic](https://github.com/LeNPaul/academic) Jekyll theme by Paul Le (MIT License, see `THEME_LICENSE.txt`), with Bootstrap 5 and Font Awesome.
 
-- [Jekyll](https://jekyllrb.com/), hosted on [GitHub Pages](https://pages.github.com/)
-- The [academic](https://github.com/LeNPaul/academic) Jekyll theme by Paul Le (MIT License, see `THEME_LICENSE.txt`), with Bootstrap 5 and Font Awesome. The theme's layouts are copied into this repository and customized.
+## Where things are
 
-## Editing Content
+Most updates only touch a data file or a Markdown file; HTML templates rarely need to change.
 
-Most content lives in YAML data files, so updates rarely require touching HTML:
+```
+_pages/          the pages: index.md (home), research, people, publications, courses, cv, contact, news
+_posts/          news stories, one Markdown file each (YYYY-MM-DD-slug.md)
+_data/           the content in YAML
+  settings.yml     menu, home photo and figures, "In the Lab" strip, courses, footer icons, contact card
+  people.yml       group members and alumni
+  publications.yml publications (the six newest with Prof. Pozzo as corresponding author are featured)
+  research.yml     research areas
+  cv/              CV sections
+assets/          files served as-is: img/, interactive/ (animated figures), video/, css/, libs/
+_layouts/        page templates          _includes/  shared pieces (header, footer, ...)
+_sass/main.scss  colours and styles
+_sources/        originals, not published: uncropped images, figure source code, the CV PDF
+_scripts/        build.sh (local build + checks), check_site.py
+docs/            the guides listed below
+_config.yml      site title, description and build settings     CNAME  the custom domain
+```
 
-| What | File |
+## Guides
+
+| Guide | Read it for |
 | --- | --- |
-| Menu, home/gallery images, courses, social links, contact info | `_data/settings.yml` |
-| Research areas (Research page) | `_data/research.yml` |
-| Group members and alumni (People page) | `_data/people.yml` |
-| Publications (the six newest with `corresponding: true` are featured on the home page) | `_data/publications.yml` |
-| CV sections | `_data/cv/*.yml` (order set in `_data/cv/sections.yml`) |
-| News stories (News page; newest three on the home page) | One Markdown file per story in `_posts/`; see [CLAUDE.md](CLAUDE.md) |
-| Page intro text | `index.md`, `news.md`, `research.md`, `people.md`, `publications.md`, `courses.md`, `cv.md`, `contact.md` |
+| [docs/HOW_TO.md](docs/HOW_TO.md) | Step-by-step recipes: add a news story, a person, a publication; change courses, research areas, the CV, the menu, figures |
+| [docs/SITE_GUIDE.md](docs/SITE_GUIDE.md) | The rules: the owner's standing rules, visual style, image proportions, writing conventions, fact checking, publishing |
+| [docs/IMAGES_GUIDE.md](docs/IMAGES_GUIDE.md) | Every image on the site, its file and where it's configured |
+| [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | Hosting, the pozzorg.com domain, building locally, troubleshooting |
+| [CLAUDE.md](CLAUDE.md) / [AGENTS.md](AGENTS.md) | Instructions for AI agents (Claude Code loads CLAUDE.md automatically) |
 
-## Images
+## Quick start
 
-Images come from the old pozzorg.com site; a few placeholders remain. See [IMAGES_GUIDE.md](IMAGES_GUIDE.md) for every image slot. Original uploads go in `Images/`, which is git-ignored.
+1. Edit the relevant file (see [docs/HOW_TO.md](docs/HOW_TO.md)).
+2. Preview and check: `_scripts/build.sh`, then `python3 -m http.server 8000 -d /tmp/pozzo-site` and open http://localhost:8000.
+3. Commit and push to `main`.
 
-## Rules and Style
-
-[SITE_GUIDE.md](SITE_GUIDE.md) records the site's visual style, image proportions, writing conventions, and how to check and publish changes. Read it before updating the site.
-
-## Updating with Claude
-
-[CLAUDE.md](CLAUDE.md) holds instructions that Claude Code reads automatically, including step-by-step instructions for adding news stories. In a Claude chat opened on this repository, asking for something like "add a news story about X with these photos" is enough.
-
-## Local Development
-
-1. Install Ruby 3.x and Bundler
-2. Run `bundle install`
-3. Run `bundle exec jekyll serve`
-4. Visit `http://localhost:4000`
-
-## Deployment
-
-The site deploys automatically to GitHub Pages when changes are pushed to the `main` branch.
+With Claude Code opened on this folder, asking something like "add a news story about X with these photos" is enough; it follows CLAUDE.md and the guides.
 
 ## License
 

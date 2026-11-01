@@ -1,78 +1,43 @@
-# Pozzo Research Group website
+# Pozzo Research Group website: instructions for AI agents
 
-Jekyll site served by GitHub Pages from `main` (https://LiloUW.github.io). Layouts are adapted from the "academic" theme by Paul Le and live in `_layouts/` and `_includes/`. Most content is in YAML under `_data/`; see README.md for the full map.
+Jekyll site served by GitHub Pages from `main` (https://pozzorg.com, also https://LiloUW.github.io). Layouts are adapted from the "academic" theme by Paul Le. Most content is in YAML under `_data/`, pages are in `_pages/`, news stories in `_posts/`.
 
-**Before changing anything, read [SITE_GUIDE.md](SITE_GUIDE.md)**: it holds the visual style, image proportions and cropping policy, writing conventions, and the check-and-publish workflow. This file has the step-by-step recipes.
+## Read first
 
-## Adding a news story
+1. **[docs/SITE_GUIDE.md](docs/SITE_GUIDE.md)**: the rulebook. Its **standing rules from the site owner** (top of the file) apply to every update; the numbered sections cover how the site works, data fields, visual style, image proportions and cropping, writing conventions, sources and verification, and the check-and-publish workflow.
+2. **[docs/HOW_TO.md](docs/HOW_TO.md)**: step-by-step recipes (news story, people, publications, research, courses, CV, settings, interactive figures, design). Read the recipe for your task before starting.
+3. As needed: [docs/IMAGES_GUIDE.md](docs/IMAGES_GUIDE.md) (every image slot and its file) and [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) (hosting, domain, local build, troubleshooting).
 
-Each story is one Markdown file in `_posts/`, named `YYYY-MM-DD-short-slug.md` (lowercase, hyphens). The date in the filename is the publication date. Stories appear newest first on `/news/`, and the three newest also appear on the home page.
+## Every session
 
-1. **Images.** Put them in `assets/img/news/<short-slug>/` as `01.jpg`, `02.jpg`, … Convert and resize first, because uploads are often AVIF/HEIC/PNG files with misleading extensions and full camera resolution:
-   ```bash
-   sips -s format jpeg -s formatOptions 85 -Z 1600 "<source image>" --out assets/img/news/<short-slug>/01.jpg
-   ```
-   `-Z 1600` sets the longest side to 1600 px, and sips will also *enlarge* smaller images, so first check the size with `sips -g pixelWidth -g pixelHeight <file>` and drop `-Z 1600` if the image is already smaller. Check with `file` that the result is real JPEG data.
-2. **Post file.** Copy this template. Only `title` is required; delete the lines you don't need.
-   ```markdown
-   ---
-   title: "Congratulations, Dr. Example!"
-   image: /assets/img/news/<short-slug>/01.jpg          # large photo at the top of the story
-   image_alt: "What the photo shows"                     # for screen readers
-   image_caption: "Optional caption shown under the photo"
-   thumbnail: /assets/img/news/defense.jpg             # square-cropped image in news lists; defaults to `image`
-   gallery:                                              # extra photos shown in a grid below the text
-     - image: /assets/img/news/<short-slug>/02.jpg
-       caption: "Optional caption"
-   ---
+1. `git pull --ff-only`. The owner often commits and pushes directly, from this Mac or GitHub's web editor.
+2. Change data files and posts, not layouts, unless the design itself is changing.
+3. Verify every fact and link against a primary source; never fill gaps with guesses (dates, titles, positions, pronouns, course descriptions). Ask the owner instead.
+4. Build and check with `_scripts/build.sh <scratch dir>`, which runs `_scripts/check_site.py`. Screenshot the changed pages at ~1280 px and ~520 px with headless Chrome (`--window-size=1280,1000`; it can't render narrower than ~500 px).
+5. Stage the changes and **ask before committing or pushing**. Report anything assumed or unverified.
 
-   First paragraph. It becomes the summary on the news list, so make it a complete sentence about the news.
+## Repository map
 
-   More paragraphs, with [links](https://example.com) in Markdown.
-   ```
-3. **Shared thumbnails.** Use `/assets/img/news/defense.jpg` (graduation cap) for dissertation defenses and `/assets/img/news/candidacy.jpg` (balloons) for candidacy/general exams. Keep the real group photo as `image`.
-4. **Related updates.** A defense usually also means moving the person from `current` to `alumni` in `_data/people.yml` (alumni have no `image`; delete their headshot in `assets/img/people/`). A new paper goes in `_data/publications.yml`.
-5. **Verify.** Build locally (see "Building locally" below), then run `python3 _scripts/check_site.py <built _site>` to catch broken or wrong-case links and off-ratio images.
+| Path | What it holds | Published? |
+| --- | --- | --- |
+| `_pages/` | One Markdown file per page (`index.md` = home); each sets `layout` and `permalink` | yes (via `include:` in `_config.yml`) |
+| `_posts/` | News stories, `YYYY-MM-DD-slug.md` | yes, at `/news/YYYY/slug/` |
+| `_data/` | Content: `settings.yml` (menu, home, courses, footer, contact), `people.yml`, `publications.yml`, `research.yml`, `cv/` | rendered into pages |
+| `_layouts/`, `_includes/`, `_sass/` | Templates, shared pieces, styles | rendered into pages |
+| `assets/` | Everything served as-is: `img/`, `interactive/`, `video/`, `css/`, `libs/`, icons | yes |
+| `_sources/` | Originals: uncropped images (`images/`, mirroring `assets/img/`), interactive-figure source code (`interactive/<name>/`), reference documents (`documents/`, e.g. the CV PDF) | no |
+| `_scripts/` | `build.sh` (local build + check), `check_site.py` (link and image checker), `local-build/Gemfile` | no |
+| `docs/` | Guides for people and agents | no |
+| `Images/` | Raw uploads from the owner; git-ignored; never reference it | no |
+| `_config.yml`, `CNAME`, `Gemfile` | Site settings, custom domain, GitHub Pages gem | config |
 
-**Defense stories:** quote the dissertation title and link the dissertation in ResearchWorks, the UW Libraries archive. Search `https://digital.lib.washington.edu/server/api/discover/search/objects?query=<surname>`, confirm the author and advisor, and link the `https://hdl.handle.net/1773/...` handle. Note any embargo (e.g. "restricted to UW users until 2028"). Dissertations appear 1–4 months after the defense; if it isn't there yet, publish without the link and add it later. If there's a defense announcement, add the location and put the abstract, verbatim, in a collapsible block after the research paragraph:
+## Gotchas
 
-```html
-<details class="mb-4" markdown="1">
-<summary>Read the dissertation abstract</summary>
-
-Abstract paragraph(s)...
-
-</details>
-```
-
-**Finding social posts:** LinkedIn posts can't be found by searching. Profile and activity pages return HTTP 999 or a login wall, and search engines don't index posts (even an exact-quote search finds nothing). A post is only reachable through its direct link, so **ask the site owner for the LinkedIn link**. Prof. Pozzo's Bluesky (`lilopozzo.bsky.social`) is public and can be scanned by date: `https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=lilopozzo.bsky.social&limit=100` (page with `cursor`; full-size photos are under `embed.images[].fullsize`). Bluesky's search endpoint needs a login.
-
-When working from a LinkedIn post, the post's date is encoded in its ID: `(activity_id >> 22) / 1000` gives Unix seconds. Public posts expose their photos in the page HTML (`media.licdn.com/.../feedshare-...`). Identify only people the source names.
-
-**Don't put ` | ` in story text.** Kramdown turns any line containing a pipe into a table, which silently merges links (e.g. "LinkedIn | ORCID" becomes "LinkedInORCID"). Separate links with ` · `.
-
-The full defense-story structure is in SITE_GUIDE.md, "Writing and content style".
-
-Writing style used in existing posts: third person ("Brenden Pelkie successfully defended his dissertation, titled \"…\", on May 30th, 2025."), dissertation or talk titles in quotes, and a closing "Congratulations, Dr. X!" for defenses. People are referred to by first name after the first mention.
-
-## Other common updates
-
-- **People:** `_data/people.yml`. Current members need a square (1:1) headshot at `assets/img/people/firstname-lastname.jpg`, about 800 × 800 px; crop non-square photos around the face and keep the original in `_image_sources/people/`.
-- **Publications:** `_data/publications.yml`, newest first, `number` counting up. Add `corresponding: true` when Prof. Pozzo is a corresponding author (verify it; see SITE_GUIDE.md, "Sources and verification"); the home page automatically features the six newest such papers. Author format `H.T. Chiang, L.D. Pozzo`; journal format `Journal, vol(issue), pages (year)`; link through `https://doi.org/...`.
-- **Interactive figure (home page):** put the self-contained HTML "web version" in `assets/interactive/<name>.html` (lowercase-hyphen, no front matter) and add it to the `home_figures` list in `_data/settings.yml` with a descriptive `title` (an optional `caption` shows text underneath; currently none; optional `left` shifts an off-centre figure inside its square window; `wide: true` gives a long figure a trimmed 5:4 window). Figures are stacked under the group photo at its width (currently only the SAXS instrument). A course in `courses` can show one too, via `figure: {src, title}` (the pipetting robot is under Surface & Colloid Science). Read and safety-check the file first (SITE_GUIDE.md, "Images" → Interactive figures).
-- **Images:** IMAGES_GUIDE.md lists every image slot. Research-area and lab images are 2.2:1 banners; see SITE_GUIDE.md, "Images", before cropping anything.
-
-## Constraints
-
-- GitHub rejects files over 100 MB, and the site should stay light. Keep images under ~1 MB and compress videos (macOS: `avconvert -p PresetAppleM4V480pSD`) or embed them from YouTube.
-- `Images/` holds the original uploads. It is git-ignored and excluded from the build; never reference it from pages.
-- Use `relative_url` for internal links in layouts and includes.
-- File names must be lowercase with hyphens and match references exactly. macOS ignores case but GitHub Pages does not, so a case mismatch passes local checks and breaks online. Rename uploads (e.g. `Kevin-lee.jpg` → `kevin-lee.jpg`) via a temporary name or `git mv`, and check links case-sensitively.
-- A failed GitHub Pages run with "job was not acquired by Runner" in the deploy step is a GitHub outage, not a site error: check with `gh run view <id>`, then `gh run rerun <id>` or push again.
-
-## Building locally
-
-The system Ruby on the main development Mac is 2.6, too old for the current `github-pages` gem. A working approach is a separate Gemfile pinning `github-pages` 227 (with `ffi < 1.17`, `nokogiri < 1.14`, `public_suffix < 5`, `activesupport < 7`, `zeitwerk < 2.7`, `concurrent-ruby < 1.3.5`, `webrick`) installed outside the repo, then:
-```bash
-LANG=en_US.UTF-8 BUNDLE_GEMFILE=<that Gemfile> bundle exec jekyll build -d <scratch dir>/_site
-```
+- **File names are case-sensitive online.** macOS ignores case, GitHub Pages doesn't. Use lowercase-hyphen names; rename via a temporary name or `git mv`; `check_site.py` catches mismatches.
+- **No ` | ` in Markdown text** (Kramdown makes it a table). Use ` · ` between links.
+- **Internal links in layouts and includes** use `{{ '/path/' | relative_url }}`.
+- **A new page** goes in `_pages/` and must set `permalink:`; without it the address would start with `/_pages/`.
+- **Keep the site light:** images under ~1 MB and ≤1600 px; compress videos (`avconvert -p PresetAppleM4V480pSD`) or use YouTube. GitHub rejects files over 100 MB.
+- **No Twitter/X** links, icons or meta tags, anywhere.
+- **LinkedIn can't be searched or scraped**: ask the owner for direct post or profile links, and don't try to get around its bot checks.
+- A failed Pages deploy with "job was not acquired by Runner" is a GitHub outage: `gh run rerun <id>` or push again.

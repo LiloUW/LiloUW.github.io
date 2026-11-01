@@ -3,11 +3,13 @@
 This is the reference for anyone, human or AI agent, updating this website. It records how the site is built, its visual and writing conventions, where facts come from and how to verify them, and the rules that keep it working. **Read it before making changes.**
 
 Companion files:
-- [CLAUDE.md](CLAUDE.md): step-by-step recipes (adding a news story, person, paper; building locally). Claude Code loads it automatically.
+- [HOW_TO.md](HOW_TO.md): step-by-step recipes (news story, people, publications, courses, figures, settings).
 - [IMAGES_GUIDE.md](IMAGES_GUIDE.md): every image slot on the site and its file.
-- `_scripts/check_site.py`: the automated check to run before every publish.
+- [DEPLOYMENT.md](DEPLOYMENT.md): hosting, the domain, building locally, troubleshooting.
+- [../CLAUDE.md](../CLAUDE.md): the short brief for AI agents (Claude Code loads it automatically; [../AGENTS.md](../AGENTS.md) points other agents to it).
+- `_scripts/build.sh`: builds the site locally and runs `_scripts/check_site.py`, the automated check to run before every publish.
 
-*Last updated: October 8, 2026.*
+*Last updated: November 1, 2026.*
 
 ## Before you start: checklist for every update
 
@@ -15,7 +17,7 @@ Companion files:
 2. Read the **standing rules** below and the section for the content you're changing.
 3. Make the change in the data file or post, not in HTML layouts, unless the design itself is changing.
 4. Verify every fact and link against a primary source (§6). Never fill gaps with guesses.
-5. Build locally, run `python3 _scripts/check_site.py <built _site>`, and screenshot the changed pages (§8).
+5. Build and check with `_scripts/build.sh`, and screenshot the changed pages (§8).
 6. Stage the changes and **ask before committing or pushing**. Report anything you assumed or couldn't verify.
 
 ## Standing rules from the site owner
@@ -30,7 +32,7 @@ These are explicit requests from Prof. Pozzo's group. Follow them on every updat
 6. **Lowercase-hyphen file names** that match references exactly; the live site is case-sensitive (§4).
 7. **Never invent facts** (dates, titles, positions, pronouns, course descriptions); leave them out and ask (§5).
 8. **Defense news stories** quote the dissertation title, link the dissertation, and include the abstract when an announcement is available (§5).
-9. **Check before reporting done:** build, run `_scripts/check_site.py`, and screenshot changed pages (§8).
+9. **Check before reporting done:** build with `_scripts/build.sh` (it runs `_scripts/check_site.py`) and screenshot changed pages (§8).
 10. **Don't commit or push without asking**, and start every session with `git pull --ff-only` (§8).
 11. **Alumni are listed without photos**, and the full CV PDF is not published (§10).
 
@@ -50,20 +52,38 @@ These are explicit requests from Prof. Pozzo's group. Follow them on every updat
 
 | Address | Page file | Layout | Notes |
 | --- | --- | --- | --- |
-| `/` | `index.md` | `home.html` | Intro text (`col-md-5`) beside the group photo with the interactive figure beneath it (`col-md-7`), "In the Lab" strip, 3 latest news, 6 featured publications |
-| `/news/` | `news.md` | `news.html` | All stories, newest first (`_includes/news-item.html`) |
+| `/` | `_pages/index.md` | `home.html` | Intro text (`col-md-5`) beside the group photo with the interactive figure beneath it (`col-md-7`), "In the Lab" strip, 3 latest news, 6 featured publications |
+| `/news/` | `_pages/news.md` | `news.html` | All stories, newest first (`_includes/news-item.html`) |
 | `/news/YYYY/slug/` | `_posts/*.md` | `post.html` | One page per story |
-| `/research/` | `research.md` | `research.html` | Research areas from `_data/research.yml`, then the page text |
-| `/people/` | `people.md` | `people.html` | Current members (photo cards), alumni (list); footer text in front matter |
-| `/people/lilo-pozzo/` | `people/lilo-pozzo.md` | `page.html` | PI profile |
-| `/publications/` | `publications.md` | `publications.html` | Grouped by year (`_includes/publications.html` + `publication.html`) |
-| `/courses/` | `courses.md` | `courses.html` | Courses, photo tiles and interactive figures from `_data/settings.yml` |
-| `/cv/` | `cv.md` | `cv.html` | Sections from `_data/cv/` |
-| `/contact/` | `contact.md` | `contact.html` | Contact card + "Join the Group" |
+| `/research/` | `_pages/research.md` | `research.html` | Research areas from `_data/research.yml`, then the page text |
+| `/people/` | `_pages/people.md` | `people.html` | Current members (photo cards), alumni (list); footer text in front matter |
+| `/people/lilo-pozzo/` | `_pages/people/lilo-pozzo.md` | `page.html` | PI profile |
+| `/publications/` | `_pages/publications.md` | `publications.html` | Grouped by year (`_includes/publications.html` + `publication.html`) |
+| `/courses/` | `_pages/courses.md` | `courses.html` | Courses, photo tiles and interactive figures from `_data/settings.yml` |
+| `/cv/` | `_pages/cv.md` | `cv.html` | Sections from `_data/cv/` |
+| `/contact/` | `_pages/contact.md` | `contact.html` | Contact card + "Join the Group" |
 
 Old addresses redirect: `/students/` → `/people/`, `/about/` → `/contact/`, and the old Wix `/post/<slug>/` links go to the matching story (via `redirect_from`).
 
-Folders starting with `_` are never published: `_image_sources/` (uncropped originals), `_scripts/`. Neither are `Images/` (raw uploads, also git-ignored), the `.md` guides, or any `*.pdf`.
+Every page file lives in `_pages/` and sets its own `permalink` (the address); `_config.yml` lists `_pages` under `include:` so Jekyll reads it. A new page must set `permalink`, or its address would start with `/_pages/`.
+
+### Repository layout
+
+| Folder / file | Holds | Published? |
+| --- | --- | --- |
+| `_pages/` | The pages (table above) | Yes |
+| `_posts/` | News stories | Yes, at `/news/YYYY/slug/` |
+| `_data/` | Content in YAML (§2) | Rendered into pages |
+| `_layouts/`, `_includes/`, `_sass/` | Templates, shared pieces, styles (§3) | Rendered into pages |
+| `assets/` | Files served as-is: `img/` (by page: `courses/`, `lab/`, `news/<slug>/`, `people/`, `research/`), `interactive/`, `video/`, `css/main.scss` (imports `_sass/main.scss`), `libs/` (Bootstrap, Font Awesome), icons | Yes |
+| `_sources/` | Originals: `images/` (uncropped images, mirroring `assets/img/`), `interactive/<name>/` (figure source code and rebuild scripts), `documents/` (the CV PDF) | No |
+| `_scripts/` | `build.sh`, `check_site.py`, `local-build/Gemfile` | No |
+| `docs/` | These guides | No |
+| `Images/` | Raw uploads (git-ignored); never reference it | No |
+| `README.md`, `CLAUDE.md`, `AGENTS.md` | Overview for people; instructions for AI agents | No |
+| `_config.yml`, `CNAME`, `Gemfile`, `THEME_LICENSE.txt` | Settings, custom domain, GitHub Pages gem, theme license | No |
+
+Folders starting with `_` are never published unless listed under `include:` (only `_pages`). The guides, `Images/` and any `*.pdf` are excluded in `_config.yml`.
 
 ## 2. Where content lives (data files and fields)
 
@@ -92,7 +112,7 @@ Folders starting with `_` are never published: `_image_sources/` (uncropped orig
 
 **`_data/cv/*.yml`**: `education`, `academic-experience`, `awards`, `entrepreneurship`, `service`, each a list of `{title, description}`; display order in `sections.yml`.
 
-**`_posts/YYYY-MM-DD-slug.md`** (news): front matter `title` (required), *optional* `image`, `image_alt`, `image_caption`, `thumbnail`, `gallery` (list of `{image, caption}`), `redirect_from`. The filename date is the story date. Template in CLAUDE.md.
+**`_posts/YYYY-MM-DD-slug.md`** (news): front matter `title` (required), *optional* `image`, `image_alt`, `image_caption`, `thumbnail`, `gallery` (list of `{image, caption}`), `redirect_from`. The filename date is the story date. Template in HOW_TO.md.
 
 ## 3. Visual style
 
@@ -164,7 +184,7 @@ Images in the same place must have the same proportions:
 - **Combine instead of cropping** when photos have awkward shapes. Two upright photos side by side make one 2.2:1 banner (`hurricane-maria-team.jpg`), and many lab images are two-photo composites in the same style.
 - **Pad instead of cropping** figures with white backgrounds. Adding white side margins brings them to the target ratio invisibly (`ultrasound.jpg` was 1.9:1 and was padded to 2.2:1).
 - **Repeating patterns can take bigger crops:** the gold well plate keeps 3 of 6 rows. Faces, text, figure labels and flyers cannot.
-- **Keep the uncropped original** in `_image_sources/`, mirroring the `assets/img/` path (e.g. `_image_sources/research/emulsions-original.png`).
+- **Keep the uncropped original** in `_sources/images/`, mirroring the `assets/img/` path (e.g. `_sources/images/research/emulsions-original.png`).
 - **Preview before applying:** draw the proposed crop boxes on a contact sheet and look at them before saving.
 
 ### File rules
@@ -174,7 +194,7 @@ Images in the same place must have the same proportions:
 - **Size:** at most 1600 px on the long side, about 1 MB or less, JPEG quality 85–88. Never upscale (`sips -Z` enlarges small images). Small sources (under ~600 px) look soft; ask the owner for a larger version.
 - **Video:** compress (macOS: `avconvert -p PresetAppleM4V480pSD`) or embed from YouTube. GitHub rejects files over 100 MB.
 - **Alt text:** describe what the image shows. Name only people the source identifies.
-- **Interactive figures:** self-contained HTML pages (no outside files or network calls) in `assets/interactive/`, lowercase-hyphen names (e.g. `pipetting-robot.html`), with no Jekyll header so they're published untouched. Use the figure's "web version" (no labels or buttons, white background, sized for a 4:3 frame), embed it via `home_figures` in `_data/settings.yml`, and give it a `title` that describes it for screen readers. It currently has no visible caption, at the owner's request. Before publishing a new one, read the whole file and check it has no `fetch`, storage, cookies, `eval`, or `window.parent`/`top` access. The frame is sandboxed (scripts only). Interactive figures made with the Colorfigures skill come in two builds: a web version for embedding (`<name>.html`: no controls or labels, 4:3, looping demo) and a full one (`<name>-interactive.html`); their editable sources and rebuild steps live in `_image_sources/interactive/<name>/` (e.g. the SAXS instrument). On phones it must use `touch-action: pan-y` so a vertical swipe still scrolls the page.
+- **Interactive figures:** self-contained HTML pages (no outside files or network calls) in `assets/interactive/`, lowercase-hyphen names (e.g. `pipetting-robot.html`), with no Jekyll header so they're published untouched. Use the figure's "web version" (no labels or buttons, white background, sized for a 4:3 frame), embed it via `home_figures` in `_data/settings.yml`, and give it a `title` that describes it for screen readers. It currently has no visible caption, at the owner's request. Before publishing a new one, read the whole file and check it has no `fetch`, storage, cookies, `eval`, or `window.parent`/`top` access. The frame is sandboxed (scripts only). Interactive figures made with the Colorfigures skill come in two builds: a web version for embedding (`<name>.html`: no controls or labels, 4:3, looping demo) and a full one (`<name>-interactive.html`); their editable sources and rebuild steps live in `_sources/interactive/<name>/` (e.g. the SAXS instrument). On phones it must use `touch-action: pan-y` so a vertical swipe still scrolls the page.
 - **Placeholders:** purple-striped labeled images generated with Pillow (camera icon, slot name, path, size). None are in use; use the same style if a new slot needs one.
 
 ## 5. Writing and content style
@@ -197,7 +217,7 @@ Images in the same place must have the same proportions:
   1. Front matter: `title: "Congratulations, Dr. Surname!"`, `thumbnail: /assets/img/news/defense.jpg`, photos.
   2. "<Name> successfully defended <a> dissertation, titled "<Title>," on <date>, at/in <location>. … now holds a PhD in <field>." Add the advisor(s) or "Nth PhD student to graduate from the Pozzo group" when the source says so.
   3. The research in plain language, then a link to the dissertation in ResearchWorks, with any access restriction ("full text restricted to UW users until 2028"), then links to the person's papers.
-  4. The abstract, verbatim from the announcement, in a collapsible `<details class="mb-4" markdown="1">` block with `<summary>Read the dissertation abstract</summary>` (template in CLAUDE.md).
+  4. The abstract, verbatim from the announcement, in a collapsible `<details class="mb-4" markdown="1">` block with `<summary>Read the dissertation abstract</summary>` (template in HOW_TO.md).
   5. Collaborations, mentoring, celebrations (the hoodie ceremony) as the source describes them.
   6. "Congratulations, Dr. Surname!" and a "Connect with <first name>:" line, with links separated by ` · `.
 - **Candidacy exams** use `/assets/img/news/candidacy.jpg` as the thumbnail.
@@ -232,7 +252,7 @@ Images in the same place must have the same proportions:
 | Defense details and abstracts | The department's "Ph.D. Defense Announcement" PDF (owner provides) | Gives the title, date, room and abstract; quote abstracts verbatim |
 | LinkedIn posts | **Ask the owner for the direct link** | Profiles and activity pages block scripts (HTTP 999 or a login wall), and search engines don't index posts, so posts can't be found by searching. A direct `linkedin.com/feed/update/urn:li:activity:<id>` link loads publicly; post date = `(id >> 22) / 1000` Unix seconds. Photos are at `media.licdn.com/…/feedshare-…`, sometimes only at 800 px. |
 | Bluesky posts | Prof. Pozzo is `lilopozzo.bsky.social`; `public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=…` | The account's feed is public (search needs a login). Full-size photos are under `embed.images[].fullsize`. |
-| Positions, titles, awards | Prof. Pozzo's CV (`Pozzo_long_CV2025.pdf`, not published) or the owner | Don't rely on search-engine snippets about people's jobs; they can be out of date or wrong. |
+| Positions, titles, awards | Prof. Pozzo's CV (`_sources/documents/Pozzo_long_CV2025.pdf`, not published) or the owner | Don't rely on search-engine snippets about people's jobs; they can be out of date or wrong. |
 
 ## 7. Markdown and Jekyll pitfalls
 
@@ -245,20 +265,13 @@ Images in the same place must have the same proportions:
 
 ## 8. Checking and publishing
 
-1. **Build locally:** the Mac's system Ruby (2.6) is too old for the current gems, so the build uses a separate pinned Gemfile outside the repo (details in CLAUDE.md, "Building locally").
-2. **Run the check:** `python3 _scripts/check_site.py <built _site>`. It flags broken internal links (case-sensitive), off-ratio images and files over 1 MB, and exits with an error on broken links. Also check new outside links resolve (`curl -s -o /dev/null -w '%{http_code}' <url>`, expect 200/30x).
+1. **Build locally:** `_scripts/build.sh [output folder]` (default `/tmp/pozzo-site`). The Mac's system Ruby (2.6) is too old for the current gems, so the script uses the pinned `_scripts/local-build/Gemfile` (details in DEPLOYMENT.md).
+2. **Run the check:** `build.sh` runs `python3 _scripts/check_site.py <built site>` at the end. It flags broken internal links (case-sensitive), off-ratio images and files over 1 MB, and exits with an error on broken links. Also check new outside links resolve (`curl -s -o /dev/null -w '%{http_code}' <url>`, expect 200/30x).
 3. **Look at it:** screenshot the changed pages at 1280 px and ~520 px wide (headless Chrome can't go narrower than ~500 px). Confirm the menu stays on one line and nothing renders as a table or shows raw Markdown.
 4. **Stage, report, and ask** before committing or pushing. Pushing to `main` publishes within a minute or two.
 5. **After a push:** `gh run list` shows the Pages deploy. Live files are cached for up to 10 minutes; a hard refresh (Cmd+Shift+R) shows changes sooner.
 
-**When a push or deploy fails**, check [githubstatus.com](https://www.githubstatus.com) first. GitHub had incidents on Oct 5, 6 and 7, 2026.
-
-| Symptom | Meaning | Fix |
-| --- | --- | --- |
-| Push: `remote rejected … (Internal Server Error)` | GitHub server fault | Wait for the incident to clear, then push again |
-| Push/fetch: `Could not resolve host: github.com` | Local network drop | Retry when online |
-| Deploy: `job was not acquired by Runner` | GitHub Actions outage | `gh run rerun <id>` or push again |
-| GitHub Desktop errors | Details are in `~/Library/Application Support/GitHub Desktop/logs/<date>.desktop.production.log` | Read the log before guessing |
+**When a push or deploy fails**, see the troubleshooting table in [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## 9. Open items (awaiting the site owner)
 
@@ -280,5 +293,6 @@ Remove each item once it's resolved.
 - **Oct 30, 2026:** interactive pipetting-robot figure (`assets/interactive/pipetting-robot.html`) added to the home page in a sandboxed frame, without a caption. At the owner's request it sits under the group photo at the photo's width; the photo column was widened (intro `col-md-5`, photo `col-md-7`) and the figure trimmed to a square window (`.figure-crop`) so the robot fills it (about 430 px tall at 1280 px).
 - **Oct 30, 2026:** SAXS instrument figure (`assets/interactive/saxs-instrument.html`, drawn open with 90 cm collimation) added; `home_figure` became the list `home_figures`. At the owner's request the photo, robot and SAXS figure are stacked vertically at the photo's width; the SAXS figure uses a trimmed 5:4 window (`.figure-crop--wide`).
 - **Oct 30, 2026:** at the owner's request the home page shows only the SAXS instrument under the group photo; the pipetting robot moved to the Courses page under Surface & Colloid Science (a course's optional `figure` in `_data/settings.yml`, square `.figure-crop` window, half the page width on desktop).
-- The full CV PDF is intentionally not published (`*.pdf` is excluded from the build).
+- The full CV PDF is intentionally not published (it lives in `_sources/documents/`, and `*.pdf` is excluded from the build).
+- **Nov 1, 2026:** repository reorganized for easier editing, with no change to the published site (the built output was compared file by file): pages moved to `_pages/`, guides to `docs/` (recipes from CLAUDE.md into `docs/HOW_TO.md`, a new `docs/DEPLOYMENT.md`), `_image_sources/` renamed `_sources/` (`images/`, `interactive/`, `documents/`), the CV PDF moved there, and `_scripts/build.sh` added for local builds.
 - Alumni are listed without photos.

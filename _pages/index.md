@@ -1,6 +1,7 @@
 ---
 layout: home
 title: "Home"
+permalink: /
 ---
 
 The Pozzo Research Group in the [Department of Chemical Engineering](https://www.cheme.washington.edu/) at the University of Washington develops and controls self-assembly processes for soft materials at nano and micrometer scales.

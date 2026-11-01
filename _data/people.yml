@@ -1,7 +1,7 @@
 # Research group members.
 # Current members are shown as cards with a photo. To add a real photo, replace the placeholder
 # at the `image` path (square, at least 600x600 px). Optional keys: linkedin, scholar, website, url
-# (url = slug of a profile page in the people/ folder). Alumni: `now` is the current position; optional `now_url`
+# (url = slug of a profile page in _pages/people/). Alumni: `now` is the current position; optional `now_url`
 # links it (e.g. a company page).
 
 current:

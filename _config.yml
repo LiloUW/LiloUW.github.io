@@ -29,15 +29,20 @@ plugins:
   - jekyll-feed
   - jekyll-redirect-from
 
-# Exclude from processing
+# Site pages live in _pages/ (each sets its own `permalink`). Folders starting with "_" are skipped by
+# Jekyll unless listed here.
+include:
+  - _pages
+
+# Never published: documentation, build files, and raw uploads. Other "_" folders (_sources, _scripts)
+# are skipped automatically.
 exclude:
+  - README.md
+  - CLAUDE.md
+  - AGENTS.md
+  - docs
   - Gemfile
   - Gemfile.lock
-  - README.md
-  - DEPLOYMENT_INSTRUCTIONS.md
-  - IMAGES_GUIDE.md
-  - CLAUDE.md
-  - SITE_GUIDE.md
   - Images
   - THEME_LICENSE.txt
   - "*.pdf"
